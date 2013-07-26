@@ -13,7 +13,7 @@ function WelcomeScene:ctor()
     self:createDescription()
     self:createLogo()
     self:createLine()
-    self:createButtons()
+    -- self:createButtons()
     self:createCopyright()
 end
 
