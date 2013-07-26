@@ -69,8 +69,6 @@ layers_scenes_transitions_nodes/CCScene.cpp \
 layers_scenes_transitions_nodes/CCTransitionPageTurn.cpp \
 layers_scenes_transitions_nodes/CCTransition.cpp \
 layers_scenes_transitions_nodes/CCTransitionProgress.cpp \
-menu_nodes/CCMenu.cpp \
-menu_nodes/CCMenuItem.cpp \
 misc_nodes/CCClippingNode.cpp \
 misc_nodes/CCClippingRegionNode.cpp \
 misc_nodes/CCMotionStreak.cpp \
@@ -169,7 +167,6 @@ LOCAL_EXPORT_LDLIBS := -lGLESv2 \
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos_libpng_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_jpeg_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_libxml2_static
-LOCAL_WHOLE_STATIC_LIBRARIES += cocos_libtiff_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_libwebp_static
 
 # define the macro to compile through support/zip_support/ioapi.c
@@ -181,5 +178,4 @@ include $(BUILD_STATIC_LIBRARY)
 $(call import-module,libcurl)
 $(call import-module,libjpeg)
 $(call import-module,libpng)
-$(call import-module,libtiff)
 $(call import-module,libwebp)

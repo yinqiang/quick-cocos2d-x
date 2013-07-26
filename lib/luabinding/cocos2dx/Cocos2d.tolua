@@ -97,9 +97,6 @@ $pfile "cocos2dx/label_nodes/CCLabelBMFont.tolua"
 $pfile "cocos2dx/label_nodes/CCLabelTTF.tolua"
 $pfile "cocos2dx/text_input_node/CCTextFieldTTF.tolua"
 
-$pfile "cocos2dx/menu_nodes/CCMenu.tolua"
-$pfile "cocos2dx/menu_nodes/CCMenuItem.tolua"
-
 $pfile "cocos2dx/CCDirector.tolua"
 $pfile "cocos2dx/CCScheduler.tolua"
 $pfile "cocos2dx/CCConfiguration.tolua"

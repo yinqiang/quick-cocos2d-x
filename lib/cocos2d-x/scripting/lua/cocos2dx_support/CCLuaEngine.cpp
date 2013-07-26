@@ -130,18 +130,6 @@ int CCLuaEngine::executeNodeEvent(CCNode* pNode, int nAction)
     return ret;
 }
 
-int CCLuaEngine::executeMenuItemEvent(CCMenuItem* pMenuItem)
-{
-    int nHandler = pMenuItem->getScriptTapHandler();
-    if (!nHandler) return 0;
-    
-    m_stack->pushInt(pMenuItem->getTag());
-    m_stack->pushCCObject(pMenuItem, "CCMenuItem");
-    int ret = m_stack->executeFunctionByHandler(nHandler, 2);
-    m_stack->clean();
-    return ret;
-}
-
 int CCLuaEngine::executeNotificationEvent(CCNotificationCenter* pNotificationCenter, const char* pszName)
 {
     int nHandler = pNotificationCenter->getObserverHandlerByName(pszName);

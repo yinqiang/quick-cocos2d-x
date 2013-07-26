@@ -93,10 +93,6 @@ static CCImage::EImageFormat computeImageFormatType(string& filename)
     {
         ret = CCImage::kFmtPng;
     }
-    else if ((std::string::npos != filename.find(".tiff")) || (std::string::npos != filename.find(".TIFF")))
-    {
-        ret = CCImage::kFmtTiff;
-    }
     else if ((std::string::npos != filename.find(".webp")) || (std::string::npos != filename.find(".WEBP")))
     {
         ret = CCImage::kFmtWebp;
@@ -415,10 +411,6 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
                 else if (std::string::npos != lowerCase.find(".jpg") || std::string::npos != lowerCase.find(".jpeg"))
                 {
                     eImageFormat = CCImage::kFmtJpg;
-                }
-                else if (std::string::npos != lowerCase.find(".tif") || std::string::npos != lowerCase.find(".tiff"))
-                {
-                    eImageFormat = CCImage::kFmtTiff;
                 }
                 else if (std::string::npos != lowerCase.find(".webp"))
                 {

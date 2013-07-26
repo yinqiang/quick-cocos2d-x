@@ -33,7 +33,6 @@ class CCImage : public CCObject
     {
         kFmtJpg = 0,
         kFmtPng,
-        kFmtTiff,
         kFmtWebp,
         kFmtRawData,
         kFmtUnKnown

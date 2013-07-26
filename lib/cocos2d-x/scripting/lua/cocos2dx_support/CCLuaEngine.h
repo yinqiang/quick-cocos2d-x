@@ -106,7 +106,6 @@ public:
     virtual int executeGlobalFunction(const char* functionName, int numArgs = 0);
 
     virtual int executeNodeEvent(CCNode* pNode, int nAction);
-    virtual int executeMenuItemEvent(CCMenuItem* pMenuItem);
     virtual int executeNotificationEvent(CCNotificationCenter* pNotificationCenter, const char* pszName);
     virtual int executeCallFuncActionEvent(CCCallFunc* pAction, CCObject* pTarget = NULL);
     virtual int executeSchedule(int nHandler, float dt, CCNode* pNode = NULL);
