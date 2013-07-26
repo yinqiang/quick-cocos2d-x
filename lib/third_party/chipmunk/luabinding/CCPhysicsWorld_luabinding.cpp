@@ -65,7 +65,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_create00(lua_State* to
   float gravityY = ((float)  tolua_tonumber(tolua_S,3,0));
   {
    CCPhysicsWorld* tolua_ret = (CCPhysicsWorld*)  CCPhysicsWorld::create(gravityX,gravityY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsWorld");
   }
@@ -93,7 +93,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_create01(lua_State* to
  {
   {
    CCPhysicsWorld* tolua_ret = (CCPhysicsWorld*)  CCPhysicsWorld::create();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsWorld");
   }
@@ -124,7 +124,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_createDebugNode00(lua_
 #endif
   {
    CCPhysicsDebugNode* tolua_ret = (CCPhysicsDebugNode*)  self->createDebugNode();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsDebugNode");
   }
@@ -368,7 +368,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_createCircleBody00(lua
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->createCircleBody(mass,radius,offsetX,offsetY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -408,7 +408,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_createBoxBody00(lua_St
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->createBoxBody(mass,width,height);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -450,7 +450,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_createPolygonBody00(lu
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->createPolygonBody(mass,vertexes,offsetX,offsetY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -490,7 +490,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_createPolygonBody01(lu
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->createPolygonBody(mass,vertexes,offsetX,offsetY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -556,7 +556,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsWorld_getBodyByTag00(lua_Sta
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->getBodyByTag(tag);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -889,7 +889,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_defaultStaticBody00(lua
   CCPhysicsWorld* world = ((CCPhysicsWorld*)  tolua_tousertype(tolua_S,2,0));
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  CCPhysicsBody::defaultStaticBody(world);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -921,7 +921,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_createStaticBody00(lua_
   CCPhysicsWorld* world = ((CCPhysicsWorld*)  tolua_tousertype(tolua_S,2,0));
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  CCPhysicsBody::createStaticBody(world);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -957,7 +957,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_create00(lua_State* tol
   float moment = ((float)  tolua_tonumber(tolua_S,4,0));
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  CCPhysicsBody::create(world,mass,moment);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -2854,7 +2854,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_addSegmentShape00(lua_S
 #endif
   {
    CCPhysicsShape* tolua_ret = (CCPhysicsShape*)  self->addSegmentShape(lowerLeft,lowerRight,thickness);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsShape");
   }
@@ -2894,7 +2894,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_addCircleShape00(lua_St
 #endif
   {
    CCPhysicsShape* tolua_ret = (CCPhysicsShape*)  self->addCircleShape(radius,offsetX,offsetY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsShape");
   }
@@ -2932,7 +2932,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_addBoxShape00(lua_State
 #endif
   {
    CCPhysicsShape* tolua_ret = (CCPhysicsShape*)  self->addBoxShape(width,height);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsShape");
   }
@@ -2972,7 +2972,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_addPolygonShape00(lua_S
 #endif
   {
    CCPhysicsShape* tolua_ret = (CCPhysicsShape*)  self->addPolygonShape(vertexes,offsetX,offsetY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsShape");
   }
@@ -3010,7 +3010,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsBody_addPolygonShape01(lua_S
 #endif
   {
    CCPhysicsShape* tolua_ret = (CCPhysicsShape*)  self->addPolygonShape(vertexes,offsetX,offsetY);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsShape");
   }
@@ -3561,7 +3561,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsCollisionEvent_getWorld00(lu
 #endif
   {
    CCPhysicsWorld* tolua_ret = (CCPhysicsWorld*)  self->getWorld();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsWorld");
   }
@@ -3595,7 +3595,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsCollisionEvent_getBody100(lu
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->getBody1();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -3629,7 +3629,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsCollisionEvent_getBody200(lu
 #endif
   {
    CCPhysicsBody* tolua_ret = (CCPhysicsBody*)  self->getBody2();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsBody");
   }
@@ -4249,7 +4249,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsVector_create00(lua_State* t
   float y = ((float)  tolua_tonumber(tolua_S,3,0));
   {
    CCPhysicsVector* tolua_ret = (CCPhysicsVector*)  CCPhysicsVector::create(x,y);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsVector");
   }
@@ -4279,7 +4279,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsVector_create01(lua_State* t
   const CCPoint vector = *((const CCPoint*)  tolua_tousertype(tolua_S,2,0));
   {
    CCPhysicsVector* tolua_ret = (CCPhysicsVector*)  CCPhysicsVector::create(vector);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsVector");
   }
@@ -4308,7 +4308,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsVector_createForAngle00(lua_
   float angle = ((float)  tolua_tonumber(tolua_S,2,0));
   {
    CCPhysicsVector* tolua_ret = (CCPhysicsVector*)  CCPhysicsVector::createForAngle(angle);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsVector");
   }
@@ -4340,7 +4340,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsVector_createForRotation00(l
   float degrees = ((float)  tolua_tonumber(tolua_S,2,0));
   {
    CCPhysicsVector* tolua_ret = (CCPhysicsVector*)  CCPhysicsVector::createForRotation(degrees);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsVector");
   }
@@ -4796,7 +4796,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsVector_perp00(lua_State* tol
 #endif
   {
    CCPhysicsVector* tolua_ret = (CCPhysicsVector*)  self->perp();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsVector");
   }
@@ -4830,7 +4830,7 @@ static int tolua_CCPhysicsWorld_luabinding_CCPhysicsVector_rperp00(lua_State* to
 #endif
   {
    CCPhysicsVector* tolua_ret = (CCPhysicsVector*)  self->rperp();
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCPhysicsVector");
   }

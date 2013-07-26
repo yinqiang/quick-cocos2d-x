@@ -217,7 +217,7 @@ void CCLuaStack::pushNil(void)
 
 void CCLuaStack::pushCCObject(CCObject* objectValue, const char* typeName)
 {
-    toluafix_pushusertype_ccobject(m_state, objectValue->m_uID, &objectValue->m_nLuaID, objectValue, typeName);
+    toluafix_pushusertype_ccobject(m_state, objectValue->m_nID, &objectValue->m_nLuaID, objectValue, typeName);
 }
 
 void CCLuaStack::pushCCLuaValue(const CCLuaValue& value)

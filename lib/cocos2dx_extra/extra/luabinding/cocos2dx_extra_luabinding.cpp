@@ -678,7 +678,7 @@ static int tolua_cocos2dx_extra_luabinding_CCHTTPRequest_createWithUrlLua00(lua_
   int method = ((int)  tolua_tonumber(tolua_S,4,kCCHTTPRequestMethodGET));
   {
    CCHTTPRequest* tolua_ret = (CCHTTPRequest*)  CCHTTPRequest::createWithUrlLua(listener,url,method);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCHTTPRequest");
   }
@@ -1348,7 +1348,7 @@ static int tolua_cocos2dx_extra_luabinding_CCNetwork_createHTTPRequestLua00(lua_
   int method = ((int)  tolua_tonumber(tolua_S,4,kCCHTTPRequestMethodGET));
   {
    CCHTTPRequest* tolua_ret = (CCHTTPRequest*)  CCNetwork::createHTTPRequestLua(listener,url,method);
-    int nID = (tolua_ret) ? tolua_ret->m_uID : -1;
+    int nID = (tolua_ret) ? tolua_ret->m_nID : -1;
 int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
 toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCHTTPRequest");
   }

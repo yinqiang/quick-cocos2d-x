@@ -332,7 +332,7 @@ TOLUA_API int  tolua_Cocos2d_open (lua_State* tolua_S);]], [[]])
       replace([[tolua_usertype(tolua_S,"LUA_FUNCTION");]], [[]])
 
       replace([[toluafix_pushusertype_ccobject(tolua_S,(void*)tolua_ret]],
-        [[int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
+        [[int nID = (tolua_ret) ? (int)tolua_ret->m_nID : -1;
     int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
     toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret]])
 

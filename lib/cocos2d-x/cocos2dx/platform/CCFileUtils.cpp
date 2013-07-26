@@ -338,7 +338,7 @@ static tinyxml2::XMLElement* generateElementForDict(cocos2d::CCDictionary *dict,
  */
 bool CCFileUtils::writeToFile(cocos2d::CCDictionary *dict, const std::string &fullPath)
 {
-    //CCLOG("tinyxml2 CCDictionary %d writeToFile %s", dict->m_uID, fullPath.c_str());
+    //CCLOG("tinyxml2 CCDictionary %d writeToFile %s", dict->m_nID, fullPath.c_str());
     tinyxml2::XMLDocument *pDoc = new tinyxml2::XMLDocument();
     if (NULL == pDoc)
         return false;
