@@ -193,15 +193,10 @@
 		F4E8808A1770071600577406 /* ccUTF8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E87FFE1770071600577406 /* ccUTF8.cpp */; };
 		F4E8808B1770071600577406 /* ccUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880001770071600577406 /* ccUtils.cpp */; };
 		F4E8808C1770071600577406 /* CCVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880021770071600577406 /* CCVertex.cpp */; };
-		F4E8808D1770071600577406 /* CCComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880051770071600577406 /* CCComponent.cpp */; };
-		F4E8808E1770071600577406 /* CCComponentContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880071770071600577406 /* CCComponentContainer.cpp */; };
 		F4E8808F1770071600577406 /* ccCArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E8800A1770071600577406 /* ccCArray.cpp */; };
 		F4E880901770071600577406 /* TGAlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E8800F1770071600577406 /* TGAlib.cpp */; };
 		F4E880911770071600577406 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880121770071600577406 /* tinyxml2.cpp */; };
 		F4E880921770071600577406 /* TransformUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880141770071600577406 /* TransformUtils.cpp */; };
-		F4E880931770071600577406 /* CCUserDefault.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880171770071600577406 /* CCUserDefault.cpp */; };
-		F4E880941770071600577406 /* CCUserDefault.mm in Sources */ = {isa = PBXBuildFile; fileRef = F4E880191770071600577406 /* CCUserDefault.mm */; };
-		F4E880951770071600577406 /* CCUserDefaultAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E8801A1770071600577406 /* CCUserDefaultAndroid.cpp */; };
 		F4E880961770071600577406 /* ioapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E8801C1770071600577406 /* ioapi.cpp */; };
 		F4E880971770071600577406 /* unzip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E8801E1770071600577406 /* unzip.cpp */; };
 		F4E880981770071600577406 /* ZipUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E880201770071600577406 /* ZipUtils.cpp */; };
@@ -645,10 +640,6 @@
 		F4E880011770071600577406 /* ccUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccUtils.h; sourceTree = "<group>"; };
 		F4E880021770071600577406 /* CCVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCVertex.cpp; sourceTree = "<group>"; };
 		F4E880031770071600577406 /* CCVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCVertex.h; sourceTree = "<group>"; };
-		F4E880051770071600577406 /* CCComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCComponent.cpp; sourceTree = "<group>"; };
-		F4E880061770071600577406 /* CCComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCComponent.h; sourceTree = "<group>"; };
-		F4E880071770071600577406 /* CCComponentContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCComponentContainer.cpp; sourceTree = "<group>"; };
-		F4E880081770071600577406 /* CCComponentContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCComponentContainer.h; sourceTree = "<group>"; };
 		F4E8800A1770071600577406 /* ccCArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccCArray.cpp; sourceTree = "<group>"; };
 		F4E8800B1770071600577406 /* ccCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccCArray.h; sourceTree = "<group>"; };
 		F4E8800C1770071600577406 /* uthash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uthash.h; sourceTree = "<group>"; };
@@ -659,10 +650,6 @@
 		F4E880131770071600577406 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
 		F4E880141770071600577406 /* TransformUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransformUtils.cpp; sourceTree = "<group>"; };
 		F4E880151770071600577406 /* TransformUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformUtils.h; sourceTree = "<group>"; };
-		F4E880171770071600577406 /* CCUserDefault.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCUserDefault.cpp; sourceTree = "<group>"; };
-		F4E880181770071600577406 /* CCUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUserDefault.h; sourceTree = "<group>"; };
-		F4E880191770071600577406 /* CCUserDefault.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCUserDefault.mm; sourceTree = "<group>"; };
-		F4E8801A1770071600577406 /* CCUserDefaultAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCUserDefaultAndroid.cpp; sourceTree = "<group>"; };
 		F4E8801C1770071600577406 /* ioapi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ioapi.cpp; sourceTree = "<group>"; };
 		F4E8801D1770071600577406 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
 		F4E8801E1770071600577406 /* unzip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unzip.cpp; sourceTree = "<group>"; };
@@ -1735,27 +1722,14 @@
 				F4E880011770071600577406 /* ccUtils.h */,
 				F4E880021770071600577406 /* CCVertex.cpp */,
 				F4E880031770071600577406 /* CCVertex.h */,
-				F4E880041770071600577406 /* component */,
 				F4E880091770071600577406 /* data_support */,
 				F4E8800E1770071600577406 /* image_support */,
 				F4E880111770071600577406 /* tinyxml2 */,
 				F4E880141770071600577406 /* TransformUtils.cpp */,
 				F4E880151770071600577406 /* TransformUtils.h */,
-				F4E880161770071600577406 /* user_default */,
 				F4E8801B1770071600577406 /* zip_support */,
 			);
 			path = support;
-			sourceTree = "<group>";
-		};
-		F4E880041770071600577406 /* component */ = {
-			isa = PBXGroup;
-			children = (
-				F4E880051770071600577406 /* CCComponent.cpp */,
-				F4E880061770071600577406 /* CCComponent.h */,
-				F4E880071770071600577406 /* CCComponentContainer.cpp */,
-				F4E880081770071600577406 /* CCComponentContainer.h */,
-			);
-			path = component;
 			sourceTree = "<group>";
 		};
 		F4E880091770071600577406 /* data_support */ = {
@@ -1785,17 +1759,6 @@
 				F4E880131770071600577406 /* tinyxml2.h */,
 			);
 			path = tinyxml2;
-			sourceTree = "<group>";
-		};
-		F4E880161770071600577406 /* user_default */ = {
-			isa = PBXGroup;
-			children = (
-				F4E880171770071600577406 /* CCUserDefault.cpp */,
-				F4E880181770071600577406 /* CCUserDefault.h */,
-				F4E880191770071600577406 /* CCUserDefault.mm */,
-				F4E8801A1770071600577406 /* CCUserDefaultAndroid.cpp */,
-			);
-			path = user_default;
 			sourceTree = "<group>";
 		};
 		F4E8801B1770071600577406 /* zip_support */ = {
@@ -2159,15 +2122,10 @@
 				F4E8808A1770071600577406 /* ccUTF8.cpp in Sources */,
 				F4E8808B1770071600577406 /* ccUtils.cpp in Sources */,
 				F4E8808C1770071600577406 /* CCVertex.cpp in Sources */,
-				F4E8808D1770071600577406 /* CCComponent.cpp in Sources */,
-				F4E8808E1770071600577406 /* CCComponentContainer.cpp in Sources */,
 				F4E8808F1770071600577406 /* ccCArray.cpp in Sources */,
 				F4E880901770071600577406 /* TGAlib.cpp in Sources */,
 				F4E880911770071600577406 /* tinyxml2.cpp in Sources */,
 				F4E880921770071600577406 /* TransformUtils.cpp in Sources */,
-				F4E880931770071600577406 /* CCUserDefault.cpp in Sources */,
-				F4E880941770071600577406 /* CCUserDefault.mm in Sources */,
-				F4E880951770071600577406 /* CCUserDefaultAndroid.cpp in Sources */,
 				F4E880961770071600577406 /* ioapi.cpp in Sources */,
 				F4E880971770071600577406 /* unzip.cpp in Sources */,
 				F4E880981770071600577406 /* ZipUtils.cpp in Sources */,

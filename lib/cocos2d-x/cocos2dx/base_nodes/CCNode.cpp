@@ -38,8 +38,6 @@ THE SOFTWARE.
 #include "shaders/CCGLProgram.h"
 // externals
 #include "kazmath/GL/matrix.h"
-#include "support/component/CCComponent.h"
-#include "support/component/CCComponentContainer.h"
 
 #if CC_NODE_RENDER_SUBPIXEL
 #define RENDER_IN_SUBPIXEL
@@ -89,7 +87,6 @@ CCNode::CCNode(void)
 , m_bReorderChildDirty(false)
 , m_nScriptHandler(0)
 , m_nUpdateScriptHandler(0)
-, m_pComponentContainer(NULL)
 {
     // set default scheduler and actionManager
     CCDirector *director = CCDirector::sharedDirector();
@@ -100,7 +97,6 @@ CCNode::CCNode(void)
 
     CCScriptEngineProtocol* pEngine = CCScriptEngineManager::sharedManager()->getScriptEngine();
     m_eScriptType = pEngine != NULL ? pEngine->getScriptType() : kScriptTypeNone;
-    m_pComponentContainer = new CCComponentContainer(this);
 }
 
 CCNode::~CCNode(void)
@@ -137,10 +133,6 @@ CCNode::~CCNode(void)
 
     // children
     CC_SAFE_RELEASE(m_pChildren);
-    
-          // m_pComsContainer
-    m_pComponentContainer->removeAll();
-    CC_SAFE_DELETE(m_pComponentContainer);
 }
 
 bool CCNode::init()
@@ -1114,11 +1106,6 @@ void CCNode::update(float fDelta)
     {
         CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_nUpdateScriptHandler, fDelta, this);
     }
-    
-    if (m_pComponentContainer && !m_pComponentContainer->isEmpty())
-    {
-        m_pComponentContainer->visit(fDelta);
-    }
 }
 
 CCAffineTransform CCNode::nodeToParentTransform(void)
@@ -1275,26 +1262,6 @@ void CCNode::updateTransform()
 {
     // Recursively iterate over children
     arrayMakeObjectsPerformSelector(m_pChildren, updateTransform, CCNode*);
-}
-
-CCComponent* CCNode::getComponent(const char *pName) const
-{
-    return m_pComponentContainer->get(pName);
-}
-
-bool CCNode::addComponent(CCComponent *pComponent)
-{
-    return m_pComponentContainer->add(pComponent);
-}
-
-bool CCNode::removeComponent(const char *pName)
-{
-    return m_pComponentContainer->remove(pName);
-}
-
-void CCNode::removeAllComponents()
-{
-    m_pComponentContainer->removeAll();
 }
 
 // CCNodeRGBA

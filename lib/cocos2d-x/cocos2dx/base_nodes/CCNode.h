@@ -49,9 +49,7 @@ class CCRGBAProtocol;
 class CCLabelProtocol;
 class CCScheduler;
 class CCActionManager;
-class CCComponent;
 class CCDictionary;
-class CCComponentContainer;
 
 /**
  * @addtogroup base_nodes
@@ -1304,29 +1302,6 @@ public:
     
     /// @} end of Coordinate Converters
 
-      /// @{
-    /// @name component functions
-    /** 
-     *   gets a component by its name
-     */
-    CCComponent* getComponent(const char *pName) const;
-    
-    /** 
-     *   adds a component
-     */
-    virtual bool addComponent(CCComponent *pComponent);
-    
-    /** 
-     *   removes a component by its name      
-     */
-    virtual bool removeComponent(const char *pName);
-    
-    /**
-     *   removes all components
-     */
-    virtual void removeAllComponents();
-    /// @} end of component functions
-
 private:
     /// lazy allocs
     void childrenAlloc(void);
@@ -1404,8 +1379,6 @@ protected:
     int m_nUpdateScriptHandler;         ///< script handler for update() callback per frame, which is invoked from lua & javascript.
     ccScriptType m_eScriptType;         ///< type of script binding, lua or javascript
     
-    CCComponentContainer *m_pComponentContainer;        ///< Dictionary of components
-
 };
 
 //#pragma mark - CCNodeRGBA

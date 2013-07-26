@@ -238,7 +238,6 @@ THE SOFTWARE.
 #include "support/CCNotificationCenter.h"
 #include "support/CCPointExtension.h"
 #include "support/CCProfiling.h"
-#include "support/user_default/CCUserDefault.h"
 #include "support/CCVertex.h"
 #include "support/tinyxml2/tinyxml2.h"
 
@@ -272,10 +271,6 @@ THE SOFTWARE.
 #include "CCConfiguration.h"
 #include "CCDirector.h"
 #include "CCScheduler.h"
-
-// component
-#include "support/component/CCComponent.h"
-#include "support/component/CCComponentContainer.h"
 
 NS_CC_BEGIN
 
