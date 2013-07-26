@@ -47,8 +47,7 @@ class CCAcceleration;
 
 enum ccScriptType {
     kScriptTypeNone = 0,
-    kScriptTypeLua,
-    kScriptTypeJavascript
+    kScriptTypeLua
 };
 
 class CCScriptHandlerEntry : public CCObject

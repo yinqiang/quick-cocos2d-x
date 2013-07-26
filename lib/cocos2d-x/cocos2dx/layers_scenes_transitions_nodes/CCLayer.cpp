@@ -314,7 +314,7 @@ void CCLayer::unregisterScriptKeypadHandler(void)
 
 void CCLayer::keyBackClicked(void)
 {
-    if (m_pScriptKeypadHandlerEntry || m_eScriptType == kScriptTypeJavascript)
+    if (m_pScriptKeypadHandlerEntry)
     {
         CCScriptEngineManager::sharedManager()->getScriptEngine()->executeLayerKeypadEvent(this, kTypeBackClicked);
     }
