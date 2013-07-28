@@ -1,28 +1,28 @@
 /****************************************************************************
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2008-2010 Ricardo Quesada
-Copyright (c) 2011      Zynga Inc.
+ Copyright (c) 2010-2012 cocos2d-x.org
+ Copyright (c) 2008-2010 Ricardo Quesada
+ Copyright (c) 2011      Zynga Inc.
 
-http://www.cocos2d-x.org
+ http://www.cocos2d-x.org
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-****************************************************************************/
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
 
 #ifndef __CCDIRECTOR_H__
 #define __CCDIRECTOR_H__
@@ -51,13 +51,13 @@ NS_CC_BEGIN
 typedef enum {
     /// sets a 2D projection (orthogonal projection)
     kCCDirectorProjection2D,
-    
+
     /// sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
     kCCDirectorProjection3D,
-    
+
     /// it calls "updateProjection" on the projection delegate.
     kCCDirectorProjectionCustom,
-    
+
     /// Default projection is 3D projection
     kCCDirectorProjectionDefault = kCCDirectorProjection3D,
 } ccDirectorProjection;
@@ -75,25 +75,25 @@ class CCKeypadDispatcher;
 class CCAccelerometer;
 
 /**
-@brief Class that creates and handle the main Window and manages how
-and when to execute the Scenes.
- 
+ @brief Class that creates and handle the main Window and manages how
+ and when to execute the Scenes.
+
  The CCDirector is also responsible for:
-  - initializing the OpenGL context
-  - setting the OpenGL pixel format (default on is RGB565)
-  - setting the OpenGL buffer depth (default one is 0-bit)
-  - setting the projection (default one is 3D)
-  - setting the orientation (default one is Portrait)
- 
+ - initializing the OpenGL context
+ - setting the OpenGL pixel format (default on is RGB565)
+ - setting the OpenGL buffer depth (default one is 0-bit)
+ - setting the projection (default one is 3D)
+ - setting the orientation (default one is Portrait)
+
  Since the CCDirector is a singleton, the standard way to use it is by calling:
-  _ CCDirector::sharedDirector()->methodName();
- 
+ _ CCDirector::sharedDirector()->methodName();
+
  The CCDirector also sets the default OpenGL context:
-  - GL_TEXTURE_2D is enabled
-  - GL_VERTEX_ARRAY is enabled
-  - GL_COLOR_ARRAY is enabled
-  - GL_TEXTURE_COORD_ARRAY is enabled
-*/
+ - GL_TEXTURE_2D is enabled
+ - GL_VERTEX_ARRAY is enabled
+ - GL_COLOR_ARRAY is enabled
+ - GL_TEXTURE_COORD_ARRAY is enabled
+ */
 class CC_DLL CCDirector : public CCObject, public TypeInfo
 {
 public:
@@ -119,7 +119,7 @@ public:
     inline bool isDisplayStats(void) { return m_bDisplayStats; }
     /** Display the FPS on the bottom-left corner */
     inline void setDisplayStats(bool bDisplayStats) { m_bDisplayStats = bDisplayStats; }
-    
+
     /** seconds per frame */
     inline float getSecondsPerFrame() { return m_fSecondsPerFrame; }
 
@@ -135,19 +135,19 @@ public:
 
     /** How many frames were called since the director started */
     inline unsigned int getTotalFrames(void) { return m_uTotalFrames; }
-    
+
     /** Sets an OpenGL projection
      @since v0.8.2
      */
     inline ccDirectorProjection getProjection(void) { return m_eProjection; }
     void setProjection(ccDirectorProjection kProjection);
-    
+
     /** Sets the glViewport*/
     void setViewport();
 
     /** How many frames were called since the director started */
-    
-    
+
+
     /** Whether or not the replaced scene will receive the cleanup message.
      If the new scene is pushed, then the old scene won't receive the "cleanup" message.
      If the new scene replaces the old one, the it will receive the "cleanup" message.
@@ -162,7 +162,7 @@ public:
      */
     CCNode* getNotificationNode();
     void setNotificationNode(CCNode *node);
-    
+
     /** CCDirector delegate. It shall implemente the CCDirectorDelegate protocol
      @since v0.99.5
      */
@@ -172,19 +172,19 @@ public:
     // window size
 
     /** returns the size of the OpenGL view in points.
-    */
+     */
     CCSize getWinSize(void);
 
     /** returns the size of the OpenGL view in pixels.
-    */
+     */
     CCSize getWinSizeInPixels(void);
-    
+
     /** returns visible size of the OpenGL view in points.
      *  the value is equal to getWinSize if don't invoke
      *  CCEGLView::setDesignResolutionSize()
      */
     CCSize getVisibleSize();
-    
+
     /** returns visible origin of the OpenGL view in points.
      */
     CCPoint getVisibleOrigin();
@@ -199,7 +199,7 @@ public:
      */
     CCPoint convertToUI(const CCPoint& obPoint);
 
-    /// XXX: missing description 
+    /// XXX: missing description
     float getZEye(void);
 
     // Scene Management
@@ -214,7 +214,7 @@ public:
 
     /** Suspends the execution of the running scene, pushing it on the stack of suspended scenes.
      * The new scene will be executed.
-     * Try to avoid big stacks of pushed scenes to reduce memory allocation. 
+     * Try to avoid big stacks of pushed scenes to reduce memory allocation.
      * ONLY call it if there is a running scene.
      */
     void pushScene(CCScene *pScene);
@@ -273,8 +273,8 @@ public:
     virtual void startAnimation(void) = 0;
 
     /** Draw the scene.
-    This method is called every frame. Don't call it manually.
-    */
+     This method is called every frame. Don't call it manually.
+     */
     void drawScene(void);
 
     // Memory Helper
@@ -302,10 +302,10 @@ public:
     virtual void mainLoop(void) = 0;
 
     /** The size in pixels of the surface. It could be different than the screen size.
-    High-res devices might have a higher surface size than the screen size.
-    Only available when compiled using SDK >= 4.0.
-    @since v0.99.4
-    */
+     High-res devices might have a higher surface size than the screen size.
+     Only available when compiled using SDK >= 4.0.
+     @since v0.99.4
+     */
     void setContentScaleFactor(float scaleFactor);
     float getContentScaleFactor(void);
 
@@ -337,7 +337,7 @@ public:
 
     /* delta time since last tick to main loop */
 	CC_PROPERTY_READONLY(float, m_fDeltaTime, DeltaTime);
-	
+
 public:
     /** returns a shared instance of the director */
     static CCDirector* sharedDirector(void);
@@ -346,15 +346,15 @@ protected:
 
     void purgeDirector();
     bool m_bPurgeDirecotorInNextLoop; // this flag will be set to true in end()
-    
+
     void setNextScene(void);
-    
+
     void showStats();
     void createStatsLabel();
     void calculateMPF();
     void getFPSImageData(unsigned char** datapointer, unsigned int* length);
-    
-    /** calculates delta time since last time it was called */    
+
+    /** calculates delta time since last time it was called */
     void calculateDeltaTime();
 protected:
     /* The CCEGLView, where everything is rendered */
@@ -365,15 +365,15 @@ protected:
 
     /* landscape mode ? */
     bool m_bLandscape;
-    
+
     bool m_bDisplayStats;
     float m_fAccumDt;
     float m_fFrameRate;
-    
+
     CCLabelAtlas *m_pFPSLabel;
     CCLabelAtlas *m_pSPFLabel;
     CCLabelAtlas *m_pDrawsLabel;
-    
+
     /** Whether or not the Director is paused */
     bool m_bPaused;
 
@@ -381,32 +381,32 @@ protected:
     unsigned int m_uTotalFrames;
     unsigned int m_uFrames;
     float m_fSecondsPerFrame;
-     
+
     /* The running scene */
     CCScene *m_pRunningScene;
-    
+
     /* will be the next 'runningScene' in the next frame
      nextScene is a weak reference. */
     CCScene *m_pNextScene;
-    
+
     /* If YES, then "old" scene will receive the cleanup message */
     bool    m_bSendCleanupToScene;
 
     /* scheduled scenes */
     CCArray* m_pobScenesStack;
-    
+
     /* last time the main loop was updated */
     struct cc_timeval *m_pLastUpdate;
 
     /* whether or not the next delta time will be zero */
     bool m_bNextDeltaTimeZero;
-    
+
     /* projection used */
     ccDirectorProjection m_eProjection;
 
     /* window size in points */
     CCSize    m_obWinSizeInPoints;
-    
+
     /* content scale factor */
     float    m_fContentScaleFactor;
 
@@ -418,32 +418,32 @@ protected:
 
     /* Projection protocol delegate */
     CCDirectorDelegate *m_pProjectionDelegate;
-    
+
     // CCEGLViewProtocol will recreate stats labels to fit visible rect
     friend class CCEGLViewProtocol;
 };
 
-/** 
+/**
  @brief DisplayLinkDirector is a Director that synchronizes timers with the refresh rate of the display.
- 
+
  Features and Limitations:
-  - Scheduled timers & drawing are synchronizes with the refresh rate of the display
-  - Only supports animation intervals of 1/60 1/30 & 1/15
- 
+ - Scheduled timers & drawing are synchronizes with the refresh rate of the display
+ - Only supports animation intervals of 1/60 1/30 & 1/15
+
  @since v0.8.2
  */
 class CCDisplayLinkDirector : public CCDirector
 {
 public:
-    CCDisplayLinkDirector(void) 
-        : m_bInvalid(false)
+    CCDisplayLinkDirector(void)
+    : m_bInvalid(false)
     {}
 
     virtual void mainLoop(void);
     virtual void setAnimationInterval(double dValue);
     virtual void startAnimation(void);
     virtual void stopAnimation();
-
+    
 protected:
     bool m_bInvalid;
 };

@@ -34,18 +34,17 @@ extern "C" {
 #include "touch_dispatcher/CCTouch.h"
 #include "cocoa/CCSet.h"
 #include "base_nodes/CCNode.h"
-#include "script_support/CCScriptSupport.h"
-#include "CCLuaStack.h"
-#include "CCLuaValue.h"
+#include "script_support/CCLuaStack.h"
+#include "script_support/CCLuaValue.h"
 
 NS_CC_BEGIN
 
 // Lua support for cocos2d-x
-class CC_DLL CCLuaEngine : public CCScriptEngineProtocol
+class CC_DLL CCLuaEngine
 {
 public:
     static CCLuaEngine* defaultEngine(void);    
-    virtual ~CCLuaEngine(void);
+    ~CCLuaEngine(void);
     
     CCLuaStack *getLuaStack(void) {
         return m_stack;
@@ -55,28 +54,28 @@ public:
      @brief Add a path to find lua files in
      @param path to be added to the Lua path
      */
-    virtual void addSearchPath(const char* path);
+    void addSearchPath(const char* path);
     
     /**
      @brief Add lua loader, now it is used on android
      */
-    virtual void addLuaLoader(lua_CFunction func);
+    void addLuaLoader(lua_CFunction func);
     
     /**
      @brief Remove CCObject from lua state
      @param object to remove
      */
-    virtual void removeScriptObjectByCCObject(CCObject* pObj);
+    void removeScriptObjectByCCObject(CCObject* pObj);
     
     /**
      @brief Remove Lua function reference
      */
-    virtual void removeScriptHandler(int nHandler);
+    void removeScriptHandler(int nHandler);
     
     /**
      @brief Reallocate Lua function reference
      */
-    virtual int reallocateScriptHandler(int nHandler);
+    int reallocateScriptHandler(int nHandler);
     
     /**
      @brief Execute script code contained in the given string.
@@ -84,13 +83,13 @@ public:
      @return 0 if the string is excuted correctly.
      @return other if the string is excuted wrongly.
      */
-    virtual int executeString(const char* codes);
+    int executeString(const char* codes);
     
     /**
      @brief Execute a script file.
      @param filename String object holding the filename of the script file that is to be executed
      */
-    virtual int executeScriptFile(const char* filename);
+    int executeScriptFile(const char* filename);
     
     /**
      @brief Execute a scripted global function.
@@ -99,20 +98,9 @@ public:
      @param numArgs
      @return The integer value returned from the script function.
      */
-    virtual int executeGlobalFunction(const char* functionName, int numArgs = 0);
+    int executeGlobalFunction(const char* functionName, int numArgs = 0);
 
-    virtual int executeNodeEvent(CCNode* pNode, int nAction);
-    virtual int executeNotificationEvent(CCNotificationCenter* pNotificationCenter, const char* pszName);
-    virtual int executeCallFuncActionEvent(CCCallFunc* pAction, CCObject* pTarget = NULL);
-    virtual int executeSchedule(int nHandler, float dt, CCNode* pNode = NULL);
-    virtual int executeLayerTouchesEvent(CCLayer* pLayer, int eventType, CCSet *pTouches);
-    virtual int executeLayerTouchEvent(CCLayer* pLayer, int eventType, CCTouch *pTouch);
-    virtual int executeLayerKeypadEvent(CCLayer* pLayer, int eventType);
-    /** execute a accelerometer event */
-    virtual int executeAccelerometerEvent(CCLayer* pLayer, CCAcceleration* pAccelerationValue);
-    virtual int executeEvent(int nHandler, const char* pEventName, CCObject* pEventSource = NULL, const char* pEventSourceClassName = NULL);
-
-    virtual bool handleAssert(const char *msg);
+    bool handleAssert(const char *msg);
     
 private:
     CCLuaEngine(void)

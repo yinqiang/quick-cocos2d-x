@@ -765,8 +765,7 @@ class CCNode : public CCObject
      *
      * @return A "local" axis aligned boudning box of the node.
      */
-    CCRect boundingBox @ getBoundingBox(void);
-    CCRect boundingBox(void);
+    CCRect getBoundingBox(void);
 
     /// @{
     /// @name Actions
@@ -894,22 +893,6 @@ class CCNode : public CCObject
     CCPoint convertTouchToNodeSpaceAR(CCTouch * touch);
 
     /// @} end of Coordinate Converters
-};
-
-//#pragma mark - CCNodeRGBA
-
-/** CCNodeRGBA is a subclass of CCNode that implements the CCRGBAProtocol protocol.
-
- All features from CCNode are valid, plus the following new features:
- - opacity
- - RGB colors
-
- Opacity/Color propagates into children that conform to the CCRGBAProtocol if cascadeOpacity/cascadeColor is enabled.
- @since v2.1
- */
-class CCNodeRGBA : public CCNode
-{
-    static CCNodeRGBA * create(void);
 
     GLubyte getOpacity();
     GLubyte getDisplayedOpacity();

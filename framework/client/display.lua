@@ -454,14 +454,8 @@ Features of CCNode:
 -   CCNode
 
 ]]
-function display.newNode(noRGBA)
-    local node
-    if noRGBA then
-        node = CCNode:create()
-    else
-        node = CCNodeRGBA:create()
-    end
-    return CCNodeExtend.extend(node)
+function display.newNode()
+    return CCNodeExtend.extend(CCNode:create())
 end
 
 --[[--

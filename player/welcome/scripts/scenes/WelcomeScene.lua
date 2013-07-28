@@ -6,8 +6,8 @@ end)
 function WelcomeScene:ctor()
     self.menu = nil -- self:createButtons()
 
-    local bg = CCLayerColor:create(ccc4(255, 255, 255, 255))
-    self:addChild(bg)
+    -- local bg = CCLayerColor:create(ccc4(255, 255, 255, 255))
+    -- self:addChild(bg)
 
     self:createTitle()
     self:createDescription()
@@ -41,11 +41,11 @@ function WelcomeScene:createTitle()
 end
 
 function WelcomeScene:createDescription()
-    local bg = CCLayerColor:create(ccc4(249, 249, 249, 255), 678, 88)
-    bg:setPosition(display.left + 40, display.top - 240)
+    -- local bg = CCLayerColor:create(ccc4(249, 249, 249, 255), 678, 88)
+    -- bg:setPosition(display.left + 40, display.top - 240)
 
-    local bar = CCLayerColor:create(ccc4(247, 123, 0, 255), 2, 88)
-    bg:addChild(bar)
+    -- local bar = CCLayerColor:create(ccc4(247, 123, 0, 255), 2, 88)
+    -- bg:addChild(bar)
 
     local color = ccc3(102, 102, 102)
     local label = ui.newTTFLabel({
@@ -60,9 +60,9 @@ and desktop operating systems like Linux, WindowsXP & Windows7.]],
         valign = ui.TEXT_VALIGN_CENTER,
         dimensions = CCSize(680, 88),
     })
-    bg:addChild(label)
+    self:addChild(label)
 
-    self:addChild(bg)
+    -- self:addChild(bg)
 end
 
 function WelcomeScene:createLogo()
@@ -72,9 +72,9 @@ function WelcomeScene:createLogo()
 end
 
 function WelcomeScene:createLine()
-    local line = CCLayerColor:create(ccc4(238, 238, 238, 255), display.width - 80, 1)
-    line:setPosition(display.left + 20, display.top - 280)
-    self:addChild(line)
+    -- local line = CCLayerColor:create(ccc4(238, 238, 238, 255), display.width - 80, 1)
+    -- line:setPosition(display.left + 20, display.top - 280)
+    -- self:addChild(line)
 end
 
 function WelcomeScene:createButtons()

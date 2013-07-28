@@ -23,6 +23,7 @@
  ****************************************************************************/
 
 #include "CCLuaBridge.h"
+#include "cocos2d.h"
 
 NS_CC_BEGIN
 
@@ -31,7 +32,7 @@ int        CCLuaBridge::s_newFunctionId = 0;
 
 CCLuaStack *CCLuaBridge::getStack(void)
 {
-    return CCLuaEngine::defaultEngine()->getLuaStack();
+    return CCLuaStack::defaultStack();
 }
 
 int CCLuaBridge::pushLuaFunctionById(int functionId)

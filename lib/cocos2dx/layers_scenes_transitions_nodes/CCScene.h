@@ -28,6 +28,11 @@ THE SOFTWARE.
 #define __CCSCENE_H__
 
 #include "base_nodes/CCNode.h"
+#include "CCProtocols.h"
+#include "touch_dispatcher/CCTouchDelegateProtocol.h"
+#include "platform/CCAccelerometerDelegate.h"
+#include "keypad_dispatcher/CCKeypadDelegate.h"
+#include "cocoa/CCArray.h"
 
 NS_CC_BEGIN
 
@@ -35,6 +40,13 @@ NS_CC_BEGIN
  * @addtogroup scene
  * @{
  */
+
+typedef enum {
+	kCCTouchesAllAtOnce,
+	kCCTouchesOneByOne,
+} ccTouchesMode;
+
+class CCTouchScriptHandlerEntry;
 
 /** @brief CCScene is a subclass of CCNode that is used only as an abstract concept.
 
@@ -46,7 +58,7 @@ additional logic.
 
 It is a good practice to use and CCScene as the parent of all your nodes.
 */
-class CC_DLL CCScene : public CCNode
+class CC_DLL CCScene : public CCNode, public CCTouchDelegate, public CCAccelerometerDelegate, public CCKeypadDelegate
 {
 public:
     CCScene();
@@ -54,6 +66,97 @@ public:
     bool init();
 
     static CCScene *create(void);
+
+
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void onEnterTransitionDidFinish();
+
+    // default implements are used to call script callback if exist
+    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+
+    // default implements are used to call script callback if exist
+    virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent);
+
+    virtual void didAccelerate(CCAcceleration* pAccelerationValue);
+    void registerScriptAccelerateHandler(int nHandler);
+    void unregisterScriptAccelerateHandler(void);
+
+    /** If isTouchEnabled, this method is called onEnter. Override it to change the
+     way CCLayer receives touch events.
+     ( Default: CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0); )
+     Example:
+     void CCLayer::registerWithTouchDispatcher()
+     {
+     CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this,INT_MIN+1,true);
+     }
+     @since v0.8.0
+     */
+    virtual void registerWithTouchDispatcher(void);
+
+    /** Register script touch events handler */
+    virtual void registerScriptTouchHandler(int nHandler, bool bIsMultiTouches = false, int nPriority = INT_MIN, bool bSwallowsTouches = false);
+    /** Unregister script touch events handler */
+    virtual void unregisterScriptTouchHandler(void);
+
+    /** whether or not it will receive Touch events.
+     You can enable / disable touch events with this property.
+     Only the touches of this node will be affected. This "method" is not propagated to it's children.
+     @since v0.8.1
+     */
+    virtual bool isTouchEnabled();
+    virtual void setTouchEnabled(bool value);
+
+    virtual void setTouchMode(ccTouchesMode mode);
+    virtual int getTouchMode();
+
+    /** priority of the touch events. Default is 0 */
+    virtual void setTouchPriority(int priority);
+    virtual int getTouchPriority();
+
+    /** whether or not it will receive Accelerometer events
+     You can enable / disable accelerometer events with this property.
+     @since v0.8.1
+     */
+    virtual bool isAccelerometerEnabled();
+    virtual void setAccelerometerEnabled(bool value);
+    virtual void setAccelerometerInterval(double interval);
+
+    /** whether or not it will receive keypad events
+     You can enable / disable accelerometer events with this property.
+     it's new in cocos2d-x
+     */
+    virtual bool isKeypadEnabled();
+    virtual void setKeypadEnabled(bool value);
+
+    /** Register keypad events handler */
+    void registerScriptKeypadHandler(int nHandler);
+    /** Unregister keypad events handler */
+    void unregisterScriptKeypadHandler(void);
+
+    virtual void keyBackClicked(void);
+    virtual void keyMenuClicked(void);
+
+private:
+    bool m_bTouchEnabled;
+    bool m_bAccelerometerEnabled;
+    bool m_bKeypadEnabled;
+
+    // Script touch events handler
+    CCTouchScriptHandlerEntry* m_pScriptTouchHandlerEntry;
+
+    int m_nTouchPriority;
+    ccTouchesMode m_eTouchMode;
+
+    int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
+    int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
+
 };
 
 // end of scene group

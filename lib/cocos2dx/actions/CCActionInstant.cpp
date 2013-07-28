@@ -27,7 +27,7 @@
 #include "CCActionInstant.h"
 #include "base_nodes/CCNode.h"
 #include "sprite_nodes/CCSprite.h"
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 #include "cocoa/CCZone.h"
 
 NS_CC_BEGIN
@@ -423,7 +423,8 @@ CCCallFunc::~CCCallFunc(void)
 {
     if (m_nScriptHandler)
     {
-        cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptHandler);
+
+//        cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptHandler);
     }
     CC_SAFE_RELEASE(m_pSelectorTarget);
 }
@@ -444,7 +445,7 @@ CCObject * CCCallFunc::copyWithZone(CCZone *pZone) {
     pRet->initWithTarget(m_pSelectorTarget);
     pRet->m_pCallFunc = m_pCallFunc;
     if (m_nScriptHandler > 0 ) {
-        pRet->m_nScriptHandler = cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine()->reallocateScriptHandler(m_nScriptHandler);
+//        pRet->m_nScriptHandler = cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine()->reallocateScriptHandler(m_nScriptHandler);
     }
     CC_SAFE_DELETE(pNewZone);
     return pRet;
@@ -460,7 +461,7 @@ void CCCallFunc::execute() {
         (m_pSelectorTarget->*m_pCallFunc)();
     }
 	if (m_nScriptHandler) {
-		CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this);
+//		CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this);
 	}
 }
 
@@ -472,7 +473,7 @@ void CCCallFuncN::execute() {
         (m_pSelectorTarget->*m_pCallFuncN)(m_pTarget);
     }
 	if (m_nScriptHandler) {
-		CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this, m_pTarget);
+//		CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this, m_pTarget);
 	}
 }
 

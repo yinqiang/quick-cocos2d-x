@@ -804,10 +804,9 @@ void CCLabelBMFont::setColor(const ccColor3B& color)
 	
 	if( m_bCascadeColorEnabled ) {
 		ccColor3B parentColor = ccWHITE;
-        CCRGBAProtocol* pParent = dynamic_cast<CCRGBAProtocol*>(m_pParent);
-        if (pParent && pParent->isCascadeColorEnabled())
+        if (m_pParent->isCascadeColorEnabled())
         {
-            parentColor = pParent->getDisplayedColor();
+            parentColor = m_pParent->getDisplayedColor();
         }
         this->updateDisplayedColor(parentColor);
 	}
@@ -830,10 +829,9 @@ void CCLabelBMFont::setOpacity(GLubyte opacity)
     
 	if( m_bCascadeOpacityEnabled ) {
 		GLubyte parentOpacity = 255;
-        CCRGBAProtocol* pParent = dynamic_cast<CCRGBAProtocol*>(m_pParent);
-        if (pParent && pParent->isCascadeOpacityEnabled())
+        if (m_pParent->isCascadeOpacityEnabled())
         {
-            parentOpacity = pParent->getDisplayedOpacity();
+            parentOpacity = m_pParent->getDisplayedOpacity();
         }
         this->updateDisplayedOpacity(parentOpacity);
 	}
@@ -847,18 +845,11 @@ void CCLabelBMFont::setOpacityModifyRGB(bool var)
         CCObject* child;
         CCARRAY_FOREACH(m_pChildren, child)
         {
-            CCNode* pNode = (CCNode*) child;
-            if (pNode)
-            {
-                CCRGBAProtocol *pRGBAProtocol = dynamic_cast<CCRGBAProtocol*>(pNode);
-                if (pRGBAProtocol)
-                {
-                    pRGBAProtocol->setOpacityModifyRGB(m_bIsOpacityModifyRGB);
-                }
-            }
+            static_cast<CCNode*>(child)->setOpacityModifyRGB(m_bIsOpacityModifyRGB);
         }
     }
 }
+
 bool CCLabelBMFont::isOpacityModifyRGB()
 {
     return m_bIsOpacityModifyRGB;

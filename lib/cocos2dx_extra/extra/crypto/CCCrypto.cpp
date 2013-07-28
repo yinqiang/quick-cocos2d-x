@@ -9,7 +9,7 @@ extern "C" {
 }
 
 #if CC_LUA_ENGINE_ENABLED > 0
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 
 extern "C" {
 #include "lua.h"

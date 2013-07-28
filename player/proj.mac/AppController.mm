@@ -506,7 +506,7 @@ using namespace cocos2d::extra;
 
 - (void) welcomeGetStarted
 {
-    CCNative::openURL("https://github.com/dualface/quick-cocos2d-x/wiki");
+//    CCNative::openURL("https://github.com/dualface/quick-cocos2d-x/wiki");
 }
 
 #pragma mark -

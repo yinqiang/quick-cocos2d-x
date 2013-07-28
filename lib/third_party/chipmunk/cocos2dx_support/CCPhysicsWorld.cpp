@@ -3,10 +3,10 @@
 #include "CCPhysicsBody.h"
 #include "CCPhysicsShape.h"
 #include "CCPhysicsDebugNode.h"
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 
 #if CC_LUA_ENGINE_ENABLED > 0
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 #endif
 
 using namespace cocos2d;

@@ -6,7 +6,7 @@
 extern "C" {
 #include "lua.h"
 }
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 #endif
 
 using namespace cocos2d;
@@ -193,9 +193,8 @@ void* CCHTTPRequest::getResponseData(void)
 LUA_STRING CCHTTPRequest::getResponseDataLua(void)
 {
     CCAssert(m_state == kCCHTTPRequestStateCompleted, "CCHTTPRequest::getResponseDataLua() - request not completed");
-    CCLuaStack* stack = CCLuaEngine::defaultEngine()->getLuaStack();
-    stack->clean();
-    stack->pushString(static_cast<char*>(m_responseBuffer), m_responseDataLength);
+    CCLuaStack::defaultStack()->clean();
+    CCLuaStack::defaultStack()->pushString(static_cast<char*>(m_responseBuffer), m_responseDataLength);
     return 1;
 }
 #endif
@@ -269,10 +268,9 @@ void CCHTTPRequest::update(float dt)
                 dict["name"] = CCLuaValue::stringValue("unknown");
         }
         dict["request"] = CCLuaValue::ccobjectValue(this, "CCHTTPRequest");
-        CCLuaStack* stack = CCLuaEngine::defaultEngine()->getLuaStack();
-        stack->clean();
-        stack->pushCCLuaValueDict(dict);
-        stack->executeFunctionByHandler(m_listener, 1);
+        CCLuaStack::defaultStack()->clean();
+        CCLuaStack::defaultStack()->pushCCLuaValueDict(dict);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_listener, 1);
     }
 #endif
 }

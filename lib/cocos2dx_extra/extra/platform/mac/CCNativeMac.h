@@ -2,7 +2,7 @@
 #include "native/CCAlertViewDelegate.h"
 
 #if CC_LUA_ENGINE_ENABLED > 0
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 #endif
 
 USING_NS_CC;

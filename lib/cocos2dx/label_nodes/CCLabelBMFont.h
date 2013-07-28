@@ -39,6 +39,7 @@ Use any of these editors to generate BMFonts:
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <set>
 
 NS_CC_BEGIN
 
@@ -179,7 +180,7 @@ http://www.angelcode.com/products/bmfont/ (Free, Windows only)
 @since v0.8
 */
 
-class CC_DLL CCLabelBMFont : public CCSpriteBatchNode, public CCLabelProtocol, public CCRGBAProtocol
+class CC_DLL CCLabelBMFont : public CCSpriteBatchNode, public CCLabelProtocol
 {
 public:
     CCLabelBMFont();

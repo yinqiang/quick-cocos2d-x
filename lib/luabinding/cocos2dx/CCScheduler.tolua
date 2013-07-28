@@ -1,28 +1,28 @@
 /****************************************************************************
-Copyright (c) 2010-2012 cocos2d-x.org
-Copyright (c) 2008-2010 Ricardo Quesada
-Copyright (c) 2011      Zynga Inc.
+ Copyright (c) 2010-2012 cocos2d-x.org
+ Copyright (c) 2008-2010 Ricardo Quesada
+ Copyright (c) 2011      Zynga Inc.
 
-http://www.cocos2d-x.org
+ http://www.cocos2d-x.org
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-****************************************************************************/
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
 
 /**
  * @addtogroup global
@@ -34,87 +34,82 @@ THE SOFTWARE.
 //
 
 /** @brief Scheduler is responsible for triggering the scheduled callbacks.
-You should not use NSTimer. Instead use this class.
+ You should not use NSTimer. Instead use this class.
 
-There are 2 different types of callbacks (selectors):
+ There are 2 different types of callbacks (selectors):
 
-- update selector: the 'update' selector will be called every frame. You can customize the priority.
-- custom selector: A custom selector will be called every frame, or with a custom interval of time
+ - update selector: the 'update' selector will be called every frame.
+ - custom selector: A custom selector will be called every frame, or with a custom interval of time
 
-The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
+ The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
 
-*/
+ */
 class CCScheduler : public CCObject
 {
-    float getTimeScale(void);
-    /** Modifies the time of all scheduled callbacks.
-    You can use this property to create a 'slow motion' or 'fast forward' effect.
-    Default is 1.0. To create a 'slow motion' effect, use values below 1.0.
-    To create a 'fast forward' effect, use values higher than 1.0.
-    @since v0.8
-    @warning It will affect EVERY scheduled selector / action.
-    */
-    void setTimeScale(float fTimeScale);
+    static CCScheduler *create(void);
 
-    /** Schedules the 'update' selector for a given target with a given priority.
+    /** Schedules the 'update' selector for a given target.
      The 'update' selector will be called every frame.
-     The lower the priority, the earlier it is called.
      @since v0.99.3
      */
-    void scheduleUpdateForTarget(CCObject *pTarget, int nPriority, bool bPaused);
-
+    void scheduleUpdateForTarget(CCObject *target, bool paused);
     /** Unschedules the update selector for a given target
      @since v0.99.3
      */
-    void unscheduleUpdateForTarget(CCObject *pTarget);
-
-    /** Unschedules all selectors for a given target.
-     This also includes the "update" selector.
-     @since v0.99.3
-     */
-    void unscheduleAllForTarget(CCObject *pTarget);
-
-    /** Unschedules all selectors from all targets.
-     You should NEVER call this method, unless you know what you are doing.
-
-     @since v0.99.3
-     */
-    void unscheduleAll(void);
-
-    /** Unschedules all selectors from all targets with a minimum priority.
-      You should only call this with kCCPriorityNonSystemMin or higher.
-      @since v2.0.0
-      */
-    void unscheduleAllWithMinPriority(int nMinPriority);
-
-    /** The scheduled script callback will be called every 'interval' seconds.
-     If paused is YES, then it won't be called until it is resumed.
-     If 'interval' is 0, it will be called every frame.
-     return schedule script entry ID, used for unscheduleScriptFunc().
-     */
-    unsigned int scheduleScriptFunc(LUA_FUNCTION nHandler, float fInterval, bool bPaused);
-
-    /** Unschedule a script entry. */
-    void unscheduleScriptEntry(unsigned int uScheduleScriptEntryID);
-
+    void unscheduleUpdateForTarget(CCObject *target);
     /** Pauses the target.
      All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.
      If the target is not present, nothing happens.
      @since v0.99.3
      */
-    void pauseTarget(CCObject *pTarget);
-
+    void pauseUpdateForTarget(CCObject *target);
     /** Resumes the target.
      The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
      If the target is not present, nothing happens.
      @since v0.99.3
      */
-    void resumeTarget(CCObject *pTarget);
-
+    void resumeUpdateForTarget(CCObject *target);
     /** Returns whether or not the target is paused
-    @since v1.0.0
-    */
-    bool isTargetPaused(CCObject *pTarget);
+     @since v1.0.0
+     */
+    bool isUpdateForTargetPaused(CCObject *target);
+
+    /** The scheduled script handler will be called every 'interval' seconds.
+     If paused is YES, then it won't be called until it is resumed.
+     If 'interval' is 0, it will be called every frame, but if so, it's recommended to use 'scheduleUpdateForTarget:' instead.
+     repeat let the action be repeated repeat + 1 times, use kCCRepeatForever to let the action run continuously
+     delay is the amount of time the action will wait before it'll start
+     return script handler, used for unscheduleScriptHandler(), pauseScriptHandler(), resumeScriptHandler(), isScriptHandlerPaused().
+     */
+    int scheduleScriptHandler(int handler, float interval, unsigned int repeat, float delay, bool paused);
+    /** Unschedule the script handler. */
+    void unscheduleScriptHandler(int handler);
+    /** Pauses the script handler.
+     @since v0.99.3
+     */
+    void pauseScriptHandler(int handler);
+    /** Resumes the script handler.
+     @since v0.99.3
+     */
+    void resumeScriptHandler(int handler);
+    /** Returns whether or not the script handler is paused
+     @since v1.0.0
+     */
+    bool isScriptHandlerPaused(int handler);
+
+    /** Unschedules all selectors from all targets.
+     You should NEVER call this method, unless you know what you are doing.
+     @since v0.99.3
+     */
+    void unscheduleAll(void);
+
+    /** Pause all schedule.
+     @since v2.0.0
+     */
+    void pauseAll();
+    /** Resume all paused schedule.
+     */
+    void resumeAll();
 };
 
 // end of global group

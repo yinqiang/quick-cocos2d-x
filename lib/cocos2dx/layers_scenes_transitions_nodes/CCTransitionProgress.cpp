@@ -29,7 +29,6 @@ THE SOFTWARE.
 #include "CCDirector.h"
 #include "misc_nodes/CCRenderTexture.h"
 #include "misc_nodes/CCProgressTimer.h"
-#include "CCLayer.h"
 #include "actions/CCActionInstant.h"
 #include "actions/CCActionProgressTimer.h"
 #include "support/CCPointExtension.h"

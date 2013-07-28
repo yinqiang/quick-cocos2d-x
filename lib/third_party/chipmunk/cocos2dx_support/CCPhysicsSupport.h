@@ -4,7 +4,7 @@
 
 #include "cocos2d.h"
 #include "chipmunk.h"
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 
 using namespace cocos2d;
 

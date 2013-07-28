@@ -3,15 +3,15 @@
 #include "AppDelegate.h"
 #include "SimpleAudioEngine.h"
 #include "support/CCNotificationCenter.h"
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 #include <string>
 
-// lua extensions
-#include "lua_extensions.h"
-// cocos2dx_extra luabinding
-#include "luabinding/cocos2dx_extra_luabinding.h"
-// thrid_party
-#include "third_party_luabinding.h"
+//// lua extensions
+//#include "lua_extensions.h"
+//// cocos2dx_extra luabinding
+//#include "luabinding/cocos2dx_extra_luabinding.h"
+//// thrid_party
+//#include "third_party_luabinding.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -40,18 +40,15 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setAnimationInterval(1.0 / 60);
 
     // register lua engine
-    CCLuaEngine *pEngine = CCLuaEngine::defaultEngine();
-    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-
-    CCLuaStack *pStack = pEngine->getLuaStack();
+    CCLuaStack *pStack = CCLuaStack::defaultStack();
     lua_State* L = pStack->getLuaState();
 
     // load lua extensions
-    luaopen_lua_extensions(L);
+//    luaopen_lua_extensions(L);
     // load cocos2dx_extra luabinding
-    luaopen_cocos2dx_extra_luabinding(L);
+//    luaopen_cocos2dx_extra_luabinding(L);
     // thrid_party
-    luaopen_third_party_luabinding(L);
+//    luaopen_third_party_luabinding(L);
 
     // load framework
     if (m_projectConfig.isLoadPrecompiledFramework())
@@ -83,12 +80,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     string env = "__LUA_STARTUP_FILE__=\"";
     env.append(path);
     env.append("\"");
-    pEngine->executeString(env.c_str());
+    pStack->executeString(env.c_str());
 
     CCLOG("------------------------------------------------");
     CCLOG("LOAD LUA FILE: %s", path.c_str());
     CCLOG("------------------------------------------------");
-    pEngine->executeScriptFile(path.c_str());
+    pStack->executeScriptFile(path.c_str());
 
     return true;
 }

@@ -1,1 +1,1 @@
-tolua++ -L basic.lua -o "../../scripting/lua/cocos2dx_support/LuaCocos2d.cpp" Cocos2d.pkg
+tolua++ -L basic.lua -o "../cocos2dx/script_support/LuaCocos2d.cpp" Cocos2d.pkg

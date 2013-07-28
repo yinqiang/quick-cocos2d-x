@@ -36,11 +36,11 @@ NS_CC_BEGIN
 class CCShapeNode : public CCNode
 {
 public:
-    const ccColor4F& getColor(void) {
+    const ccColor4F& getShapeColor(void) {
         return m_color;
     }
     
-    void setColor(const ccColor4F& color) {
+    void setShapeColor(const ccColor4F& color) {
         m_color = color;
     }
     

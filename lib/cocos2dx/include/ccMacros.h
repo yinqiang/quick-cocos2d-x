@@ -35,18 +35,18 @@ THE SOFTWARE.
 #include "CCStdC.h"
 
 #ifndef CCAssert
-#if COCOS2D_DEBUG > 0
-extern bool CC_DLL cc_assert_script_compatible(const char *msg);
-#define CCAssert(cond, msg) do {                              \
-      if (!(cond)) {                                          \
-        if (!cc_assert_script_compatible(msg) && strlen(msg)) \
-          cocos2d::CCLog("Assert failed: %s", msg);           \
-        CC_ASSERT(cond);                                      \
-      } \
-    } while (0)
-#else
+//#if COCOS2D_DEBUG > 0
+//extern bool CC_DLL cc_assert_script_compatible(const char *msg);
+//#define CCAssert(cond, msg) do {                              \
+//      if (!(cond)) {                                          \
+//        if (!cc_assert_script_compatible(msg) && strlen(msg)) \
+//          cocos2d::CCLog("Assert failed: %s", msg);           \
+//        CC_ASSERT(cond);                                      \
+//      } \
+//    } while (0)
+//#else
 #define CCAssert(cond, msg)
-#endif
+//#endif
 #endif  // CCAssert
 
 #include "ccConfig.h"
@@ -80,7 +80,7 @@ simple macro that swaps 2 variables
  */
 #define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
 
-#define kCCRepeatForever (UINT_MAX -1)
+#define kCCRepeatForever -1
 
 /** @def CC_BLEND_SRC
 default gl blend src function. Compatible with premultiplied alpha images.

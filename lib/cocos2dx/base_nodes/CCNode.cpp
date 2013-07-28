@@ -87,6 +87,13 @@ CCNode::CCNode(void)
 , m_bReorderChildDirty(false)
 , m_nScriptHandler(0)
 , m_nUpdateScriptHandler(0)
+, m_displayedOpacity(255)
+, m_realOpacity(255)
+, m_displayedColor(ccWHITE)
+, m_realColor(ccWHITE)
+, m_cascadeColorEnabled(false)
+, m_cascadeOpacityEnabled(false)
+, m_isOpacityModifyRGB(false)
 {
     // set default scheduler and actionManager
     CCDirector *director = CCDirector::sharedDirector();
@@ -131,6 +138,9 @@ CCNode::~CCNode(void)
 
 bool CCNode::init()
 {
+    m_displayedOpacity = m_realOpacity = 255;
+    m_displayedColor = m_realColor = ccWHITE;
+    m_cascadeOpacityEnabled = m_cascadeColorEnabled = false;
     return true;
 }
 
@@ -1026,14 +1036,14 @@ void CCNode::scheduleUpdate()
 
 void CCNode::scheduleUpdateWithPriority(int priority)
 {
-    m_pScheduler->scheduleUpdateForTarget(this, priority, !m_bRunning);
+//    m_pScheduler->scheduleUpdateForTarget(this, priority, !m_bRunning);
 }
 
 void CCNode::scheduleUpdateWithPriorityLua(int nHandler, int priority)
 {
     unscheduleUpdate();
     m_nUpdateScriptHandler = nHandler;
-    m_pScheduler->scheduleUpdateForTarget(this, priority, !m_bRunning);
+//    m_pScheduler->scheduleUpdateForTarget(this, priority, !m_bRunning);
 }
 
 void CCNode::unscheduleUpdate()
@@ -1080,18 +1090,18 @@ void CCNode::unschedule(SEL_SCHEDULE selector)
 
 void CCNode::unscheduleAllSelectors()
 {
-    m_pScheduler->unscheduleAllForTarget(this);
+//    m_pScheduler->unscheduleAllForTarget(this);
 }
 
 void CCNode::resumeSchedulerAndActions()
 {
-    m_pScheduler->resumeTarget(this);
+//    m_pScheduler->resumeTarget(this);
     m_pActionManager->resumeTarget(this);
 }
 
 void CCNode::pauseSchedulerAndActions()
 {
-    m_pScheduler->pauseTarget(this);
+//    m_pScheduler->pauseTarget(this);
     m_pActionManager->pauseTarget(this);
 }
 
@@ -1261,139 +1271,105 @@ void CCNode::updateTransform()
     arrayMakeObjectsPerformSelector(m_pChildren, updateTransform, CCNode*);
 }
 
-// CCNodeRGBA
-CCNodeRGBA::CCNodeRGBA()
-: _displayedOpacity(255)
-, _realOpacity(255)
-, _displayedColor(ccWHITE)
-, _realColor(ccWHITE)
-, _cascadeColorEnabled(false)
-, _cascadeOpacityEnabled(false)
-{}
-
-CCNodeRGBA::~CCNodeRGBA() {}
-
-bool CCNodeRGBA::init()
+GLubyte CCNode::getOpacity(void)
 {
-    if (CCNode::init())
-    {
-        _displayedOpacity = _realOpacity = 255;
-        _displayedColor = _realColor = ccWHITE;
-        _cascadeOpacityEnabled = _cascadeColorEnabled = false;
-        return true;
-    }
-    return false;
+	return m_realOpacity;
 }
 
-GLubyte CCNodeRGBA::getOpacity(void)
+GLubyte CCNode::getDisplayedOpacity(void)
 {
-	return _realOpacity;
+	return m_displayedOpacity;
 }
 
-GLubyte CCNodeRGBA::getDisplayedOpacity(void)
+void CCNode::setOpacity(GLubyte opacity)
 {
-	return _displayedOpacity;
-}
-
-void CCNodeRGBA::setOpacity(GLubyte opacity)
-{
-    _displayedOpacity = _realOpacity = opacity;
+    m_displayedOpacity = m_realOpacity = opacity;
     
-	if (_cascadeOpacityEnabled)
+	if (m_cascadeOpacityEnabled)
     {
 		GLubyte parentOpacity = 255;
-        CCRGBAProtocol* pParent = dynamic_cast<CCRGBAProtocol*>(m_pParent);
-        if (pParent && pParent->isCascadeOpacityEnabled())
+        if (m_pParent->isCascadeOpacityEnabled())
         {
-            parentOpacity = pParent->getDisplayedOpacity();
+            parentOpacity = m_pParent->getDisplayedOpacity();
         }
         this->updateDisplayedOpacity(parentOpacity);
 	}
 }
 
-void CCNodeRGBA::updateDisplayedOpacity(GLubyte parentOpacity)
+void CCNode::updateDisplayedOpacity(GLubyte parentOpacity)
 {
-	_displayedOpacity = _realOpacity * parentOpacity/255.0;
+	m_displayedOpacity = m_realOpacity * parentOpacity/255.0;
 	
-    if (_cascadeOpacityEnabled)
+    if (m_cascadeOpacityEnabled)
     {
-        CCObject* pObj;
-        CCARRAY_FOREACH(m_pChildren, pObj)
+        CCObject* obj;
+        CCARRAY_FOREACH(m_pChildren, obj)
         {
-            CCRGBAProtocol* item = dynamic_cast<CCRGBAProtocol*>(pObj);
-            if (item)
-            {
-                item->updateDisplayedOpacity(_displayedOpacity);
-            }
+            static_cast<CCNode*>(obj)->updateDisplayedOpacity(m_displayedOpacity);
         }
     }
 }
 
-bool CCNodeRGBA::isCascadeOpacityEnabled(void)
+bool CCNode::isCascadeOpacityEnabled(void)
 {
-    return _cascadeOpacityEnabled;
+    return m_cascadeOpacityEnabled;
 }
 
-void CCNodeRGBA::setCascadeOpacityEnabled(bool cascadeOpacityEnabled)
+void CCNode::setCascadeOpacityEnabled(bool cascadeOpacityEnabled)
 {
-    _cascadeOpacityEnabled = cascadeOpacityEnabled;
+    m_cascadeOpacityEnabled = cascadeOpacityEnabled;
 }
 
-const ccColor3B& CCNodeRGBA::getColor(void)
+const ccColor3B& CCNode::getColor(void)
 {
-	return _realColor;
+	return m_realColor;
 }
 
-const ccColor3B& CCNodeRGBA::getDisplayedColor()
+const ccColor3B& CCNode::getDisplayedColor()
 {
-	return _displayedColor;
+	return m_displayedColor;
 }
 
-void CCNodeRGBA::setColor(const ccColor3B& color)
+void CCNode::setColor(const ccColor3B& color)
 {
-	_displayedColor = _realColor = color;
+	m_displayedColor = m_realColor = color;
 	
-	if (_cascadeColorEnabled)
+	if (m_cascadeColorEnabled)
     {
 		ccColor3B parentColor = ccWHITE;
-        CCRGBAProtocol *parent = dynamic_cast<CCRGBAProtocol*>(m_pParent);
-		if (parent && parent->isCascadeColorEnabled())
+		if (m_pParent->isCascadeColorEnabled())
         {
-            parentColor = parent->getDisplayedColor(); 
+            parentColor = m_pParent->getDisplayedColor();
         }
         
         updateDisplayedColor(parentColor);
 	}
 }
 
-void CCNodeRGBA::updateDisplayedColor(const ccColor3B& parentColor)
+void CCNode::updateDisplayedColor(const ccColor3B& parentColor)
 {
-	_displayedColor.r = _realColor.r * parentColor.r/255.0;
-	_displayedColor.g = _realColor.g * parentColor.g/255.0;
-	_displayedColor.b = _realColor.b * parentColor.b/255.0;
+	m_displayedColor.r = m_realColor.r * parentColor.r/255.0;
+	m_displayedColor.g = m_realColor.g * parentColor.g/255.0;
+	m_displayedColor.b = m_realColor.b * parentColor.b/255.0;
     
-    if (_cascadeColorEnabled)
+    if (m_cascadeColorEnabled)
     {
         CCObject *obj = NULL;
         CCARRAY_FOREACH(m_pChildren, obj)
         {
-            CCRGBAProtocol *item = dynamic_cast<CCRGBAProtocol*>(obj);
-            if (item)
-            {
-                item->updateDisplayedColor(_displayedColor);
-            }
+            static_cast<CCNode*>(obj)->updateDisplayedColor(m_displayedColor);
         }
     }
 }
 
-bool CCNodeRGBA::isCascadeColorEnabled(void)
+bool CCNode::isCascadeColorEnabled(void)
 {
-    return _cascadeColorEnabled;
+    return m_cascadeColorEnabled;
 }
 
-void CCNodeRGBA::setCascadeColorEnabled(bool cascadeColorEnabled)
+void CCNode::setCascadeColorEnabled(bool cascadeColorEnabled)
 {
-    _cascadeColorEnabled = cascadeColorEnabled;
+    m_cascadeColorEnabled = cascadeColorEnabled;
 }
 
 NS_CC_END

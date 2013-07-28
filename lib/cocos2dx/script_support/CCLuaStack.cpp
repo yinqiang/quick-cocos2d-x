@@ -51,6 +51,23 @@ using namespace std;
 
 NS_CC_BEGIN
 
+CCLuaStack *CCLuaStack::s_defaultStack = NULL;
+
+CCLuaStack *CCLuaStack::defaultStack(void)
+{
+    if (!s_defaultStack)
+    {
+        s_defaultStack = CCLuaStack::create();
+        s_defaultStack->retain();
+    }
+    return s_defaultStack;
+}
+
+void CCLuaStack::purgeDefaultStack(void)
+{
+    CC_SAFE_RELEASE_NULL(s_defaultStack);
+}
+
 CCLuaStack *CCLuaStack::create(void)
 {
     CCLuaStack *stack = new CCLuaStack();

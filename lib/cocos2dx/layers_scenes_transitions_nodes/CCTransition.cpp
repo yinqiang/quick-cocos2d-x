@@ -35,7 +35,6 @@ THE SOFTWARE.
 #include "actions/CCActionCamera.h"
 #include "actions/CCActionTiledGrid.h"
 #include "actions/CCActionGrid.h"
-#include "CCLayer.h"
 #include "misc_nodes/CCRenderTexture.h"
 
 
@@ -1214,21 +1213,21 @@ void CCTransitionFade :: onEnter()
 {
     CCTransitionScene::onEnter();
 
-    CCLayerColor* l = CCLayerColor::create(m_tColor);
-    m_pInScene->setVisible(false);
-
-    addChild(l, 2, kSceneFade);
-    CCNode* f = getChildByTag(kSceneFade);
-
-    CCActionInterval* a = (CCActionInterval *)CCSequence::create
-        (
-            CCFadeIn::create(m_fDuration/2),
-            CCCallFunc::create(this, callfunc_selector(CCTransitionScene::hideOutShowIn)),//CCCallFunc::create:self selector:@selector(hideOutShowIn)],
-            CCFadeOut::create(m_fDuration/2),
-            CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), //:self selector:@selector(finish)],
-            NULL
-        );
-    f->runAction(a);
+//    CCLayerColor* l = CCLayerColor::create(m_tColor);
+//    m_pInScene->setVisible(false);
+//
+//    addChild(l, 2, kSceneFade);
+//    CCNode* f = getChildByTag(kSceneFade);
+//
+//    CCActionInterval* a = (CCActionInterval *)CCSequence::create
+//        (
+//            CCFadeIn::create(m_fDuration/2),
+//            CCCallFunc::create(this, callfunc_selector(CCTransitionScene::hideOutShowIn)),//CCCallFunc::create:self selector:@selector(hideOutShowIn)],
+//            CCFadeOut::create(m_fDuration/2),
+//            CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), //:self selector:@selector(finish)],
+//            NULL
+//        );
+//    f->runAction(a);
 }
 
 void CCTransitionFade::onExit()
@@ -1272,7 +1271,7 @@ void CCTransitionCrossFade::onEnter()
     // in which we are going to add our rendertextures
     ccColor4B  color = {0,0,0,0};
     CCSize size = CCDirector::sharedDirector()->getWinSize();
-    CCLayerColor* layer = CCLayerColor::create(color);
+//    CCLayerColor* layer = CCLayerColor::create(color);
 
     // create the first render texture for inScene
     CCRenderTexture* inTexture = CCRenderTexture::create((int)size.width, (int)size.height);
@@ -1312,8 +1311,8 @@ void CCTransitionCrossFade::onEnter()
     outTexture->getSprite()->setBlendFunc(blend2);    
 
     // add render textures to the layer
-    layer->addChild(inTexture);
-    layer->addChild(outTexture);
+//    layer->addChild(inTexture);
+//    layer->addChild(outTexture);
 
     // initial opacity:
     inTexture->getSprite()->setOpacity(255);
@@ -1333,7 +1332,7 @@ void CCTransitionCrossFade::onEnter()
     outTexture->getSprite()->runAction( layerAction );
 
     // add the layer (which contains our two rendertextures) to the scene
-    addChild(layer, 2, kSceneFade);
+//    addChild(layer, 2, kSceneFade);
 }
 
 // clean up on exit

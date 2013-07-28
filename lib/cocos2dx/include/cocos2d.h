@@ -103,7 +103,6 @@ THE SOFTWARE.
 #include "label_nodes/CCLabelBMFont.h"
 
 // layers_scenes_transitions_nodes
-#include "layers_scenes_transitions_nodes/CCLayer.h"
 #include "layers_scenes_transitions_nodes/CCScene.h"
 #include "layers_scenes_transitions_nodes/CCTransition.h"
 #include "layers_scenes_transitions_nodes/CCTransitionPageTurn.h"
@@ -216,7 +215,7 @@ THE SOFTWARE.
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_TIZEN
 
 // script_support
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 
 // shaders
 #include "shaders/CCGLProgram.h"

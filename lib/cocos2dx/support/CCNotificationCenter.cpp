@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 #include "CCNotificationCenter.h"
 #include "cocoa/CCArray.h"
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 #include <string>
 
 using namespace std;
@@ -179,8 +179,8 @@ void CCNotificationCenter::postNotification(const char *name, CCObject *object)
         {
             if (0 != observer->getHandler())
             {
-                CCScriptEngineProtocol* engine = CCScriptEngineManager::sharedManager()->getScriptEngine();
-                engine->executeNotificationEvent(this, name);
+//                CCScriptEngineProtocol* engine = CCScriptEngineManager::sharedManager()->getScriptEngine();
+//                engine->executeNotificationEvent(this, name);
             }
             else
             {

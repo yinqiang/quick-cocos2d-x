@@ -4,7 +4,7 @@
 */
 
 #include "CCPhysicsWorld_luabinding.h"
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 
 using namespace cocos2d;
 

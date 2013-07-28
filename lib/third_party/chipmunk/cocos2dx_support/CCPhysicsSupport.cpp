@@ -4,7 +4,7 @@
 #include "CCPhysicsBody.h"
 
 #if CC_LUA_ENGINE_ENABLED > 0
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 #include "CCLuaStack.h"
 #endif
 

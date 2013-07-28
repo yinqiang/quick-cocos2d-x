@@ -35,9 +35,18 @@ extern "C" {
 
 NS_CC_BEGIN
 
+#define kCCNodeOnEnterString                    "enter"
+#define kCCNodeOnExitString                     "exit"
+#define kCCNodeOnEnterTransitionDidFinishString "enterTransitionFinish"
+#define kCCNodeOnExitTransitionDidStartString   "exitTransitionStart"
+#define kCCNodeOnCleanupString                  "cleanup"
+
 class CC_DLL CCLuaStack : public CCObject
 {
 public:
+    static CCLuaStack *defaultStack(void);
+    static void purgeDefaultStack(void);
+
     static CCLuaStack *create(void);
     static CCLuaStack *attach(lua_State *L);
     
@@ -131,7 +140,8 @@ protected:
     
     lua_State *m_state;
     int m_callFromLua;
-    
+    static CCLuaStack *s_defaultStack;
+
     static int loadChunksFromZip(lua_State *L);
 };
 

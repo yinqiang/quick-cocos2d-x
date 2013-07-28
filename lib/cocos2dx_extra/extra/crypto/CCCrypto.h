@@ -5,7 +5,7 @@
 #include "cocos2dx_extra.h"
 
 #if CC_LUA_ENGINE_ENABLED > 0
-#include "CCLuaEngine.h"
+#include "CCLuaStack.h"
 #endif
 
 NS_CC_EXTRA_BEGIN
