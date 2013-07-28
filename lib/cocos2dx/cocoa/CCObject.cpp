@@ -26,7 +26,7 @@ THE SOFTWARE.
 #include "CCObject.h"
 #include "CCAutoreleasePool.h"
 #include "ccMacros.h"
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 
 NS_CC_BEGIN
 
@@ -43,7 +43,6 @@ CCObject::CCObject(void)
 , m_uAutoReleaseCount(0)
 {
     static int nObjectCount = 0;
-
     m_nID = ++nObjectCount;
 }
 
@@ -55,11 +54,10 @@ CCObject::~CCObject(void)
     {
         CCPoolManager::sharedPoolManager()->removeObject(this);
     }
-
     // if the object is referenced by Lua engine, remove it
     if (m_nLuaID)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptObjectByCCObject(this);
+        CCLuaStack::defaultStack()->removeScriptObjectByCCObject(this);
     }
 }
 

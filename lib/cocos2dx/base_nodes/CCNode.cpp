@@ -34,7 +34,7 @@ THE SOFTWARE.
 #include "CCScheduler.h"
 #include "touch_dispatcher/CCTouch.h"
 #include "actions/CCActionManager.h"
-#include "script_support/CCScriptSupport.h"
+#include "script_support/CCLuaStack.h"
 #include "shaders/CCGLProgram.h"
 // externals
 #include "kazmath/GL/matrix.h"
@@ -101,10 +101,7 @@ CCNode::~CCNode(void)
     CCLOGINFO( "cocos2d: deallocing" );
     
     unregisterScriptHandler();
-    if (m_nUpdateScriptHandler)
-    {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nUpdateScriptHandler);
-    }
+    unscheduleUpdate();
 
     CC_SAFE_RELEASE(m_pActionManager);
     CC_SAFE_RELEASE(m_pScheduler);
@@ -504,7 +501,7 @@ void CCNode::setShaderProgram(CCGLProgram *pShaderProgram)
     CC_SAFE_RETAIN(m_pShaderProgram);
 }
 
-CCRect CCNode::boundingBox()
+CCRect CCNode::getBoundingBox()
 {
     CCRect rect = CCRectMake(0, 0, m_obContentSize.width, m_obContentSize.height);
     return CCRectApplyAffineTransform(rect, nodeToParentTransform());
@@ -530,7 +527,11 @@ void CCNode::cleanup()
     this->stopAllActions();
     this->unscheduleAllSelectors();
 
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnCleanup);
+    if (m_nScriptHandler)
+    {
+        CCLuaStack::defaultStack()->pushString(kCCNodeOnCleanupString);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_nScriptHandler, 1);
+    }
 
     // timers
     arrayMakeObjectsPerformSelector(m_pChildren, cleanup, CCNode*);
@@ -891,34 +892,48 @@ void CCNode::onEnter()
     arrayMakeObjectsPerformSelector(m_pChildren, onEnter, CCNode*);
 
     this->resumeSchedulerAndActions();
-
     m_bRunning = true;
 
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnter);
+    if (m_nScriptHandler)
+    {
+        CCLuaStack::defaultStack()->pushString(kCCNodeOnEnterString);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_nScriptHandler, 1);
+    }
 }
 
 void CCNode::onEnterTransitionDidFinish()
 {
     arrayMakeObjectsPerformSelector(m_pChildren, onEnterTransitionDidFinish, CCNode*);
 
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnterTransitionDidFinish);
+    if (m_nScriptHandler)
+    {
+        CCLuaStack::defaultStack()->pushString(kCCNodeOnEnterTransitionDidFinishString);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_nScriptHandler, 1);
+    }
 }
 
 void CCNode::onExitTransitionDidStart()
 {
     arrayMakeObjectsPerformSelector(m_pChildren, onExitTransitionDidStart, CCNode*);
 
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExitTransitionDidStart);
+    if (m_nScriptHandler)
+    {
+        CCLuaStack::defaultStack()->pushString(kCCNodeOnExitTransitionDidStartString);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_nScriptHandler, 1);
+    }
 }
 
 void CCNode::onExit()
 {
     this->pauseSchedulerAndActions();
-
     m_bRunning = false;
+    arrayMakeObjectsPerformSelector(m_pChildren, onExit, CCNode*);
 
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExit);
-    arrayMakeObjectsPerformSelector(m_pChildren, onExit, CCNode*);    
+    if (m_nScriptHandler)
+    {
+        CCLuaStack::defaultStack()->pushString(kCCNodeOnExitString);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_nScriptHandler, 1);
+    }
 }
 
 void CCNode::registerScriptHandler(int nHandler)
@@ -932,7 +947,7 @@ void CCNode::unregisterScriptHandler(void)
 {
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptHandler);
+        CCLuaStack::defaultStack()->removeScriptHandler(m_nScriptHandler);
         LUALOG("[LUA] Remove CCNode event handler: %d", m_nScriptHandler);
         m_nScriptHandler = 0;
     }
@@ -1026,7 +1041,7 @@ void CCNode::unscheduleUpdate()
     m_pScheduler->unscheduleUpdateForTarget(this);
     if (m_nUpdateScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nUpdateScriptHandler);
+        CCLuaStack::defaultStack()->removeScriptHandler(m_nUpdateScriptHandler);
         m_nUpdateScriptHandler = 0;
     }
 }
@@ -1085,7 +1100,8 @@ void CCNode::update(float fDelta)
 {
     if (m_nUpdateScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_nUpdateScriptHandler, fDelta, this);
+        CCLuaStack::defaultStack()->pushFloat(fDelta);
+        CCLuaStack::defaultStack()->executeFunctionByHandler(m_nUpdateScriptHandler, 1);
     }
 }
 

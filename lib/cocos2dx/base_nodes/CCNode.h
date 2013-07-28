@@ -35,7 +35,6 @@
 #include "shaders/ccGLStateCache.h"
 #include "shaders/CCGLProgram.h"
 #include "kazmath/kazmath.h"
-#include "script_support/CCScriptSupport.h"
 #include "CCProtocols.h"
 
 NS_CC_BEGIN
@@ -46,7 +45,6 @@ class CCPoint;
 class CCTouch;
 class CCAction;
 class CCRGBAProtocol;
-class CCLabelProtocol;
 class CCScheduler;
 class CCActionManager;
 class CCDictionary;
@@ -67,6 +65,7 @@ enum {
     kCCNodeOnExitTransitionDidStart,
     kCCNodeOnCleanup
 };
+
 
 /** @brief CCNode is the main element. Anything that gets drawn or contains things that get drawn is a CCNode.
  The most popular CCNodes are: CCScene, CCLayer, CCSprite, CCMenu.
@@ -378,6 +377,7 @@ public:
      * @param anchorPoint   The anchor point of node.
      */
     virtual void setAnchorPoint(const CCPoint& anchorPoint);
+
     /** 
      * Returns the anchor point in percent.
      *
@@ -863,17 +863,6 @@ public:
      * Registers a script function that will be called in onEnter() & onExit() seires functions.
      * 
      * This handler will be removed automatically after onExit() called.
-     * @code
-     * -- lua sample
-     * local function sceneEventHandler(eventType)
-     *     if eventType == kCCNodeOnEnter then
-     *         -- do something
-     *     elseif evetType == kCCNodeOnExit then
-     *         -- do something
-     *     end
-     * end
-     * scene::registerScriptHandler(sceneEventHandler)
-     * @endcode
      *
      * @warning This method is for internal usage, don't call it manually.
      * @todo Perhaps we should rename it to get/set/removeScriptHandler acoording to the function name style.
@@ -881,20 +870,13 @@ public:
      * @param handler   A number that indicates a lua function. 
      */
     virtual void registerScriptHandler(int handler);
+    
     /**
      * Unregisters a script function that will be called in onEnter() & onExit() series functions.
      *
      * @see registerScriptHandler(int)
      */
     virtual void unregisterScriptHandler(void);
-    /**
-     * Gets script handler for onEnter/onExit event.
-     * This is an internal method. g
-     * @see registerScriptHandler(int)
-     *
-     * @return A number that indicates a lua function.
-     */
-    inline int getScriptHandler() { return m_nScriptHandler; };
     
     /** 
      * Schedules for lua script. 
@@ -970,7 +952,7 @@ public:
      * 
      * @return A "local" axis aligned boudning box of the node.
      */
-    CCRect boundingBox(void);
+    CCRect getBoundingBox(void);
 
     /// @{
     /// @name Actions
@@ -1321,7 +1303,7 @@ protected:
     
     float m_fScaleX;                    ///< scaling factor on x-axis
     float m_fScaleY;                    ///< scaling factor on y-axis
-    
+
     float m_fVertexZ;                   ///< OpenGL real Z vertex
     
     CCPoint m_obPosition;               ///< position of the node
