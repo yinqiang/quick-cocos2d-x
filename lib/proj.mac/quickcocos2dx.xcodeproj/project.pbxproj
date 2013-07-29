@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F429491217A6B34B00081BD5 /* CCScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F429490A17A6B34B00081BD5 /* CCScene.cpp */; };
+		F429491317A6B34B00081BD5 /* CCTransition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F429490C17A6B34B00081BD5 /* CCTransition.cpp */; };
+		F429491417A6B34B00081BD5 /* CCTransitionPageTurn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F429490E17A6B34B00081BD5 /* CCTransitionPageTurn.cpp */; };
+		F429491517A6B34B00081BD5 /* CCTransitionProgress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F429491017A6B34B00081BD5 /* CCTransitionProgress.cpp */; };
+		F429491817A6B3DC00081BD5 /* CCNodeColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F429491617A6B3DC00081BD5 /* CCNodeColor.cpp */; };
 		F42B55E71727F1C7000379DE /* auxiliar.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B55C51727F1C7000379DE /* auxiliar.c */; };
 		F42B55E91727F1C7000379DE /* except.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B55C91727F1C7000379DE /* except.c */; };
 		F42B55EA1727F1C7000379DE /* inet.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B55CB1727F1C7000379DE /* inet.c */; };
@@ -79,10 +84,6 @@
 		F43D4B8217A2A74E004A16BB /* CCLabelAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D494E17A2A74D004A16BB /* CCLabelAtlas.cpp */; };
 		F43D4B8317A2A74E004A16BB /* CCLabelBMFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D495017A2A74D004A16BB /* CCLabelBMFont.cpp */; };
 		F43D4B8417A2A74E004A16BB /* CCLabelTTF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D495217A2A74D004A16BB /* CCLabelTTF.cpp */; };
-		F43D4B8617A2A74E004A16BB /* CCScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D495717A2A74D004A16BB /* CCScene.cpp */; };
-		F43D4B8717A2A74E004A16BB /* CCTransition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D495917A2A74D004A16BB /* CCTransition.cpp */; };
-		F43D4B8817A2A74E004A16BB /* CCTransitionPageTurn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D495B17A2A74D004A16BB /* CCTransitionPageTurn.cpp */; };
-		F43D4B8917A2A74E004A16BB /* CCTransitionProgress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D495D17A2A74D004A16BB /* CCTransitionProgress.cpp */; };
 		F43D4B8A17A2A74E004A16BB /* CCClippingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D496017A2A74D004A16BB /* CCClippingNode.cpp */; };
 		F43D4B8B17A2A74E004A16BB /* CCClippingRegionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D496217A2A74D004A16BB /* CCClippingRegionNode.cpp */; };
 		F43D4B8C17A2A74E004A16BB /* CCMotionStreak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F43D496417A2A74D004A16BB /* CCMotionStreak.cpp */; };
@@ -185,6 +186,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F429490A17A6B34B00081BD5 /* CCScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCScene.cpp; sourceTree = "<group>"; };
+		F429490B17A6B34B00081BD5 /* CCScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCScene.h; sourceTree = "<group>"; };
+		F429490C17A6B34B00081BD5 /* CCTransition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTransition.cpp; sourceTree = "<group>"; };
+		F429490D17A6B34B00081BD5 /* CCTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTransition.h; sourceTree = "<group>"; };
+		F429490E17A6B34B00081BD5 /* CCTransitionPageTurn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTransitionPageTurn.cpp; sourceTree = "<group>"; };
+		F429490F17A6B34B00081BD5 /* CCTransitionPageTurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTransitionPageTurn.h; sourceTree = "<group>"; };
+		F429491017A6B34B00081BD5 /* CCTransitionProgress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTransitionProgress.cpp; sourceTree = "<group>"; };
+		F429491117A6B34B00081BD5 /* CCTransitionProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTransitionProgress.h; sourceTree = "<group>"; };
+		F429491617A6B3DC00081BD5 /* CCNodeColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNodeColor.cpp; sourceTree = "<group>"; };
+		F429491717A6B3DC00081BD5 /* CCNodeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeColor.h; sourceTree = "<group>"; };
 		F42B55C51727F1C7000379DE /* auxiliar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = auxiliar.c; sourceTree = "<group>"; };
 		F42B55C61727F1C7000379DE /* auxiliar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auxiliar.h; sourceTree = "<group>"; };
 		F42B55C91727F1C7000379DE /* except.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = except.c; sourceTree = "<group>"; };
@@ -342,14 +353,6 @@
 		F43D495117A2A74D004A16BB /* CCLabelBMFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelBMFont.h; sourceTree = "<group>"; };
 		F43D495217A2A74D004A16BB /* CCLabelTTF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLabelTTF.cpp; sourceTree = "<group>"; };
 		F43D495317A2A74D004A16BB /* CCLabelTTF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelTTF.h; sourceTree = "<group>"; };
-		F43D495717A2A74D004A16BB /* CCScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCScene.cpp; sourceTree = "<group>"; };
-		F43D495817A2A74D004A16BB /* CCScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCScene.h; sourceTree = "<group>"; };
-		F43D495917A2A74D004A16BB /* CCTransition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTransition.cpp; sourceTree = "<group>"; };
-		F43D495A17A2A74D004A16BB /* CCTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTransition.h; sourceTree = "<group>"; };
-		F43D495B17A2A74D004A16BB /* CCTransitionPageTurn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTransitionPageTurn.cpp; sourceTree = "<group>"; };
-		F43D495C17A2A74D004A16BB /* CCTransitionPageTurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTransitionPageTurn.h; sourceTree = "<group>"; };
-		F43D495D17A2A74D004A16BB /* CCTransitionProgress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTransitionProgress.cpp; sourceTree = "<group>"; };
-		F43D495E17A2A74D004A16BB /* CCTransitionProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTransitionProgress.h; sourceTree = "<group>"; };
 		F43D496017A2A74D004A16BB /* CCClippingNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCClippingNode.cpp; sourceTree = "<group>"; };
 		F43D496117A2A74D004A16BB /* CCClippingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCClippingNode.h; sourceTree = "<group>"; };
 		F43D496217A2A74D004A16BB /* CCClippingRegionNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCClippingRegionNode.cpp; sourceTree = "<group>"; };
@@ -597,6 +600,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F429490917A6B34B00081BD5 /* scenes_transitions_nodes */ = {
+			isa = PBXGroup;
+			children = (
+				F429490A17A6B34B00081BD5 /* CCScene.cpp */,
+				F429490B17A6B34B00081BD5 /* CCScene.h */,
+				F429490C17A6B34B00081BD5 /* CCTransition.cpp */,
+				F429490D17A6B34B00081BD5 /* CCTransition.h */,
+				F429490E17A6B34B00081BD5 /* CCTransitionPageTurn.cpp */,
+				F429490F17A6B34B00081BD5 /* CCTransitionPageTurn.h */,
+				F429491017A6B34B00081BD5 /* CCTransitionProgress.cpp */,
+				F429491117A6B34B00081BD5 /* CCTransitionProgress.h */,
+			);
+			path = scenes_transitions_nodes;
+			sourceTree = "<group>";
+		};
 		F42B55C41727F1C7000379DE /* socket */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,10 +677,10 @@
 				F43D492517A2A74D004A16BB /* kazmath */,
 				F43D494817A2A74D004A16BB /* keypad_dispatcher */,
 				F43D494D17A2A74D004A16BB /* label_nodes */,
-				F43D495417A2A74D004A16BB /* layers_scenes_transitions_nodes */,
 				F43D495F17A2A74D004A16BB /* misc_nodes */,
 				F43D496A17A2A74D004A16BB /* particle_nodes */,
 				F43D497417A2A74D004A16BB /* platform */,
+				F429490917A6B34B00081BD5 /* scenes_transitions_nodes */,
 				F43D4A9E17A2A74D004A16BB /* script_support */,
 				F43D4ADA17A2A74E004A16BB /* shaders */,
 				F43D4AF317A2A74E004A16BB /* sprite_nodes */,
@@ -719,6 +737,8 @@
 				F43D48E617A2A74D004A16BB /* CCGLBufferedNode.h */,
 				F43D48E717A2A74D004A16BB /* CCNode.cpp */,
 				F43D48E817A2A74D004A16BB /* CCNode.h */,
+				F429491617A6B3DC00081BD5 /* CCNodeColor.cpp */,
+				F429491717A6B3DC00081BD5 /* CCNodeColor.h */,
 			);
 			path = base_nodes;
 			sourceTree = "<group>";
@@ -894,21 +914,6 @@
 				F43D495317A2A74D004A16BB /* CCLabelTTF.h */,
 			);
 			path = label_nodes;
-			sourceTree = "<group>";
-		};
-		F43D495417A2A74D004A16BB /* layers_scenes_transitions_nodes */ = {
-			isa = PBXGroup;
-			children = (
-				F43D495717A2A74D004A16BB /* CCScene.cpp */,
-				F43D495817A2A74D004A16BB /* CCScene.h */,
-				F43D495917A2A74D004A16BB /* CCTransition.cpp */,
-				F43D495A17A2A74D004A16BB /* CCTransition.h */,
-				F43D495B17A2A74D004A16BB /* CCTransitionPageTurn.cpp */,
-				F43D495C17A2A74D004A16BB /* CCTransitionPageTurn.h */,
-				F43D495D17A2A74D004A16BB /* CCTransitionProgress.cpp */,
-				F43D495E17A2A74D004A16BB /* CCTransitionProgress.h */,
-			);
-			path = layers_scenes_transitions_nodes;
 			sourceTree = "<group>";
 		};
 		F43D495F17A2A74D004A16BB /* misc_nodes */ = {
@@ -1505,10 +1510,6 @@
 				F43D4B8217A2A74E004A16BB /* CCLabelAtlas.cpp in Sources */,
 				F43D4B8317A2A74E004A16BB /* CCLabelBMFont.cpp in Sources */,
 				F43D4B8417A2A74E004A16BB /* CCLabelTTF.cpp in Sources */,
-				F43D4B8617A2A74E004A16BB /* CCScene.cpp in Sources */,
-				F43D4B8717A2A74E004A16BB /* CCTransition.cpp in Sources */,
-				F43D4B8817A2A74E004A16BB /* CCTransitionPageTurn.cpp in Sources */,
-				F43D4B8917A2A74E004A16BB /* CCTransitionProgress.cpp in Sources */,
 				F43D4B8A17A2A74E004A16BB /* CCClippingNode.cpp in Sources */,
 				F43D4B8B17A2A74E004A16BB /* CCClippingRegionNode.cpp in Sources */,
 				F43D4B8C17A2A74E004A16BB /* CCMotionStreak.cpp in Sources */,
@@ -1596,6 +1597,11 @@
 				F43D4C8017A2A7B3004A16BB /* tolua_push.c in Sources */,
 				F43D4C8117A2A7B3004A16BB /* tolua_to.c in Sources */,
 				F43D4C8C17A2A9EF004A16BB /* CCLuaObjcBridge.mm in Sources */,
+				F429491217A6B34B00081BD5 /* CCScene.cpp in Sources */,
+				F429491317A6B34B00081BD5 /* CCTransition.cpp in Sources */,
+				F429491417A6B34B00081BD5 /* CCTransitionPageTurn.cpp in Sources */,
+				F429491517A6B34B00081BD5 /* CCTransitionProgress.cpp in Sources */,
+				F429491817A6B3DC00081BD5 /* CCNodeColor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

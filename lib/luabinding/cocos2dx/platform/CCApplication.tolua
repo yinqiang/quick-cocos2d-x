@@ -2,15 +2,10 @@
 enum
 {
     kTargetWindows,
-    kTargetLinux,
     kTargetMacOS,
     kTargetAndroid,
     kTargetIphone,
-    kTargetIpad,
-    kTargetBlackBerry,
-    kTargetNaCl,
-    kTargetEmscripten,
-    kTargetTizen
+    kTargetIpad
 };
 
 /**

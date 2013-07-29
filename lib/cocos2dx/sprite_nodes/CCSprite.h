@@ -33,9 +33,6 @@ THE SOFTWARE.
 #include "ccTypes.h"
 #include "cocoa/CCDictionary.h"
 #include <string>
-#ifdef EMSCRIPTEN
-#include "base_nodes/CCGLBufferedNode.h"
-#endif // EMSCRIPTEN
 
 NS_CC_BEGIN
 
@@ -80,9 +77,6 @@ struct transformValues_;
  * The default anchorPoint in CCSprite is (0.5, 0.5).
  */
 class CC_DLL CCSprite : public CCNode, public CCTextureProtocol
-#ifdef EMSCRIPTEN
-, public CCGLBufferedNode
-#endif // EMSCRIPTEN
 {
 public:
     /// @{

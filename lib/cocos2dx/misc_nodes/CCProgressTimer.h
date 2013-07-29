@@ -26,9 +26,6 @@ THE SOFTWARE.
 #define __MISC_NODE_CCPROGRESS_TIMER_H__
 
 #include "sprite_nodes/CCSprite.h"
-#ifdef EMSCRIPTEN
-#include "base_nodes/CCGLBufferedNode.h"
-#endif // EMSCRIPTEN
 
 NS_CC_BEGIN
 
@@ -54,9 +51,6 @@ typedef enum {
  @since v0.99.1
  */
 class CC_DLL CCProgressTimer : public CCNode
-#ifdef EMSCRIPTEN
-, public CCGLBufferedNode
-#endif // EMSCRIPTEN
 {
 public:
     CCProgressTimer();

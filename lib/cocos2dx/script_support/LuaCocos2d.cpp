@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Sat Jul 27 17:19:05 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Jul 29 22:40:20 2013.
 */
 
 /****************************************************************************
@@ -45170,15 +45170,10 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_function(tolua_S,"timersubCocos2d",tolua_Cocos2d_CCTime_timersubCocos2d00);
   tolua_endmodule(tolua_S);
   tolua_constant(tolua_S,"kTargetWindows",kTargetWindows);
-  tolua_constant(tolua_S,"kTargetLinux",kTargetLinux);
   tolua_constant(tolua_S,"kTargetMacOS",kTargetMacOS);
   tolua_constant(tolua_S,"kTargetAndroid",kTargetAndroid);
   tolua_constant(tolua_S,"kTargetIphone",kTargetIphone);
   tolua_constant(tolua_S,"kTargetIpad",kTargetIpad);
-  tolua_constant(tolua_S,"kTargetBlackBerry",kTargetBlackBerry);
-  tolua_constant(tolua_S,"kTargetNaCl",kTargetNaCl);
-  tolua_constant(tolua_S,"kTargetEmscripten",kTargetEmscripten);
-  tolua_constant(tolua_S,"kTargetTizen",kTargetTizen);
   tolua_constant(tolua_S,"kLanguageEnglish",kLanguageEnglish);
   tolua_constant(tolua_S,"kLanguageChinese",kLanguageChinese);
   tolua_constant(tolua_S,"kLanguageFrench",kLanguageFrench);

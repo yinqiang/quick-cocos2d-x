@@ -148,7 +148,7 @@ void CCMotionStreak::tintWithColor(ccColor3B colors)
     setColor(colors);
 
     // Fast assignation
-    for(unsigned int i = 0; i<m_uNuPoints*2; i++) 
+    for(unsigned int i = 0; i<m_uNuPoints*2; i++)
     {
         *((ccColor3B*) (m_pColorPointer+i*4)) = colors;
     }
@@ -206,7 +206,7 @@ void CCMotionStreak::update(float delta)
     {
         return;
     }
-    
+
     delta *= m_fFadeDelta;
 
     unsigned int newIdx, newIdx2, i, i2;
@@ -337,22 +337,9 @@ void CCMotionStreak::draw()
 
     ccGLBindTexture2D( m_pTexture->getName() );
 
-#ifdef EMSCRIPTEN
-    // Size calculations from ::initWithFade
-    setGLBufferData(m_pVertices, (sizeof(ccVertex2F) * m_uMaxPoints * 2), 0);
-    glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-    setGLBufferData(m_pTexCoords, (sizeof(ccTex2F) * m_uMaxPoints * 2), 1);
-    glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-    setGLBufferData(m_pColorPointer, (sizeof(GLubyte) * m_uMaxPoints * 2 * 4), 2);
-    glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, 0);
-#else
     glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, m_pVertices);
     glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, 0, m_pTexCoords);
     glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, m_pColorPointer);
-#endif // EMSCRIPTEN
-
     glDrawArrays(GL_TRIANGLE_STRIP, 0, (GLsizei)m_uNuPoints*2);
 
     CC_INCREMENT_GL_DRAWS(1);

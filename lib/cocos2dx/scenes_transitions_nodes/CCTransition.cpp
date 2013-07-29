@@ -1213,7 +1213,7 @@ void CCTransitionFade :: onEnter()
 {
     CCTransitionScene::onEnter();
 
-//    CCLayerColor* l = CCLayerColor::create(m_tColor);
+//    CCNodeColor* l = CCNodeColor::create(m_tColor);
 //    m_pInScene->setVisible(false);
 //
 //    addChild(l, 2, kSceneFade);
@@ -1271,7 +1271,7 @@ void CCTransitionCrossFade::onEnter()
     // in which we are going to add our rendertextures
     ccColor4B  color = {0,0,0,0};
     CCSize size = CCDirector::sharedDirector()->getWinSize();
-//    CCLayerColor* layer = CCLayerColor::create(color);
+//    CCNodeColor* layer = CCNodeColor::create(color);
 
     // create the first render texture for inScene
     CCRenderTexture* inTexture = CCRenderTexture::create((int)size.width, (int)size.height);

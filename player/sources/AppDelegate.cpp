@@ -41,7 +41,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // register lua engine
     CCLuaStack *pStack = CCLuaStack::defaultStack();
-    lua_State* L = pStack->getLuaState();
+//    lua_State* L = pStack->getLuaState();
 
     // load lua extensions
 //    luaopen_lua_extensions(L);

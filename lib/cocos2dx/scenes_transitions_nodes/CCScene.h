@@ -67,7 +67,6 @@ public:
 
     static CCScene *create(void);
 
-
     virtual void onEnter();
     virtual void onExit();
     virtual void onEnterTransitionDidFinish();

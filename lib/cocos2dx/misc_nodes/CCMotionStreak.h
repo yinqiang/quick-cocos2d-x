@@ -29,9 +29,6 @@ THE SOFTWARE.
 #include "textures/CCTexture2D.h"
 #include "ccTypes.h"
 #include "base_nodes/CCNode.h"
-#ifdef EMSCRIPTEN
-#include "base_nodes/CCGLBufferedNode.h"
-#endif // EMSCRIPTEN
 
 NS_CC_BEGIN
 
@@ -44,9 +41,6 @@ NS_CC_BEGIN
  Creates a trailing path.
  */
 class CC_DLL CCMotionStreak : public CCNode, public CCTextureProtocol
-#ifdef EMSCRIPTEN
-, public CCGLBufferedNode
-#endif // EMSCRIPTEN
 {
 public:
     CCMotionStreak();

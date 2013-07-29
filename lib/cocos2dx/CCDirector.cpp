@@ -33,14 +33,14 @@
 #include "draw_nodes/CCDrawingPrimitives.h"
 #include "CCConfiguration.h"
 #include "cocoa/CCNS.h"
-#include "layers_scenes_transitions_nodes/CCScene.h"
+#include "scenes_transitions_nodes/CCScene.h"
 #include "cocoa/CCArray.h"
 #include "CCScheduler.h"
 #include "ccMacros.h"
 #include "touch_dispatcher/CCTouchDispatcher.h"
 #include "support/CCPointExtension.h"
 #include "support/CCNotificationCenter.h"
-#include "layers_scenes_transitions_nodes/CCTransition.h"
+#include "scenes_transitions_nodes/CCTransition.h"
 #include "textures/CCTextureCache.h"
 #include "sprite_nodes/CCSpriteFrameCache.h"
 #include "cocoa/CCAutoreleasePool.h"
@@ -250,12 +250,6 @@ void CCDirector::drawScene(void)
     // calculate "global" dt
     calculateDeltaTime();
 
-    //tick before glClear: issue #533
-    if (! m_bPaused)
-    {
-        m_pScheduler->update(m_fDeltaTime);
-    }
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     /* to avoid flickr, nextScene MUST be here: after tick and before draw.
@@ -271,6 +265,12 @@ void CCDirector::drawScene(void)
     if (m_pRunningScene)
     {
         m_pRunningScene->visit();
+    }
+
+    //tick before glClear: issue #533
+    if (! m_bPaused)
+    {
+        m_pScheduler->update(m_fDeltaTime);
     }
 
     // draw the notifications node
@@ -1034,9 +1034,6 @@ void CCDisplayLinkDirector::startAnimation(void)
     }
 
     m_bInvalid = false;
-#ifndef EMSCRIPTEN
-    CCApplication::sharedApplication()->setAnimationInterval(m_dAnimationInterval);
-#endif // EMSCRIPTEN
 }
 
 void CCDisplayLinkDirector::mainLoop(void)
