@@ -1,16 +1,7 @@
 
---[[--
-
-角色场景，左侧为角色信息，右侧为背包界面。
-
-角色信息固定宽度，背包则自动缩放。
-
-]]
-
 local CharacterScene = class("CharacterScene", function()
     return display.newScene("CharacterScene")
 end)
-
 
 function CharacterScene:createLeftPanel()
     -- 左侧面板
@@ -25,32 +16,31 @@ function CharacterScene:createLeftPanel()
             pressed = "Button01Pressed.png",
             disabled = "Button01Disabled.png",
         }):addTo(leftPanel)
-    local button2 = cc.ui.UIPushButton.new({
-            normal = "Button01.png",
-            pressed = "Button01Pressed.png",
-            disabled = "Button01Disabled.png",
-        }):addTo(leftPanel)
-    local button3 = cc.ui.UICheckBoxButton.new({
-            off = "SwitchOffButton.png",
-            on = "SwitchOnButton.png",
-        }):addTo(leftPanel)
+
+    local label = cc.ui.UILabel.new({text = "HELLO"})
+        :align(display.CENTER)
+        :addTo(leftPanel)
 
     button1:setScale(0.5)
-    button2:setScale(0.5)
-    button2:setButtonEnabled(false)
-    button3:setScale(0.5)
-    button3:onButtonClicked(function()
-        print("button3:isButtonSelected() = ", button3:isButtonSelected())
-        self:performWithDelay(function()
-            button3:setButtonSelected(not button3:isButtonSelected())
-        end, 0.2)
+    button1:onButtonPressed(function(event)
+        print("button1 pressed")
+    end)
+    button1:onButtonRelease(function(event)
+        print("button1 release")
+    end)
+    button1:onButtonClicked(function(event)
+        print("button1 clicked")
+        print("---------------")
     end)
 
-    local leftPanelLayout = cc.ui.UIBoxLayout.new(display.LEFT_TO_RIGHT, "left")
+
+    local row1Layout = cc.ui.UIBoxLayout.new(display.LEFT_TO_RIGHT, "leftRow1")
         :addWidget(button1)
-        :addWidget(button2)
+        :addWidget(label)
         :addStretch()
-        :addWidget(button3)
+
+    local leftPanelLayout = cc.ui.UIBoxLayout.new(display.TOP_TO_BOTTOM, "left")
+        :addLayout(row1Layout)
     leftPanel:setLayout(leftPanelLayout)
 
     return leftPanel
@@ -105,7 +95,7 @@ function CharacterScene:ctor()
         :add(rightPanel)
         :addTo(self)
 
-    -- 设置左右面板的布局
+    -- -- 设置左右面板的布局
     self.detailsGroupLayout = cc.ui.UIBoxLayout.new(display.LEFT_TO_RIGHT, "details")
         :addWidget(leftPanel)
         :addWidget(rightPanel)

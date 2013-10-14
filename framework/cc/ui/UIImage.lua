@@ -8,9 +8,8 @@ local UIImage = class("UIImage", function(filename, options)
 end)
 
 function UIImage:ctor(filename, options)
-    cc.GameObject.extend(self):addComponent("components.ui.LayoutProtocol"):exportMethods()
+    makeUIControl_(self)
     self:align(display.LEFT_BOTTOM)
-    self:setLayoutAlignment(display.LEFT_BOTTOM)
     local contentSize = self:getContentSize()
     self:getComponent("components.ui.LayoutProtocol"):setLayoutSize(contentSize.width, contentSize.height)
     self.isScale9_ = options and options.scale9
