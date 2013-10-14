@@ -42,6 +42,8 @@ function UIButton:ctor(events, initialState, options)
     self.labelOffset_ = {0, 0}
     self.labelAlign_ = display.CENTER
     self.initialState_ = initialState
+
+    display.align(self, display.CENTER)
 end
 
 function UIButton:align(align, x, y)
@@ -212,6 +214,7 @@ function UIButton:updateButtonImage_()
                 self.sprite_:removeFromParentAndCleanup(true)
                 self.sprite_ = nil
             end
+            self.currentImage_ = image
 
             if self.scale9_ then
                 self.sprite_ = display.newScale9Sprite(image)
