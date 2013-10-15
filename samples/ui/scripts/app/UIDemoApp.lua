@@ -10,8 +10,9 @@ local UIDemoApp = class("UIDemoApp", AppBase)
 function UIDemoApp:ctor()
     UIDemoApp.super.ctor(self)
     self.scenes_ = {
-        "TestUIButtonScene",
         "TestUIImageScene",
+        "TestUIButtonScene",
+        "TestUISliderScene",
     }
 end
 
