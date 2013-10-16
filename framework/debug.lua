@@ -44,6 +44,10 @@ function echoLog(tag, fmt, ...)
     echo(string.format("[%s] %s", string.upper(tostring(tag)), string.format(tostring(fmt), ...)))
 end
 
+function log(fmt, ...)
+    echo("[LOG] " .. string.format(tostring(fmt), ...))
+end
+
 function dump(object, label, isReturnContents, nesting)
     if type(nesting) ~= "number" then nesting = 99 end
 

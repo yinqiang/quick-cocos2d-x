@@ -319,6 +319,9 @@
     <Filter Include="cocos2d-x\scripting\lua\lua_extensions\zlib">
       <UniqueIdentifier>{1c196c79-5f05-43b7-a12c-e4d40bbe9ecc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cocos2d-x\scripting\lua\lua_extensions\protobuf">
+      <UniqueIdentifier>{509c6cd3-8427-4fa3-86f8-fe7c39954445}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cocos2d-x\scripting\lua\cocos2dx_support\CCLuaEngine.cpp">
@@ -1193,6 +1196,9 @@
     </ClCompile>
     <ClCompile Include="..\cocos2d-x\extensions\CCArmature\utils\CCUtilMath.cpp">
       <Filter>cocos2d-x\extensions\CCArmature\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.c">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\protobuf</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2380,6 +2386,9 @@
     </ClInclude>
     <ClInclude Include="..\cocos2d-x\extensions\CCArmature\utils\CCUtilMath.h">
       <Filter>cocos2d-x\extensions\CCArmature\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

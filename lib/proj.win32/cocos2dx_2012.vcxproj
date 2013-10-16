@@ -342,6 +342,7 @@
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\filesystem\lfs.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lpack\lpack.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lua_extensions.c" />
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\auxiliar.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\except.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\inet.c" />
@@ -741,6 +742,7 @@
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\filesystem\lfs.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lpack\lpack.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lua_extensions.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\auxiliar.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\except.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\inet.h" />

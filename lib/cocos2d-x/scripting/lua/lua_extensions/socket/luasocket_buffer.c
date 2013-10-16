@@ -13,6 +13,7 @@
 static int recvraw(p_buffer buf, size_t wanted, luaL_Buffer *b);
 static int recvline(p_buffer buf, luaL_Buffer *b);
 static int recvall(p_buffer buf, luaL_Buffer *b);
+static int recvonce(p_buffer buf, luaL_Buffer *b);
 static int buffer_get(p_buffer buf, const char **data, size_t *count);
 static void buffer_skip(p_buffer buf, size_t count);
 static int sendraw(p_buffer buf, const char *data, size_t count, size_t *sent);
@@ -123,6 +124,7 @@ int buffer_meth_receive(lua_State *L, p_buffer buf) {
         const char *p= luaL_optstring(L, 2, "*l");
         if (p[0] == '*' && p[1] == 'l') err = recvline(buf, &b);
         else if (p[0] == '*' && p[1] == 'a') err = recvall(buf, &b); 
+        else if (p[0] == '*' && p[1] == 'o') err = recvonce(buf, &b);
         else luaL_argcheck(L, 0, 2, "invalid receive pattern");
     /* get a fixed number of bytes (minus what was already partially 
      * received) */
@@ -219,6 +221,16 @@ static int recvall(p_buffer buf, luaL_Buffer *b) {
         if (total > 0) return IO_DONE;
         else return IO_CLOSED;
     } else return err;
+}
+
+
+static int recvonce(p_buffer buf, luaL_Buffer *b) {
+    int err = IO_DONE;
+    const char *data; size_t count;
+    err = buffer_get(buf, &data, &count);
+    luaL_addlstring(b, data, count);
+    buffer_skip(buf, count);
+    return err;
 }
 
 /*-------------------------------------------------------------------------*\
