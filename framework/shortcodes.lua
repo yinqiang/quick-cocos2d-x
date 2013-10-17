@@ -30,6 +30,18 @@ function CCNodeExtend:pos(x, y)
     return self
 end
 
+function CCNodeExtend:x(x)
+    if not x then return self:getPositionX() end
+    self:setPositionX(x)
+    return self
+end
+
+function CCNodeExtend:y(y)
+    if not y then return self:getPositionY() end
+    self:setPositionY(y)
+    return self
+end
+
 function CCNodeExtend:center()
     self:setPosition(display.cx, display.cy)
     return self
@@ -51,6 +63,24 @@ function CCNodeExtend:size(width, height)
     else
         self:setContentSize(CCSize(width, height))
     end
+    return self
+end
+
+function CCNodeExtend:width(width)
+    local size = self:getContentSize()
+    if not width then
+        return size.width
+    end
+    self:size(width, size.height)
+    return self
+end
+
+function CCNodeExtend:height(height)
+    local size = self:getContentSize()
+    if not height then
+        return size.height
+    end
+    self:size(size.width, height)
     return self
 end
 
