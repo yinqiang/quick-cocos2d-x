@@ -1200,6 +1200,9 @@
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.c">
       <Filter>cocos2d-x\scripting\lua\lua_extensions\protobuf</Filter>
     </ClCompile>
+    <ClCompile Include="..\cocos2d-x\cocos2dx\cocoa\CCEventDispatcher.cpp">
+      <Filter>cocos2d-x\cocos2dx\cocoa</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cocos2d-x\scripting\lua\cocos2dx_support\CCLuaEngine.h">
@@ -2389,6 +2392,9 @@
     </ClInclude>
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.h">
       <Filter>cocos2d-x\scripting\lua\lua_extensions\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\cocos2dx\cocoa\CCEventDispatcher.h">
+      <Filter>cocos2d-x\cocos2dx\cocoa</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -89,6 +89,8 @@ function CCNodeExtend:opacity(opacity)
     return self
 end
 
+CCNodeExtend.alpha = CCNodeExtend.opacity
+
 function CCNodeExtend:zorder(z)
     self:setZOrder(z)
     return self

@@ -167,3 +167,10 @@ typedef struct
 
 } ccFontDefinition;
 
+static inline ccColor4B ccc4FromUInt(const unsigned int bytes);
+
+static inline unsigned int uintFromCCC4(const ccColor4B ccColor);
+
+static inline ccColor3B ccc3FromUInt(const unsigned int bytes);
+
+static inline unsigned int uintFromCCC3(const ccColor3B ccColor);

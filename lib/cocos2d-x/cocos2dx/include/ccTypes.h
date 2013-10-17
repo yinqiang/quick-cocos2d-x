@@ -435,6 +435,42 @@ public:
     
 } ccFontDefinition;
 
+/** Returns a ccColor4F from a unsigned int.
+ */
+static inline ccColor4B ccc4FromUInt(const unsigned int bytes)
+{
+	GLubyte a    = bytes >> 24 & 0xFF;
+	GLubyte r    = bytes >> 16 & 0xFF;
+	GLubyte g    = bytes >> 8 & 0xFF;
+	GLubyte b    = bytes & 0xFF;
+
+	return ccc4(r, g, b, a);
+}
+
+/** Returns a unsigned int from a ccColor4F.
+ */
+static inline unsigned int uintFromCCC4(const ccColor4B ccColor)
+{
+	return (ccColor.a << 24 | ccColor.r << 16 | ccColor.g << 8 | ccColor.b);
+}
+
+/** Returns a ccColor3B from a unsigned int.
+ */
+static inline ccColor3B ccc3FromUInt(const unsigned int bytes)
+{
+	GLubyte r    = bytes >> 16 & 0xFF;
+	GLubyte g    = bytes >> 8 & 0xFF;
+	GLubyte b    = bytes & 0xFF;
+
+	return ccc3(r, g, b);
+}
+
+/** Returns a unsigned int from a ccColor3B.
+ */
+static inline unsigned int uintFromCCC3(const ccColor3B ccColor)
+{
+	return (ccColor.r << 16 | ccColor.g << 8 | ccColor.b);
+}
 
 NS_CC_END
 
