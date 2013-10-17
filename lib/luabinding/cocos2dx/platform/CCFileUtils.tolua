@@ -208,6 +208,8 @@ class CCFileUtils
      */
     void setPopupNotify(bool bNotify);
     bool isPopupNotify();
+
+    unsigned char* getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize);
 };
 
 // end of platform group
