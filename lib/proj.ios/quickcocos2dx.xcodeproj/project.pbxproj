@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090E9FB1181504F2005E46F0 /* pb.c in Sources */ = {isa = PBXBuildFile; fileRef = 090E9FAF1815045B005E46F0 /* pb.c */; };
 		F40118BD180C9E57002A74D5 /* CCBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118BB180C9E57002A74D5 /* CCBProxy.cpp */; };
 		F40118C2180C9E62002A74D5 /* lua_cocos2dx_extensions_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118BE180C9E62002A74D5 /* lua_cocos2dx_extensions_manual.cpp */; };
 		F40118C3180C9E62002A74D5 /* Lua_extensions_CCB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118C0180C9E62002A74D5 /* Lua_extensions_CCB.cpp */; };
@@ -335,6 +336,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090E9FAF1815045B005E46F0 /* pb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pb.c; sourceTree = "<group>"; };
+		090E9FB01815045B005E46F0 /* pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
 		F40118BB180C9E57002A74D5 /* CCBProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBProxy.cpp; sourceTree = "<group>"; };
 		F40118BC180C9E57002A74D5 /* CCBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBProxy.h; sourceTree = "<group>"; };
 		F40118BE180C9E62002A74D5 /* lua_cocos2dx_extensions_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_cocos2dx_extensions_manual.cpp; sourceTree = "<group>"; };
@@ -1091,6 +1094,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090E9FAE1815045B005E46F0 /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				090E9FAF1815045B005E46F0 /* pb.c */,
+				090E9FB01815045B005E46F0 /* pb.h */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
 		F40AFDCF16BD153500565A5E /* platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -1554,6 +1566,7 @@
 		F459EB1C180D0513006CBDF1 /* lua_extensions */ = {
 			isa = PBXGroup;
 			children = (
+				090E9FAE1815045B005E46F0 /* protobuf */,
 				F459EB1D180D0513006CBDF1 /* cjson */,
 				F459EB24180D0513006CBDF1 /* filesystem */,
 				F459EB27180D0513006CBDF1 /* lpack */,
@@ -2792,6 +2805,7 @@
 				F459EB10180D04E1006CBDF1 /* cpSpace.c in Sources */,
 				F428259217575DA8001479DC /* CCFileUtils.cpp in Sources */,
 				F428259317575DA8001479DC /* CCImageCommonWebp.cpp in Sources */,
+				090E9FB1181504F2005E46F0 /* pb.c in Sources */,
 				F459EB84180D0513006CBDF1 /* luasocket_io.c in Sources */,
 				F459EA79180D04D8006CBDF1 /* CCStore.mm in Sources */,
 				F428259417575DA8001479DC /* CCSAXParser.cpp in Sources */,
