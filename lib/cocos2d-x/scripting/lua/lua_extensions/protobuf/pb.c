@@ -26,7 +26,7 @@
 #include <lualib.h>
 #include <lauxlib.h>
 #ifndef _WIN32
-#include <endian.h>
+//#include <endian.h>
 #endif
 
 #if __BYTE_ORDER == __LITTLE_ENDIAN

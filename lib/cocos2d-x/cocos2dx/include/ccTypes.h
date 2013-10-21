@@ -439,10 +439,10 @@ public:
  */
 static inline ccColor4B ccc4FromUInt(const unsigned int bytes)
 {
-	GLubyte a    = bytes >> 24 & 0xFF;
-	GLubyte r    = bytes >> 16 & 0xFF;
-	GLubyte g    = bytes >> 8 & 0xFF;
-	GLubyte b    = bytes & 0xFF;
+	GLubyte r    = bytes >> 24 & 0xFF;
+	GLubyte g    = bytes >> 16 & 0xFF;
+	GLubyte b    = bytes >> 8 & 0xFF;
+	GLubyte a    = bytes & 0xFF;
 
 	return ccc4(r, g, b, a);
 }
@@ -451,7 +451,7 @@ static inline ccColor4B ccc4FromUInt(const unsigned int bytes)
  */
 static inline unsigned int uintFromCCC4(const ccColor4B ccColor)
 {
-	return (ccColor.a << 24 | ccColor.r << 16 | ccColor.g << 8 | ccColor.b);
+	return (ccColor.r << 24 | ccColor.g << 16 | ccColor.b << 8 | ccColor.a);
 }
 
 /** Returns a ccColor3B from a unsigned int.

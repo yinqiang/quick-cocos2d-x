@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A8984A181143AE0016522D /* pb.c in Sources */ = {isa = PBXBuildFile; fileRef = 09A89848181143AE0016522D /* pb.c */; };
 		F411F3E1175CEAFC00EF549A /* libluajit2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F411F3E0175CEAFC00EF549A /* libluajit2.a */; };
 		F41D98F417F08B85007171D8 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D98F217F08B85007171D8 /* WebSocket.cpp */; };
 		F41D98FC17F08B9E007171D8 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F41D98FB17F08B9E007171D8 /* libwebsockets.a */; };
@@ -322,6 +323,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09A89848181143AE0016522D /* pb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pb.c; sourceTree = "<group>"; };
+		09A89849181143AE0016522D /* pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
 		F411F3DB175CEAFC00EF549A /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
 		F411F3DC175CEAFC00EF549A /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
 		F411F3DD175CEAFC00EF549A /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
@@ -1037,6 +1040,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09A89847181143AE0016522D /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				09A89848181143AE0016522D /* pb.c */,
+				09A89849181143AE0016522D /* pb.h */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
 		F411F3D9175CEAEA00EF549A /* luajit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1599,6 +1611,7 @@
 		F4CB8743180D02F600D81CF3 /* lua_extensions */ = {
 			isa = PBXGroup;
 			children = (
+				09A89847181143AE0016522D /* protobuf */,
 				F4CB8744180D02F600D81CF3 /* cjson */,
 				F4CB874B180D02F600D81CF3 /* filesystem */,
 				F4CB874E180D02F600D81CF3 /* lpack */,
@@ -2806,6 +2819,7 @@
 				F4E880931770071600577406 /* CCUserDefault.cpp in Sources */,
 				F431528B180CF7E30046351C /* cpDampedSpring.c in Sources */,
 				F4E880941770071600577406 /* CCUserDefault.mm in Sources */,
+				09A8984A181143AE0016522D /* pb.c in Sources */,
 				F4E880951770071600577406 /* CCUserDefaultAndroid.cpp in Sources */,
 				F4E880961770071600577406 /* ioapi.cpp in Sources */,
 				F4E880971770071600577406 /* unzip.cpp in Sources */,
