@@ -24,7 +24,17 @@ THE SOFTWARE.
 
 ]]
 
-io.output():setvbuf('no')
+if CCLuaLog then
+    io.output():setvbuf('no')
+elseif ngx and ngx.log then
+    print = function(...)
+        local arg = {...}
+        for k,v in pairs(arg) do
+            arg[k] = tostring(v)
+        end
+        ngx.log(ngx.ERR, table.concat(arg, "\t"))
+    end
+end
 
 echo = print
 
@@ -34,6 +44,7 @@ end
 
 function echoError(fmt, ...)
     echoLog("ERR", fmt, ...)
+    print(debug.traceback("", 2))
 end
 
 function echoInfo(fmt, ...)
@@ -42,6 +53,15 @@ end
 
 function echoLog(tag, fmt, ...)
     echo(string.format("[%s] %s", string.upper(tostring(tag)), string.format(tostring(fmt), ...)))
+end
+
+function throw(errorType, fmt, ...)
+    local arg = {...}
+    for k,v in pairs(arg) do
+        arg[k] = tostring(v)
+    end
+    local msg = string.format(tostring(fmt), unpack(arg))
+    error(string.format("<<%s>> - %s", tostring(errorType), msg), 2)
 end
 
 function dump(object, label, isReturnContents, nesting)
