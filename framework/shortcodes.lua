@@ -30,6 +30,18 @@ function CCNodeExtend:pos(x, y)
     return self
 end
 
+function CCNodeExtend:x(x)
+    if not x then return self:getPositionX() end
+    self:setPositionX(x)
+    return self
+end
+
+function CCNodeExtend:y(y)
+    if not y then return self:getPositionY() end
+    self:setPositionY()
+    return self
+end
+
 function CCNodeExtend:center()
     self:setPosition(display.cx, display.cy)
     return self
@@ -54,10 +66,28 @@ function CCNodeExtend:size(width, height)
     return self
 end
 
+function CCNodeExtend:width( width )
+    local size = self:getContentSize()
+    if not width then
+        return size.width
+    end
+    return self:size(width, size.height)
+end
+
+function CCNodeExtend:height( height )
+    local size = self:getContentSize()
+    if not height then
+        return size.height
+    end
+    return self:size(size.width, height)
+end
+
 function CCNodeExtend:opacity(opacity)
     self:setOpacity(opacity)
     return self
 end
+
+CCNodeExtend.alpha = CCNodeExtend.opacity
 
 function CCNodeExtend:zorder(z)
     self:setZOrder(z)
