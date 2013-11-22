@@ -55,6 +55,10 @@ function echoLog(tag, fmt, ...)
     echo(string.format("[%s] %s", string.upper(tostring(tag)), string.format(tostring(fmt), ...)))
 end
 
+function log( fmt, ... )
+    echoLog("LOG", fmt, ...)
+end
+
 function throw(errorType, fmt, ...)
     local arg = {...}
     for k,v in pairs(arg) do
