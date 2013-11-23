@@ -58,9 +58,10 @@ public:
      */
     struct Data
     {
-        Data():bytes(NULL), len(0), isBinary(false){}
+        Data():bytes(NULL), len(0), issued(0), isBinary(false){}
         char* bytes;
-        int len;
+        size_t len;
+        int issued;
         bool isBinary;
     };
     
@@ -150,6 +151,10 @@ private:
     std::string  _host;
     int          _port;
     std::string  _path;
+
+    size_t _pendingFrameDataLen;
+    size_t _currentDataLen;
+    char *_currentData;
     
     friend class WsThreadHelper;
     WsThreadHelper* _wsHelper;

@@ -64,7 +64,7 @@ bool CCLabelAtlas::initWithString(const char *string, const char *charMapFile, u
 bool CCLabelAtlas::initWithString(const char *string, CCTexture2D* texture, unsigned int itemWidth, unsigned int itemHeight, unsigned int startCharMap)
 {
     CCAssert(string != NULL, "");
-    if (CCAtlasNode::initWithTexture(texture, itemWidth, itemHeight, strlen(string)))
+    if (CCAtlasNode::initWithTexture(texture, itemWidth, itemHeight, (unsigned int)strlen(string)))
     {
         m_uMapStartChar = startCharMap;
         this->setString(string);
@@ -74,7 +74,7 @@ bool CCLabelAtlas::initWithString(const char *string, CCTexture2D* texture, unsi
 }
 
 CCLabelAtlas* CCLabelAtlas::create(const char *string, const char *fntFile)
-{
+{    
     CCLabelAtlas *ret = new CCLabelAtlas();
     if (ret)
     {
@@ -82,12 +82,12 @@ CCLabelAtlas* CCLabelAtlas::create(const char *string, const char *fntFile)
         {
             ret->autorelease();
         }
-        else
+        else 
         {
             CC_SAFE_RELEASE_NULL(ret);
         }
     }
-
+    
     return ret;
 }
 
@@ -96,25 +96,25 @@ bool CCLabelAtlas::initWithString(const char *theString, const char *fntFile)
   std::string pathStr = CCFileUtils::sharedFileUtils()->fullPathForFilename(fntFile);
   std::string relPathStr = pathStr.substr(0, pathStr.find_last_of("/"))+"/";
   CCDictionary *dict = CCDictionary::createWithContentsOfFile(pathStr.c_str());
-
+  
   CCAssert(((CCString*)dict->objectForKey("version"))->intValue() == 1, "Unsupported version. Upgrade cocos2d version");
-
+    
   std::string texturePathStr = relPathStr + ((CCString*)dict->objectForKey("textureFilename"))->getCString();
   CCString *textureFilename = CCString::create(texturePathStr);
   unsigned int width = ((CCString*)dict->objectForKey("itemWidth"))->intValue() / CC_CONTENT_SCALE_FACTOR();
   unsigned int height = ((CCString*)dict->objectForKey("itemHeight"))->intValue() / CC_CONTENT_SCALE_FACTOR();
   unsigned int startChar = ((CCString*)dict->objectForKey("firstChar"))->intValue();
-
+  
 
   this->initWithString(theString, textureFilename->getCString(), width, height, startChar);
-
+    
   return true;
 }
 
 //CCLabelAtlas - Atlas generation
 void CCLabelAtlas::updateAtlasValues()
 {
-    unsigned int n = m_sString.length();
+    unsigned int n = (unsigned int)m_sString.length();
 
     const unsigned char *s = (unsigned char*)m_sString.c_str();
 
@@ -189,7 +189,7 @@ void CCLabelAtlas::updateAtlasValues()
 //CCLabelAtlas - CCLabelProtocol
 void CCLabelAtlas::setString(const char *label)
 {
-    unsigned int len = strlen(label);
+    unsigned int len = (unsigned int)strlen(label);
     if (len > m_pTextureAtlas->getTotalQuads())
     {
         m_pTextureAtlas->resizeCapacity(len);
@@ -212,7 +212,7 @@ const char* CCLabelAtlas::getString(void)
 
 //CCLabelAtlas - draw
 
-#if CC_LABELATLAS_DEBUG_DRAW
+#if CC_LABELATLAS_DEBUG_DRAW    
 void CCLabelAtlas::draw()
 {
     CCAtlasNode::draw();

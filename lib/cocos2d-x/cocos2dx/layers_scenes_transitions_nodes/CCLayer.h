@@ -86,8 +86,8 @@ public:
     virtual void onEnterTransitionDidFinish();
 
     // default implements are used to call script callback if exist
-    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    virtual int ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual int ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 
@@ -250,12 +250,12 @@ public:
     static CCLayerGradient* create(const ccColor4B& start, const ccColor4B& end, const CCPoint& v);
 
     virtual bool init();
-    /** Initializes the CCLayer with a gradient between start and end. 
+    /** Initializes the CCLayer with a gradient between start and end.
      *  @js init
      */
     virtual bool initWithColor(const ccColor4B& start, const ccColor4B& end);
 
-    /** Initializes the CCLayer with a gradient between start and end in the direction of v. 
+    /** Initializes the CCLayer with a gradient between start and end in the direction of v.
      *  @js init
      */
     virtual bool initWithColor(const ccColor4B& start, const ccColor4B& end, const CCPoint& v);
@@ -314,7 +314,7 @@ public:
      */
     static CCLayerMultiplex* createWithArray(CCArray* arrayOfLayers);
 
-    /** creates a CCLayerMultiplex with one or more layers using a variable argument list. 
+    /** creates a CCLayerMultiplex with one or more layers using a variable argument list.
      * @lua NA
      */
     static CCLayerMultiplex * create(CCLayer* layer, ... );
@@ -327,7 +327,7 @@ public:
 
     void addLayer(CCLayer* layer);
 
-    /** initializes a MultiplexLayer with one or more layers using a variable argument list. 
+    /** initializes a MultiplexLayer with one or more layers using a variable argument list.
      *  @js NA
      *  @lua NA
      */
@@ -339,7 +339,7 @@ public:
     /** initializes a CCMultiplexLayer with an array of layers
      *  @since v2.1
      *  @lua NA
-    */
+     */
     bool initWithArray(CCArray* arrayOfLayers);
 
     void switchTo(unsigned int n);
