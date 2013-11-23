@@ -52,6 +52,23 @@ ccc3(const GLubyte r, const GLubyte g, const GLubyte b)
     return c;
 }
 
+//! Returns a ccColor3B from a unsigned int RGB
+static inline ccColor3B
+ccc3BFromUint(const unsigned int bytes)
+{
+    ccColor3B c = {bytes >> 16 & 0xFF, bytes >> 8 & 0xFF, bytes & 0xFF};
+    return c;
+}
+
+//! Turn a ccColor3B to a unsigned int RGB
+static inline unsigned int
+ccc3BToUint(const ccColor3B c)
+{
+    unsigned int bytes = 0;
+    bytes = (c.r << 16) | (c.g << 8) | c.b;
+    return bytes;
+}
+
 /** returns true if both ccColor3B are equal. Otherwise it returns false.
  */
 static inline bool ccc3BEqual(const ccColor3B &col1, const ccColor3B &col2)
@@ -95,6 +112,23 @@ ccc4(const GLubyte r, const GLubyte g, const GLubyte b, const GLubyte o)
 {
     ccColor4B c = {r, g, b, o};
     return c;
+}
+
+//! Returns a ccColor4B from a unsigned int ARGB
+static inline ccColor4B
+ccc4BFromUint(const unsigned int bytes)
+{
+    ccColor4B c = {bytes >> 16 & 0xFF, bytes >> 8 & 0xFF, bytes & 0xFF, bytes >> 24 & 0xFF};
+    return c;
+}
+
+//! Turn a ccColor4B to a unsigned int ARGB
+static inline unsigned int
+ccc4BToUint(const ccColor4B c)
+{
+    unsigned int bytes = 0;
+    bytes = (c.a << 24) | (c.r << 16) | (c.g << 8) | c.b;
+    return bytes;
 }
 
 
@@ -318,6 +352,15 @@ typedef struct _ccBlendFunc
 } ccBlendFunc;
 
 static const ccBlendFunc kCCBlendFuncDisable = {GL_ONE, GL_ZERO};
+static const ccBlendFunc kCCBlendFuncLight = {GL_SRC_ALPHA, GL_ONE};
+
+//! helper macro that creates an ccBlendFunc type
+static inline ccBlendFunc
+ccBlend(const GLenum k1, const GLenum k2)
+{
+    ccBlendFunc blend = {k1, k2};
+    return blend;
+}
 
 // XXX: If any of these enums are edited and/or reordered, update CCTexture2D.m
 //! Vertical text alignment type
