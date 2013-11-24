@@ -502,7 +502,7 @@ unsigned char* CCFileUtils::getFileData(const char* pszFileName, const char* psz
         fseek(fp,0,SEEK_SET);
         pBuffer = new unsigned char[*pSize+1];
         *pSize = fread(pBuffer,sizeof(unsigned char), *pSize,fp);
-        pBuffer[*pSize+1] = 0;
+        pBuffer[*pSize] = 0;
         fclose(fp);
     } while (0);
     
