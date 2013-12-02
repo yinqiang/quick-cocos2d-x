@@ -283,9 +283,6 @@
     <Filter Include="cocos2d-x\external\extra\crypto\md5">
       <UniqueIdentifier>{ea5c27da-0735-4cb3-9b12-a59e21d0a4a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cocos2d-x\external\extra\crypto\xxtea">
-      <UniqueIdentifier>{1840b3c2-78d7-420a-9ba0-e82ae6de94fd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocos2d-x\external\extra\luabinding">
       <UniqueIdentifier>{2d1c7052-5584-4631-8c09-093adf42c4ce}</UniqueIdentifier>
     </Filter>
@@ -321,6 +318,12 @@
     </Filter>
     <Filter Include="cocos2d-x\scripting\lua\lua_extensions\protobuf">
       <UniqueIdentifier>{509c6cd3-8427-4fa3-86f8-fe7c39954445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2d-x\scripting\lua\lua_extensions\lsqlite3">
+      <UniqueIdentifier>{3c2476d9-8de5-4431-9c02-e3fc0dee9bec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2d-x\scripting\lua\lua_extensions\debugger">
+      <UniqueIdentifier>{02fa98ff-ccfb-468c-b1e3-5dee11f2c10c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -578,15 +581,6 @@
     </ClCompile>
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\image_support\TGAlib.cpp">
       <Filter>cocos2d-x\cocos2dx\support\image_support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi.cpp">
-      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\unzip.cpp">
-      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ZipUtils.cpp">
-      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
     </ClCompile>
     <ClCompile Include="..\cocos2d-x\cocos2dx\sprite_nodes\CCAnimationCache.cpp">
       <Filter>cocos2d-x\cocos2dx\sprite_nodes</Filter>
@@ -1032,14 +1026,8 @@
     <ClCompile Include="..\cocos2d-x\external\extra\crypto\CCCrypto.cpp">
       <Filter>cocos2d-x\external\extra\crypto</Filter>
     </ClCompile>
-    <ClCompile Include="..\cocos2d-x\external\extra\crypto\base64\libb64.c">
-      <Filter>cocos2d-x\external\extra\crypto\base64</Filter>
-    </ClCompile>
     <ClCompile Include="..\cocos2d-x\external\extra\crypto\md5\md5.c">
       <Filter>cocos2d-x\external\extra\crypto\md5</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cocos2d-x\external\extra\crypto\xxtea\xxtea.c">
-      <Filter>cocos2d-x\external\extra\crypto\xxtea</Filter>
     </ClCompile>
     <ClCompile Include="..\cocos2d-x\external\extra\luabinding\cocos2dx_extra_luabinding.cpp">
       <Filter>cocos2d-x\external\extra\luabinding</Filter>
@@ -1202,6 +1190,33 @@
     </ClCompile>
     <ClCompile Include="..\cocos2d-x\cocos2dx\cocoa\CCEventDispatcher.cpp">
       <Filter>cocos2d-x\cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\lsqlite3.c">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\lsqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\sqlite3.c">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\lsqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\external\extra\crypto\base64\libbase64.c">
+      <Filter>cocos2d-x\external\extra\crypto\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi.cpp">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi_mem.cpp">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\unzip.cpp">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ZipUtils.cpp">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\xxtea.c">
+      <Filter>cocos2d-x\cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\debugger\debugger.c">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\debugger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1489,15 +1504,6 @@
     </ClInclude>
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\image_support\TGAlib.h">
       <Filter>cocos2d-x\cocos2dx\support\image_support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi.h">
-      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\unzip.h">
-      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ZipUtils.h">
-      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
     </ClInclude>
     <ClInclude Include="..\cocos2d-x\cocos2dx\sprite_nodes\CCAnimationCache.h">
       <Filter>cocos2d-x\cocos2dx\sprite_nodes</Filter>
@@ -2186,14 +2192,8 @@
     <ClInclude Include="..\cocos2d-x\external\extra\crypto\CCCrypto.h">
       <Filter>cocos2d-x\external\extra\crypto</Filter>
     </ClInclude>
-    <ClInclude Include="..\cocos2d-x\external\extra\crypto\base64\libb64.h">
-      <Filter>cocos2d-x\external\extra\crypto\base64</Filter>
-    </ClInclude>
     <ClInclude Include="..\cocos2d-x\external\extra\crypto\md5\md5.h">
       <Filter>cocos2d-x\external\extra\crypto\md5</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cocos2d-x\external\extra\crypto\xxtea\xxtea.h">
-      <Filter>cocos2d-x\external\extra\crypto\xxtea</Filter>
     </ClInclude>
     <ClInclude Include="..\cocos2d-x\external\extra\luabinding\cocos2dx_extra_luabinding.h">
       <Filter>cocos2d-x\external\extra\luabinding</Filter>
@@ -2395,6 +2395,33 @@
     </ClInclude>
     <ClInclude Include="..\cocos2d-x\cocos2dx\cocoa\CCEventDispatcher.h">
       <Filter>cocos2d-x\cocos2dx\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\lsqlite3.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\lsqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\sqlite3.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\lsqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\external\extra\crypto\base64\libbase64.h">
+      <Filter>cocos2d-x\external\extra\crypto\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi.h">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi_mem.h">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\unzip.h">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ZipUtils.h">
+      <Filter>cocos2d-x\cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\xxtea.h">
+      <Filter>cocos2d-x\cocos2dx\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\debugger\debugger.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\debugger</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

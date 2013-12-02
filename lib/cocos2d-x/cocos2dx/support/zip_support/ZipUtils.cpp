@@ -362,7 +362,7 @@ int ZipUtils::ccInflateCCZFile(const char *path, unsigned char **out)
         
         // decrypt
         unsigned int* ints = (unsigned int*)(compressed+12);
-        int enclen = (fileLen-12)/4;
+        int enclen = (int)(fileLen - 12) / 4;
         
         ccDecodeEncodedPvr(ints, enclen);
                 
@@ -474,7 +474,7 @@ ZipFile::~ZipFile()
     if (_dataThread && _dataThread->zipFile)
     {
         unzClose(_dataThread->zipFile);
-}
+    }
     CC_SAFE_DELETE(_data);
     CC_SAFE_DELETE(_dataThread);
 }

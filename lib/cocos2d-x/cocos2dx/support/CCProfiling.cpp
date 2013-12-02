@@ -116,7 +116,7 @@ const char* CCProfilingTimer::description()
 {
     static char s_desciption[512] = {0};
     
-    sprintf(s_desciption, "%s ::\tavg1: %dµ,\tavg2: %dµ,\tmin: %dµ,\tmax: %dµ,\ttotal: %.2fs,\tnr calls: %d", m_NameStr.c_str(), m_dAverageTime1, m_dAverageTime2, minTime, maxTime, totalTime/1000000., numberOfCalls);
+    sprintf(s_desciption, "%s ::\tavg1: %dµ,\tavg2: %dµ,\tmin: %dµ,\tmax: %dµ,\ttotal: %.2fs,\tnr calls: %d", m_NameStr.c_str(), m_dAverageTime1, (int)m_dAverageTime2, (int)minTime, (int)maxTime, totalTime / 1000000., numberOfCalls);
     return s_desciption;
 }
 
@@ -128,7 +128,7 @@ void CCProfilingTimer::reset()
     totalTime = 0;
     minTime = 100000000;
     maxTime = 0;
-    gettimeofday((struct timeval *)&m_sStartTime, NULL);
+    gettimeofday((struct timeval*)&m_sStartTime, NULL);
 }
 
 void CCProfilingBeginTimingBlock(const char *timerName)
@@ -142,7 +142,7 @@ void CCProfilingBeginTimingBlock(const char *timerName)
 
     // must the be last thing to execute
     timer->numberOfCalls++;
-    gettimeofday((struct timeval *)&timer->m_sStartTime, NULL);
+    gettimeofday((struct timeval*)&timer->m_sStartTime, NULL);
 }
 
 void CCProfilingEndTimingBlock(const char *timerName)
@@ -155,8 +155,8 @@ void CCProfilingEndTimingBlock(const char *timerName)
     CCProfilingTimer* timer = (CCProfilingTimer*)p->m_pActiveTimers->objectForKey(timerName);
 
     CCAssert(timer, "CCProfilingTimer  not found");
-
-    int duration = 1000000 * (now.tv_sec - timer->m_sStartTime.tv_sec) + (now.tv_usec - timer->m_sStartTime.tv_usec);
+    
+    long duration = 1000000 * (now.tv_sec - timer->m_sStartTime.tv_sec) + (now.tv_usec - timer->m_sStartTime.tv_usec);
 
     timer->totalTime += duration;
     timer->m_dAverageTime1 = (timer->m_dAverageTime1 + duration) / 2.0f;

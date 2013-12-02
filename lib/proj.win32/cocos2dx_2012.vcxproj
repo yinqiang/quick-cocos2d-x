@@ -126,7 +126,9 @@
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\tinyxml2\tinyxml2.cpp" />
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\TransformUtils.cpp" />
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\user_default\CCUserDefault.cpp" />
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\xxtea.c" />
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi.cpp" />
+    <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi_mem.cpp" />
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\unzip.cpp" />
     <ClCompile Include="..\cocos2d-x\cocos2dx\support\zip_support\ZipUtils.cpp" />
     <ClCompile Include="..\cocos2d-x\cocos2dx\textures\CCTexture2D.cpp" />
@@ -309,10 +311,9 @@
     <ClCompile Include="..\cocos2d-x\external\chipmunk\src\cpVect.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\cocos2d-x\external\extra\crypto\base64\libb64.c" />
+    <ClCompile Include="..\cocos2d-x\external\extra\crypto\base64\libbase64.c" />
     <ClCompile Include="..\cocos2d-x\external\extra\crypto\CCCrypto.cpp" />
     <ClCompile Include="..\cocos2d-x\external\extra\crypto\md5\md5.c" />
-    <ClCompile Include="..\cocos2d-x\external\extra\crypto\xxtea\xxtea.c" />
     <ClCompile Include="..\cocos2d-x\external\extra\luabinding\cocos2dx_extra_luabinding.cpp" />
     <ClCompile Include="..\cocos2d-x\external\extra\network\CCHTTPRequest.cpp" />
     <ClCompile Include="..\cocos2d-x\external\extra\network\CCNetwork.cpp" />
@@ -340,8 +341,11 @@
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\fpconv.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\lua_cjson.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\strbuf.c" />
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\debugger\debugger.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\filesystem\lfs.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lpack\lpack.c" />
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\lsqlite3.c" />
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\sqlite3.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lua_extensions.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\auxiliar.c" />
@@ -551,7 +555,9 @@
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\tinyxml2\tinyxml2.h" />
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\TransformUtils.h" />
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\user_default\CCUserDefault.h" />
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\xxtea.h" />
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi.h" />
+    <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ioapi_mem.h" />
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\unzip.h" />
     <ClInclude Include="..\cocos2d-x\cocos2dx\support\zip_support\ZipUtils.h" />
     <ClInclude Include="..\cocos2d-x\cocos2dx\textures\CCTexture2D.h" />
@@ -694,10 +700,9 @@
     <ClInclude Include="..\cocos2d-x\external\chipmunk\luabinding\CCPhysicsWorld_luabinding.h" />
     <ClInclude Include="..\cocos2d-x\external\chipmunk\src\prime.h" />
     <ClInclude Include="..\cocos2d-x\external\extra\cocos2dx_extra.h" />
-    <ClInclude Include="..\cocos2d-x\external\extra\crypto\base64\libb64.h" />
+    <ClInclude Include="..\cocos2d-x\external\extra\crypto\base64\libbase64.h" />
     <ClInclude Include="..\cocos2d-x\external\extra\crypto\CCCrypto.h" />
     <ClInclude Include="..\cocos2d-x\external\extra\crypto\md5\md5.h" />
-    <ClInclude Include="..\cocos2d-x\external\extra\crypto\xxtea\xxtea.h" />
     <ClInclude Include="..\cocos2d-x\external\extra\luabinding\cocos2dx_extra_luabinding.h" />
     <ClInclude Include="..\cocos2d-x\external\extra\native\CCAlertViewDelegate.h" />
     <ClInclude Include="..\cocos2d-x\external\extra\native\CCNative.h" />
@@ -741,8 +746,11 @@
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\fpconv.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\lua_cjson.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\strbuf.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\debugger\debugger.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\filesystem\lfs.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lpack\lpack.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\lsqlite3.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\sqlite3.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lua_extensions.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\auxiliar.h" />

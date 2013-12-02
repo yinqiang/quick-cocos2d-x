@@ -69,6 +69,13 @@ typedef enum {
 	kCCTouchesOneByOne,
 } ccTouchesMode;
 
+#define kCCTouchIgnore              0
+#define kCCTouchBegan               1
+#define kCCTouchBeganNoSwallows     2
+#define kCCTouchMoved               0
+#define kCCTouchMovedSwallows       1
+#define kCCTouchMovedReleaseOthers  2
+
 class CCTouchScriptHandlerEntry;
 
 /** @brief CCNode is the main element. Anything that gets drawn or contains things that get drawn is a CCNode.
@@ -288,7 +295,7 @@ public:
      */
     virtual void setScale(float fScaleX,float fScaleY);
 
-    
+
     /**
      * Changes the position (x,y) of the node in OpenGL coordinates
      *
@@ -531,7 +538,7 @@ public:
      */
     virtual unsigned int getOrderOfArrival();
 
-    
+
     /**
      * Sets the state of OpenGL server side.
      *
@@ -1506,8 +1513,8 @@ public:
     inline CCTouchScriptHandlerEntry* getScriptTouchHandlerEntry() { return m_pScriptTouchHandlerEntry; };
 
     // default implements are used to call script callback if exist
-    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    virtual int ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual int ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 

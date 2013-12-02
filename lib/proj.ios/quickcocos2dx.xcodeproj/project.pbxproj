@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		090E9FB1181504F2005E46F0 /* pb.c in Sources */ = {isa = PBXBuildFile; fileRef = 090E9FAF1815045B005E46F0 /* pb.c */; };
+		B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC798F181BA55A001341D6 /* lsqlite3.c */; };
+		B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7991181BA55A001341D6 /* sqlite3.c */; };
 		F40118BD180C9E57002A74D5 /* CCBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118BB180C9E57002A74D5 /* CCBProxy.cpp */; };
 		F40118C2180C9E62002A74D5 /* lua_cocos2dx_extensions_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118BE180C9E62002A74D5 /* lua_cocos2dx_extensions_manual.cpp */; };
 		F40118C3180C9E62002A74D5 /* Lua_extensions_CCB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118C0180C9E62002A74D5 /* Lua_extensions_CCB.cpp */; };
@@ -33,10 +35,9 @@
 		F428264A17575DD7001479DC /* CCEditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F428261117575DD7001479DC /* CCEditBox.cpp */; };
 		F428264C17575DD7001479DC /* CCEditBoxImplIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = F428261717575DD7001479DC /* CCEditBoxImplIOS.mm */; };
 		F42F313C17A272FA00A20E45 /* CCGraySprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42F313A17A272FA00A20E45 /* CCGraySprite.cpp */; };
-		F459EA6B180D04D8006CBDF1 /* libb64.c in Sources */ = {isa = PBXBuildFile; fileRef = F459E9FA180D04D8006CBDF1 /* libb64.c */; };
+		F44A20D9182A566D00E181EB /* libbase64.c in Sources */ = {isa = PBXBuildFile; fileRef = F44A20D7182A566D00E181EB /* libbase64.c */; };
 		F459EA6C180D04D8006CBDF1 /* CCCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F459E9FC180D04D8006CBDF1 /* CCCrypto.cpp */; };
 		F459EA6D180D04D8006CBDF1 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = F459E9FF180D04D8006CBDF1 /* md5.c */; };
-		F459EA6E180D04D8006CBDF1 /* xxtea.c in Sources */ = {isa = PBXBuildFile; fileRef = F459EA02180D04D8006CBDF1 /* xxtea.c */; };
 		F459EA6F180D04D8006CBDF1 /* cocos2dx_extra_ios_iap_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F459EA07180D04D8006CBDF1 /* cocos2dx_extra_ios_iap_luabinding.cpp */; };
 		F459EA70180D04D8006CBDF1 /* cocos2dx_extra_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F459EA0A180D04D8006CBDF1 /* cocos2dx_extra_luabinding.cpp */; };
 		F459EA71180D04D8006CBDF1 /* CCHTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F459EA11180D04D8006CBDF1 /* CCHTTPRequest.cpp */; };
@@ -136,6 +137,8 @@
 		F45A2E10166B16B100760194 /* tolua_to.c in Sources */ = {isa = PBXBuildFile; fileRef = F45A2DE8166B16B100760194 /* tolua_to.c */; };
 		F45FF34B16C7DD4C00275222 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F45FF34A16C7DD4C00275222 /* libcurl.a */; };
 		F47C66C316EB37DB00132435 /* snapshot.c in Sources */ = {isa = PBXBuildFile; fileRef = F47C66C116EB37DB00132435 /* snapshot.c */; };
+		F4A3A8F2182E7B810000EDD1 /* xxtea.c in Sources */ = {isa = PBXBuildFile; fileRef = F4A3A8F0182E7B800000EDD1 /* xxtea.c */; };
+		F4A3A8F5182E7B980000EDD1 /* ioapi_mem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A3A8F3182E7B980000EDD1 /* ioapi_mem.cpp */; };
 		F4A8F6BB17F0B1A400110198 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A8F6BA17F0B1A400110198 /* libwebsockets.a */; };
 		F4A8F6BF17F0B1F500110198 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A8F6BD17F0B1F500110198 /* WebSocket.cpp */; };
 		F4A8F6C217F0B21200110198 /* Lua_web_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A8F6C017F0B21200110198 /* Lua_web_socket.cpp */; };
@@ -338,6 +341,10 @@
 /* Begin PBXFileReference section */
 		090E9FAF1815045B005E46F0 /* pb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pb.c; sourceTree = "<group>"; };
 		090E9FB01815045B005E46F0 /* pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
+		B2DC798F181BA55A001341D6 /* lsqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsqlite3.c; sourceTree = "<group>"; };
+		B2DC7990181BA55A001341D6 /* lsqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lsqlite3.h; sourceTree = "<group>"; };
+		B2DC7991181BA55A001341D6 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		B2DC7992181BA55A001341D6 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		F40118BB180C9E57002A74D5 /* CCBProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBProxy.cpp; sourceTree = "<group>"; };
 		F40118BC180C9E57002A74D5 /* CCBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBProxy.h; sourceTree = "<group>"; };
 		F40118BE180C9E62002A74D5 /* lua_cocos2dx_extensions_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_cocos2dx_extensions_manual.cpp; sourceTree = "<group>"; };
@@ -407,15 +414,13 @@
 		F428261717575DD7001479DC /* CCEditBoxImplIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCEditBoxImplIOS.mm; sourceTree = "<group>"; };
 		F42F313A17A272FA00A20E45 /* CCGraySprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCGraySprite.cpp; sourceTree = "<group>"; };
 		F42F313B17A272FA00A20E45 /* CCGraySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGraySprite.h; sourceTree = "<group>"; };
+		F44A20D7182A566D00E181EB /* libbase64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libbase64.c; sourceTree = "<group>"; };
+		F44A20D8182A566D00E181EB /* libbase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libbase64.h; sourceTree = "<group>"; };
 		F459E9F7180D04D8006CBDF1 /* cocos2dx_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocos2dx_extra.h; sourceTree = "<group>"; };
-		F459E9FA180D04D8006CBDF1 /* libb64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libb64.c; sourceTree = "<group>"; };
-		F459E9FB180D04D8006CBDF1 /* libb64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libb64.h; sourceTree = "<group>"; };
 		F459E9FC180D04D8006CBDF1 /* CCCrypto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCCrypto.cpp; sourceTree = "<group>"; };
 		F459E9FD180D04D8006CBDF1 /* CCCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCrypto.h; sourceTree = "<group>"; };
 		F459E9FF180D04D8006CBDF1 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		F459EA00180D04D8006CBDF1 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		F459EA02180D04D8006CBDF1 /* xxtea.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xxtea.c; sourceTree = "<group>"; };
-		F459EA03180D04D8006CBDF1 /* xxtea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxtea.h; sourceTree = "<group>"; };
 		F459EA07180D04D8006CBDF1 /* cocos2dx_extra_ios_iap_luabinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cocos2dx_extra_ios_iap_luabinding.cpp; sourceTree = "<group>"; };
 		F459EA08180D04D8006CBDF1 /* cocos2dx_extra_ios_iap_luabinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocos2dx_extra_ios_iap_luabinding.h; sourceTree = "<group>"; };
 		F459EA0A180D04D8006CBDF1 /* cocos2dx_extra_luabinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cocos2dx_extra_luabinding.cpp; sourceTree = "<group>"; };
@@ -625,6 +630,10 @@
 		F45FF34A16C7DD4C00275222 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "lib/cocos2d-x/cocos2dx/platform/third_party/ios/libraries/libcurl.a"; sourceTree = QUICK_COCOS2DX_ROOT; };
 		F47C66C116EB37DB00132435 /* snapshot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = snapshot.c; sourceTree = "<group>"; };
 		F47C66C216EB37DB00132435 /* snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapshot.h; sourceTree = "<group>"; };
+		F4A3A8F0182E7B800000EDD1 /* xxtea.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xxtea.c; sourceTree = "<group>"; };
+		F4A3A8F1182E7B800000EDD1 /* xxtea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxtea.h; sourceTree = "<group>"; };
+		F4A3A8F3182E7B980000EDD1 /* ioapi_mem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ioapi_mem.cpp; sourceTree = "<group>"; };
+		F4A3A8F4182E7B980000EDD1 /* ioapi_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi_mem.h; sourceTree = "<group>"; };
 		F4A8F6B817F0B1A400110198 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
 		F4A8F6BA17F0B1A400110198 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
 		F4A8F6BD17F0B1F500110198 /* WebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebSocket.cpp; sourceTree = "<group>"; };
@@ -1101,6 +1110,15 @@
 				090E9FB01815045B005E46F0 /* pb.h */,
 			);
 			path = protobuf;
+		B2DC798E181BA55A001341D6 /* lsqlite3 */ = {
+			isa = PBXGroup;
+			children = (
+				B2DC798F181BA55A001341D6 /* lsqlite3.c */,
+				B2DC7990181BA55A001341D6 /* lsqlite3.h */,
+				B2DC7991181BA55A001341D6 /* sqlite3.c */,
+				B2DC7992181BA55A001341D6 /* sqlite3.h */,
+			);
+			path = lsqlite3;
 			sourceTree = "<group>";
 		};
 		F40AFDCF16BD153500565A5E /* platform */ = {
@@ -1256,7 +1274,6 @@
 				F459E9FC180D04D8006CBDF1 /* CCCrypto.cpp */,
 				F459E9FD180D04D8006CBDF1 /* CCCrypto.h */,
 				F459E9FE180D04D8006CBDF1 /* md5 */,
-				F459EA01180D04D8006CBDF1 /* xxtea */,
 			);
 			path = crypto;
 			sourceTree = "<group>";
@@ -1264,8 +1281,8 @@
 		F459E9F9180D04D8006CBDF1 /* base64 */ = {
 			isa = PBXGroup;
 			children = (
-				F459E9FA180D04D8006CBDF1 /* libb64.c */,
-				F459E9FB180D04D8006CBDF1 /* libb64.h */,
+				F44A20D7182A566D00E181EB /* libbase64.c */,
+				F44A20D8182A566D00E181EB /* libbase64.h */,
 			);
 			path = base64;
 			sourceTree = "<group>";
@@ -1277,15 +1294,6 @@
 				F459EA00180D04D8006CBDF1 /* md5.h */,
 			);
 			path = md5;
-			sourceTree = "<group>";
-		};
-		F459EA01180D04D8006CBDF1 /* xxtea */ = {
-			isa = PBXGroup;
-			children = (
-				F459EA02180D04D8006CBDF1 /* xxtea.c */,
-				F459EA03180D04D8006CBDF1 /* xxtea.h */,
-			);
-			path = xxtea;
 			sourceTree = "<group>";
 		};
 		F459EA04180D04D8006CBDF1 /* luabinding */ = {
@@ -1567,6 +1575,7 @@
 			isa = PBXGroup;
 			children = (
 				090E9FAE1815045B005E46F0 /* protobuf */,
+				B2DC798E181BA55A001341D6 /* lsqlite3 */,
 				F459EB1D180D0513006CBDF1 /* cjson */,
 				F459EB24180D0513006CBDF1 /* filesystem */,
 				F459EB27180D0513006CBDF1 /* lpack */,
@@ -2432,6 +2441,8 @@
 				F4E88272177015C400577406 /* TransformUtils.cpp */,
 				F4E88273177015C400577406 /* TransformUtils.h */,
 				F4E88274177015C400577406 /* user_default */,
+				F4A3A8F0182E7B800000EDD1 /* xxtea.c */,
+				F4A3A8F1182E7B800000EDD1 /* xxtea.h */,
 				F4E88279177015C400577406 /* zip_support */,
 			);
 			path = support;
@@ -2493,6 +2504,8 @@
 			children = (
 				F4E8827A177015C400577406 /* ioapi.cpp */,
 				F4E8827B177015C400577406 /* ioapi.h */,
+				F4A3A8F3182E7B980000EDD1 /* ioapi_mem.cpp */,
+				F4A3A8F4182E7B980000EDD1 /* ioapi_mem.h */,
 				F4E8827C177015C400577406 /* unzip.cpp */,
 				F4E8827D177015C400577406 /* unzip.h */,
 				F4E8827E177015C400577406 /* ZipUtils.cpp */,
@@ -2926,6 +2939,7 @@
 				F4E882EC177015C400577406 /* CCShaderCache.cpp in Sources */,
 				F4E882ED177015C400577406 /* ccShaders.cpp in Sources */,
 				F4E882EE177015C400577406 /* CCAnimation.cpp in Sources */,
+				F44A20D9182A566D00E181EB /* libbase64.c in Sources */,
 				F4A8F6BF17F0B1F500110198 /* WebSocket.cpp in Sources */,
 				F4E882EF177015C400577406 /* CCAnimationCache.cpp in Sources */,
 				F459EA81180D04D8006CBDF1 /* OpenUDIDIOS.m in Sources */,
@@ -2943,11 +2957,11 @@
 				F4E882F8177015C400577406 /* ccUTF8.cpp in Sources */,
 				F4E882F9177015C400577406 /* ccUtils.cpp in Sources */,
 				F4E882FA177015C400577406 /* CCVertex.cpp in Sources */,
-				F459EA6E180D04D8006CBDF1 /* xxtea.c in Sources */,
 				F4E882FB177015C400577406 /* CCComponent.cpp in Sources */,
 				F4E882FC177015C400577406 /* CCComponentContainer.cpp in Sources */,
 				F4E882FD177015C400577406 /* ccCArray.cpp in Sources */,
 				F459EB82180D0513006CBDF1 /* luasocket.c in Sources */,
+				B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */,
 				F459EB79180D0513006CBDF1 /* fpconv.c in Sources */,
 				F4E882FE177015C400577406 /* TGAlib.cpp in Sources */,
 				F459EB0C180D04E1006CBDF1 /* cpCollision.c in Sources */,
@@ -2992,6 +3006,7 @@
 				F4E88316177015C400577406 /* CCTouchHandler.cpp in Sources */,
 				F4E88336177015FF00577406 /* AccelerometerDelegateWrapper.mm in Sources */,
 				F4E88337177015FF00577406 /* CCAccelerometer.mm in Sources */,
+				F4A3A8F5182E7B980000EDD1 /* ioapi_mem.cpp in Sources */,
 				F4E88338177015FF00577406 /* CCApplication.mm in Sources */,
 				F4E88339177015FF00577406 /* CCCommon.mm in Sources */,
 				F40118C3180C9E62002A74D5 /* Lua_extensions_CCB.cpp in Sources */,
@@ -3018,8 +3033,8 @@
 				F4E883841770162500577406 /* CCBKeyframe.cpp in Sources */,
 				F459EB7E180D0513006CBDF1 /* lua_extensions.c in Sources */,
 				F459EB7D180D0513006CBDF1 /* lpack.c in Sources */,
-				F459EA6B180D04D8006CBDF1 /* libb64.c in Sources */,
 				F4CB4B521810F24100EC1D9B /* CCTween.cpp in Sources */,
+				B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */,
 				F4E883851770162500577406 /* CCBReader.cpp in Sources */,
 				F4E883861770162500577406 /* CCBSequence.cpp in Sources */,
 				F4E883871770162500577406 /* CCBSequenceProperty.cpp in Sources */,
@@ -3067,6 +3082,7 @@
 				F4E883C81770163800577406 /* CCControlSlider.cpp in Sources */,
 				F4E883C91770163800577406 /* CCControlStepper.cpp in Sources */,
 				F4E883CA1770163800577406 /* CCControlSwitch.cpp in Sources */,
+				F4A3A8F2182E7B810000EDD1 /* xxtea.c in Sources */,
 				F4E883CB1770163800577406 /* CCControlUtils.cpp in Sources */,
 				F459EB8A180D0513006CBDF1 /* tcp.c in Sources */,
 				F4E883CC1770163800577406 /* CCInvocation.cpp in Sources */,
@@ -3144,9 +3160,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/libquickcocos2dx.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = quickcocos2dx.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3201,9 +3218,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/libquickcocos2dx.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = quickcocos2dx.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (

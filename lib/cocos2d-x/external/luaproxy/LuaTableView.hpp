@@ -67,8 +67,8 @@ public:
 		index = _indexFromOffset(point);
 		return cellAtIndex(index);
 	}
-	virtual bool ccTouchBegan(CCTouch *t, CCEvent *e){
-		bool r = CCTableView::ccTouchBegan(t, e);
+	virtual int ccTouchBegan(CCTouch *t, CCEvent *e){
+		int r = CCTableView::ccTouchBegan(t, e);
 		if(r){
 			CCTableViewCell *c = cellForTouch(t);
 			LuaEventHandler *h = dynamic_cast<LuaEventHandler *>(getTableViewDelegate());

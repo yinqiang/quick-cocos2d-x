@@ -20,7 +20,7 @@ function UIGroup:addWidget(widget)
 end
 
 function UIGroup:onTouch(listener)
-    if not listener then listener = function() return true end end
+    if not listener then listener = function() return cc.TOUCH_BEGAN end end
     self:addTouchEventListener(listener)
     return self
 end

@@ -97,4 +97,8 @@ class  CCArmature : public CCNode
 
     inline void setBlendFunc(ccBlendFunc blendFunc);
     inline ccBlendFunc getBlendFunc(void);
+    
+    //zrong 2013-11-07 for lua
+    void connectMovementEventSignal(LUA_FUNCTION nHandler);
+    void disconnectMovementEventSignal();
 };

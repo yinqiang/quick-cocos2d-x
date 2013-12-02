@@ -1,5 +1,13 @@
 
-math.randomseed(os.time())
+local ok, socket = pcall(function()
+    return require("socket")
+end)
+
+if ok then
+    math.randomseed(socket.gettime() * 1000)
+else
+    math.randomseed(os.time())
+end
 math.random()
 math.random()
 math.random()
@@ -11,12 +19,7 @@ local CURRENT_MODULE_NAME = ...
 cc = cc or {}
 cc.PACKAGE_NAME = string.sub(CURRENT_MODULE_NAME, 1, -6)
 cc.VERSION = "2.2.0"
-
-local exit = os.exit
-function os.exit()
-    CCDirector:sharedDirector():endToLua()
-    exit()
-end
+cc.FRAMEWORK_NAME = "quick-cocos2d-x client"
 
 require(cc.PACKAGE_NAME .. ".debug")
 require(cc.PACKAGE_NAME .. ".functions")
@@ -36,9 +39,9 @@ crypto     = require(cc.PACKAGE_NAME .. ".crypto")
 json       = require(cc.PACKAGE_NAME .. ".json")
 
 if device.platform == "android" then
-    luaj = require(cc.PACKAGE_NAME .. ".luaj")
+    require(cc.PACKAGE_NAME .. ".platform.android")
 elseif device.platform == "ios" then
-    luaoc = require(cc.PACKAGE_NAME .. ".luaoc")
+    require(cc.PACKAGE_NAME .. ".platform.ios")
 end
 
 if not NO_EXTENSIONS then

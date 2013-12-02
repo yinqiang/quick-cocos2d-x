@@ -12,19 +12,19 @@ function tobool(v)
 end
 
 function totable(v)
-    if typen(v) ~= LUA_TTABLE then v = {} end
+    if type(v) ~= "table" then v = {} end
     return v
 end
 
 function isset(arr, key)
-    local t = typen(arr)
-    return (t == LUA_TTABLE or t == LUA_TUSERDATA) and arr[k] ~= nil
+    local t = type(arr)
+    return (t == "table" or t == "userdata") and arr[key] ~= nil
 end
 
 function clone(object)
     local lookup_table = {}
     local function _copy(object)
-        if typen(object) ~= LUA_TTABLE then
+        if type(object) ~= "table" then
             return object
         elseif lookup_table[object] then
             return lookup_table[object]
@@ -40,19 +40,19 @@ function clone(object)
 end
 
 function class(classname, super)
-    local superType = typen(super)
+    local superType = type(super)
     local cls
 
-    if superType ~= LUA_TFUNCTION and superType ~= LUA_TTABLE then
+    if superType ~= "function" and superType ~= "table" then
         superType = nil
         super = nil
     end
 
-    if superType == LUA_TFUNCTION or (super and super.__ctype == 1) then
+    if superType == "function" or (super and super.__ctype == 1) then
         -- inherited from native C++ Object
         cls = {}
 
-        if superType == LUA_TTABLE then
+        if superType == "table" then
             -- copy fields from super
             for k,v in pairs(super) do cls[k] = v end
             cls.__create = super.__create
@@ -100,9 +100,9 @@ function class(classname, super)
 end
 
 function iskindof(obj, className)
-    local t = typen(obj)
+    local t = type(obj)
 
-    if t == LUA_TTABLE then
+    if t == "table" then
         local mt = getmetatable(obj)
         while mt and mt.__index do
             if mt.__index.__cname == className then
@@ -112,7 +112,7 @@ function iskindof(obj, className)
         end
         return false
 
-    elseif t == LUA_TUSERDATA then
+    elseif t == "userdata" then
 
     else
         return false
@@ -339,6 +339,37 @@ function table.removeItem(list, item, removeAll)
     end
 end
 
+function table.map(t, fun)
+    for k,v in pairs(t) do
+        t[k] = fun(v, k)
+    end
+end
+
+function table.walk(t, fun)
+    for k,v in pairs(t) do
+        fun(v, k)
+    end
+end
+
+function table.filter(t, fun)
+    for k,v in pairs(t) do
+        if not fun(v, k) then
+            t[k] = nil
+        end
+    end
+end
+
+function table.find(t, item)
+    return table.keyOfItem(t, item) ~= nil
+end
+
+function table.keyOfItem(t, item)
+    for k,v in pairs(t) do
+        if v == item then return k end
+    end
+    return nil
+end
+
 function string.htmlspecialchars(input)
     for k, v in pairs(string._htmlspecialchars_set) do
         input = string.gsub(input, k, v)
@@ -372,6 +403,8 @@ function string.text2html(input)
 end
 
 function string.split(str, delimiter)
+    str = tostring(str)
+    delimiter = tostring(delimiter)
     if (delimiter=='') then return false end
     local pos,arr = 0, {}
     -- for each divider found

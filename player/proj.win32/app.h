@@ -7,6 +7,7 @@
 #include "CCStdC.h"
 
 #include <string>
+
 #include "cocos2d.h"
 #include "AppDelegate.h"
 #include "SimulatorConfig.h"
@@ -26,7 +27,7 @@ public:
     HWND getWindowHandle(void) {
         return m_hwnd;
     }
-
+	
 private:
     static QuickXPlayer *s_sharedInstance;
     static QuickXPlayer *sharedInstance(void);
@@ -39,13 +40,18 @@ private:
 
     HWND m_hwnd;
     BOOL m_exit;
+    FILE *m_writeDebugLogFile;
 
     int run(void);
     void loadProjectConfig(void);
+    void loadOpenRecents(void);
     void createViewMenu(void);
     void updateMenu(void);
     void updateWindowTitle(void);
     void relaunch(void);
+    
+    // debug log
+	void writeDebugLog(const char *log);
 
 	// welcome callback
 	void onWelcomeNewProject(CCObject *object);
@@ -56,6 +62,7 @@ private:
     // menu callback
     void onFileNewProject(void);
     void onFileOpenProject(void);
+    void onFileAutoConnectDebugger(void);
     void onFileCreateProjectShortcut(void);
     void onFileProjectConfig(void);
     void onFileRelaunch(void);

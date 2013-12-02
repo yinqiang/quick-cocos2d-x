@@ -269,13 +269,13 @@ function display.newClippingRegionNode(rect)
 end
 
 function display.newSprite(filename, x, y)
-    local t = typen(filename)
-    if t == LUA_TUSERDATA then t = tolua.type(filename) end
+    local t = type(filename)
+    if t == "userdata" then t = tolua.type(filename) end
     local sprite
 
     if not filename then
         sprite = CCSprite:create()
-    elseif t == LUA_TSTRING then
+    elseif t == "string" then
         if string.byte(filename) == 35 then -- first char is #
             local frame = display.newSpriteFrame(string.sub(filename, 2))
             if frame then
@@ -309,8 +309,8 @@ function display.newSprite(filename, x, y)
 end
 
 function display.newScale9Sprite(filename, x, y, size)
-    local t = typen(filename)
-    if t ~= LUA_TSTRING then
+    local t = type(filename)
+    if t ~= "string" then
         echoError("display.newScale9Sprite() - invalid filename type")
         return
     end
@@ -371,7 +371,7 @@ end
 
 function display.newRect(width, height)
     local x, y = 0, 0
-    if typen(width) == LUA_TUSERDATA then
+    if type(width) == "userdata" then
         local t = tolua.type(width)
         if t == "CCRect" then
             x = width.origin.x
@@ -503,7 +503,7 @@ display.PROGRESS_TIMER_BAR = kCCProgressTimerTypeBar
 display.PROGRESS_TIMER_RADIAL = kCCProgressTimerTypeRadial
 
 function display.newProgressTimer(image, progresssType)
-    if typen(image) == LUA_TSTRING then
+    if type(image) == "string" then
         image = display.newSprite(image)
     end
 

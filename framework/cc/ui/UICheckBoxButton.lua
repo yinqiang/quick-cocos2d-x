@@ -79,10 +79,10 @@ end
 
 function UICheckBoxButton:onTouch_(event, x, y)
     if event == "began" then
-        if not self:checkTouchInSprite_(x, y) then return false end
+        if not self:checkTouchInSprite_(x, y) then return cc.TOUCH_IGNORE end
         self.fsm_:doEvent("press")
         self:dispatchEvent({name = UIButton.PRESSED_EVENT, x = x, y = y, touchInTarget = true})
-        return true
+        return cc.TOUCH_BEGAN
     end
 
     local touchInTarget = self:checkTouchInSprite_(x, y)

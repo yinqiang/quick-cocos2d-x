@@ -25,6 +25,9 @@ extern "C" {
 // protobuf
 #include "protobuf/pb.h"
 
+// lsqlite3
+#include "lsqlite3/lsqlite3.h"
+
 static luaL_Reg luax_exts[] = {
     {"cjson", luaopen_cjson_safe},
     {"zlib", luaopen_zlib},
@@ -32,8 +35,8 @@ static luaL_Reg luax_exts[] = {
     {"socket.core", luaopen_socket_core},
     {"mime.core", luaopen_mime_core},
 	{"lfs", luaopen_lfs},
-	{"pb", luaopen_pb},
-
+    {"pb", luaopen_pb},
+    {"lsqlite3", luaopen_lsqlite3},
     {NULL, NULL}
 };
 

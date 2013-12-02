@@ -626,28 +626,28 @@ void CCControlButton::needsLayout()
 
 
 
-bool CCControlButton::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+int CCControlButton::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     if (!isTouchInside(pTouch) || !isEnabled() || !isVisible() || !hasVisibleParents() )
     {
-        return false;
+        return kCCTouchIgnore;
     }
 
     for (CCNode *c = this->m_pParent; c != NULL; c = c->getParent())
     {
         if (c->isVisible() == false)
         {
-            return false;
+            return kCCTouchIgnore;
         }
     }
 
     m_isPushed = true;
     this->setHighlighted(true);
     sendActionsForControlEvents(CCControlEventTouchDown);
-    return true;
+    return kCCTouchBegan;
 }
 
-void CCControlButton::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+int CCControlButton::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
     if (!isEnabled() || !isPushed() || isSelected())
     {
@@ -655,7 +655,7 @@ void CCControlButton::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         {
             setHighlighted(false);
         }
-        return;
+        return kCCTouchMoved;
     }
 
     bool isTouchMoveInside = isTouchInside(pTouch);
@@ -678,7 +678,10 @@ void CCControlButton::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     {
         sendActionsForControlEvents(CCControlEventTouchDragOutside);
     }
+
+    return kCCTouchMoved;
 }
+
 void CCControlButton::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
     m_isPushed = false;
@@ -722,7 +725,7 @@ void CCControlButton::setOpacity(GLubyte opacity)
 void CCControlButton::setColor(const ccColor3B & color)
 {
 	CCControl::setColor(color);
-	
+
 	CCDictElement * item = NULL;
     CCDICT_FOREACH(m_backgroundSpriteDispatchTable, item)
     {

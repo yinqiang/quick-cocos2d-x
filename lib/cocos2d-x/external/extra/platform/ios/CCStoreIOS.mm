@@ -293,7 +293,7 @@ static const char* const SANDBOX_RECEIPT_VERIFY_URL = "https://sandbox.itunes.ap
     // convert receipt to JSON string
     int length = [transaction.transactionReceipt length];
     char buffer[2 * length];
-    int dataUsed = CCCrypto::encodeBase64((unsigned char*)[transaction.transactionReceipt bytes], length, buffer, 2 * length);
+    int dataUsed = CCCrypto::encodeBase64((const char*)[transaction.transactionReceipt bytes], length, buffer, 2 * length);
     if (dataUsed <= 0)
     {
         [self transactionCompleted:transaction andReceiptVerifyStatus:CCStoreReceiptVerifyStatusUnknownError];
@@ -440,10 +440,8 @@ static const char* const SANDBOX_RECEIPT_VERIFY_URL = "https://sandbox.itunes.ap
 - (CCStorePaymentTransaction *)createCCStorePaymentTransaction:(SKPaymentTransaction *)transaction
                                         andReceiptVerifyStatus:(int)receiptVerifyStatus
 {
-    CCStorePaymentTransactionWrapper* transactionWapper
-    ;
-    transactionWapper
-    = CCStorePaymentTransactionWrapper::createWithTransaction(transaction);
+    CCStorePaymentTransactionWrapper* transactionWapper;
+    transactionWapper = CCStorePaymentTransactionWrapper::createWithTransaction(transaction);
 
     const char *ccid        = utf8cstr(transaction.transactionIdentifier);
     const char *ccproductId = utf8cstr(transaction.payment.productIdentifier);

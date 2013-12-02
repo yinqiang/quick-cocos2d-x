@@ -58,7 +58,7 @@ function CCNodeExtend:rotation(r)
 end
 
 function CCNodeExtend:size(width, height)
-    if typen(width) == LUA_TUSERDATA then
+    if type(width) == "userdata" then
         self:setContentSize(width)
     else
         self:setContentSize(CCSize(width, height))
@@ -71,17 +71,15 @@ function CCNodeExtend:width(width)
     if not width then
         return size.width
     end
-    self:size(width, size.height)
-    return self
+    return self:size(width, size.height)
 end
 
-function CCNodeExtend:height(height)
+function CCNodeExtend:height( height )
     local size = self:getContentSize()
     if not height then
         return size.height
     end
-    self:size(size.width, height)
-    return self
+    return self:size(size.width, height)
 end
 
 function CCNodeExtend:opacity(opacity)
@@ -174,7 +172,7 @@ CCSpriteExtend.playOnce = CCSpriteExtend.playAnimationOnce
 CCSpriteExtend.playForever = CCSpriteExtend.playAnimationForever
 
 function CCSpriteExtend:displayFrame(frame, index)
-    if typen(frame) == LUA_TSTRING then
+    if type(frame) == "string" then
         self:setDisplayFrame(frame, index or 0)
     else
         self:setDisplayFrame(frame)

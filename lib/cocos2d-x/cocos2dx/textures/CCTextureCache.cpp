@@ -47,7 +47,9 @@ THE SOFTWARE.
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT) && (CC_TARGET_PLATFORM != CC_PLATFORM_WP8)
 #include <pthread.h>
 #else
-#include "CCWinRTUtils.h"
+#include "CCPThreadWinRT.h"
+#include <ppl.h>
+#include <ppltasks.h>
 using namespace concurrency;
 #endif
 
@@ -114,7 +116,7 @@ static CCImage::EImageFormat computeImageFormatType(string& filename)
         ret = CCImage::kFmtWebp;
     }
 #endif
-
+   
     return ret;
 }
 
@@ -170,7 +172,7 @@ static void* loadImage(void* data)
                 break;
             }
             else {
-            	pthread_cond_wait(&s_SleepCondition, &s_SleepMutex);
+                pthread_cond_wait(&s_SleepCondition, &s_SleepMutex);
                 continue;
             }
         }
@@ -180,9 +182,9 @@ static void* loadImage(void* data)
             pQueue->pop();
             pthread_mutex_unlock(&s_asyncStructQueueMutex);
             loadImageData(pAsyncStruct);
-        }
-        }
-
+        }        
+    }
+    
     if( s_pAsyncStructQueue != NULL )
     {
         delete s_pAsyncStructQueue;
@@ -195,7 +197,7 @@ static void* loadImage(void* data)
         pthread_mutex_destroy(&s_SleepMutex);
         pthread_cond_destroy(&s_SleepCondition);
     }
-
+    
     return 0;
 }
 
@@ -217,7 +219,7 @@ CCTextureCache * CCTextureCache::sharedTextureCache()
 CCTextureCache::CCTextureCache()
 {
     CCAssert(g_sharedTextureCache == NULL, "Attempted to allocate a second instance of a singleton.");
-
+    
     m_pTextures = new CCDictionary();
 }
 
@@ -240,7 +242,7 @@ const char* CCTextureCache::description()
 }
 
 CCDictionary* CCTextureCache::snapshotTextures()
-{
+{ 
     CCDictionary* pRet = new CCDictionary();
     CCDictElement* pElement = NULL;
     CCDICT_FOREACH(m_pTextures, pElement)
@@ -268,7 +270,7 @@ void CCTextureCache::addImageAsyncImpl(const char *path, CCObject *target, SEL_C
     return;
 #endif // EMSCRIPTEN
 
-    CCAssert(path != NULL, "TextureCache: fileimage MUST not be NULL");
+    CCAssert(path != NULL, "TextureCache: fileimage MUST not be NULL");    
 
     CCTexture2D *texture = NULL;
 
@@ -293,17 +295,17 @@ void CCTextureCache::addImageAsyncImpl(const char *path, CCObject *target, SEL_C
         {
             CCScriptEngineManager::sharedManager()->getScriptEngine()->executeEvent(handler, "addImageAsync", texture, "CCTexture2D");
         }
-
+        
         return;
     }
 
 
     // lazy init
     if (s_pAsyncStructQueue == NULL)
-    {
+    {             
         s_pAsyncStructQueue = new queue<AsyncStruct*>();
-        s_pImageQueue = new queue<ImageInfo*>();
-
+        s_pImageQueue = new queue<ImageInfo*>();        
+        
         pthread_mutex_init(&s_asyncStructQueueMutex, NULL);
         pthread_mutex_init(&s_ImageInfoMutex, NULL);
         pthread_mutex_init(&s_SleepMutex, NULL);
@@ -393,7 +395,7 @@ void CCTextureCache::addImageAsyncCallBack(float dt)
         {
             (target->*selector)(texture);
             target->release();
-        }
+        }        
         if (handler)
         {
             CCScriptEngineManager::sharedManager()->getScriptEngine()->executeEvent(handler, "addImageAsync", texture, "CCTexture2D");
@@ -420,7 +422,7 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
     // Split up directory and filename
     // MUTEX:
     // Needed since addImageAsync calls this method from a different thread
-
+    
     //pthread_mutex_lock(m_pDictLock);
 
     std::string pathKey = path;
@@ -433,7 +435,7 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
     texture = (CCTexture2D*)m_pTextures->objectForKey(pathKey.c_str());
 
     std::string fullpath = pathKey; // (CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(path));
-    if (! texture)
+    if (! texture) 
     {
         std::string lowerCase(pathKey);
         for (unsigned int i = 0; i < lowerCase.length(); ++i)
@@ -441,8 +443,11 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
             lowerCase[i] = tolower(lowerCase[i]);
         }
         // all images are handled by UIImage except PVR extension that is handled by our own handler
-        do
+        do 
         {
+
+#ifndef QUICK_MINI_TARGET
+
             if (std::string::npos != lowerCase.find(".pvr"))
             {
                 texture = this->addPVRImage(fullpath.c_str());
@@ -453,12 +458,18 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
                 texture = this->addETCImage(fullpath.c_str());
             }
             else
+
+#endif // QUICK_MINI_TARGET
+
             {
                 CCImage::EImageFormat eImageFormat = CCImage::kFmtUnKnown;
                 if (std::string::npos != lowerCase.find(".png"))
                 {
                     eImageFormat = CCImage::kFmtPng;
                 }
+
+#ifndef QUICK_MINI_TARGET
+
                 else if (std::string::npos != lowerCase.find(".jpg") || std::string::npos != lowerCase.find(".jpeg"))
                 {
                     eImageFormat = CCImage::kFmtJpg;
@@ -467,10 +478,14 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
                 {
                     eImageFormat = CCImage::kFmtTiff;
                 }
+#endif // QUICK_MINI_TARGET
+
                 else if (std::string::npos != lowerCase.find(".webp"))
                 {
                     eImageFormat = CCImage::kFmtWebp;
                 }
+                
+//                CC_BREAK_IF(eImageFormat == CCImage::kFmtUnKnown);
 
                 pImage = new CCImage();
                 CC_BREAK_IF(NULL == pImage);
@@ -479,7 +494,7 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
                 CC_BREAK_IF(!bRet);
 
                 texture = new CCTexture2D();
-
+                
                 if( texture &&
                     texture->initWithImage(pImage) )
                 {
@@ -504,14 +519,16 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
     return texture;
 }
 
+#ifndef QUICK_MINI_TARGET
+
 CCTexture2D * CCTextureCache::addPVRImage(const char* path)
 {
     CCAssert(path != NULL, "TextureCache: fileimage MUST not be nil");
 
     CCTexture2D* texture = NULL;
     std::string key(path);
-
-    if( (texture = (CCTexture2D*)m_pTextures->objectForKey(key.c_str())) )
+    
+    if( (texture = (CCTexture2D*)m_pTextures->objectForKey(key.c_str())) ) 
     {
         return texture;
     }
@@ -540,15 +557,15 @@ CCTexture2D * CCTextureCache::addPVRImage(const char* path)
 CCTexture2D* CCTextureCache::addETCImage(const char* path)
 {
     CCAssert(path != NULL, "TextureCache: fileimage MUST not be nil");
-
+    
     CCTexture2D* texture = NULL;
     std::string key(path);
-
+    
     if( (texture = (CCTexture2D*)m_pTextures->objectForKey(key.c_str())) )
     {
         return texture;
     }
-
+    
     // Split up directory and filename
     std::string fullpath = CCFileUtils::sharedFileUtils()->fullPathForFilename(key.c_str());
     texture = new CCTexture2D();
@@ -562,9 +579,11 @@ CCTexture2D* CCTextureCache::addETCImage(const char* path)
         CCLOG("cocos2d: Couldn't add ETCImage:%s in CCTextureCache",key.c_str());
         CC_SAFE_DELETE(texture);
     }
-
+    
     return texture;
 }
+
+#endif // QUICK_MINI_TARGET
 
 CCTexture2D* CCTextureCache::addUIImage(CCImage *image, const char *key)
 {
@@ -578,10 +597,10 @@ CCTexture2D* CCTextureCache::addUIImage(CCImage *image, const char *key)
         forKey = CCFileUtils::sharedFileUtils()->fullPathForFilename(key);
     }
 
-    // Don't have to lock here, because addImageAsync() will not
+    // Don't have to lock here, because addImageAsync() will not 
     // invoke opengl function in loading thread.
 
-    do
+    do 
     {
         // If key is nil, then create a new texture each time
         if(key && (texture = (CCTexture2D *)m_pTextures->objectForKey(forKey.c_str())))
@@ -608,7 +627,7 @@ CCTexture2D* CCTextureCache::addUIImage(CCImage *image, const char *key)
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     VolatileTexture::addCCImage(texture, image);
 #endif
-
+    
     return texture;
 }
 
@@ -634,11 +653,11 @@ void CCTextureCache::removeUnusedTextures()
         }
     }
      */
-
+    
     /** Inter engineer zhuoshi sun finds that this way will get better performance
-     */
+     */    
     if (m_pTextures->count())
-    {
+    {   
         // find elements to be removed
         CCDictElement* pElement = NULL;
         list<CCDictElement*> elementToRemove;
@@ -651,7 +670,7 @@ void CCTextureCache::removeUnusedTextures()
                 elementToRemove.push_back(pElement);
             }
         }
-
+        
         // remove elements
         for (list<CCDictElement*>::iterator iter = elementToRemove.begin(); iter != elementToRemove.end(); ++iter)
         {
@@ -785,18 +804,18 @@ VolatileTexture* VolatileTexture::findVolotileTexture(CCTexture2D *tt)
     while (i != textures.end())
     {
         VolatileTexture *v = *i++;
-        if (v->texture == tt)
+        if (v->texture == tt) 
         {
             vt = v;
             break;
         }
     }
-
+    
     if (! vt)
     {
         vt = new VolatileTexture(tt);
     }
-
+    
     return vt;
 }
 
@@ -815,7 +834,7 @@ void VolatileTexture::addDataTexture(CCTexture2D *tt, void* data, CCTexture2DPix
     vt->m_TextureSize = contentSize;
 }
 
-void VolatileTexture::addStringTexture(CCTexture2D *tt, const char* text, const CCSize& dimensions, CCTextAlignment alignment,
+void VolatileTexture::addStringTexture(CCTexture2D *tt, const char* text, const CCSize& dimensions, CCTextAlignment alignment, 
                                        CCVerticalTextAlignment vAlignment, const char *fontName, float fontSize)
 {
     if (isReloading)
@@ -834,7 +853,7 @@ void VolatileTexture::addStringTexture(CCTexture2D *tt, const char* text, const 
     vt->m_strText     = text;
 }
 
-void VolatileTexture::setTexParameters(CCTexture2D *t, ccTexParams *texParams)
+void VolatileTexture::setTexParameters(CCTexture2D *t, ccTexParams *texParams) 
 {
     VolatileTexture *vt = findVolotileTexture(t);
 
@@ -848,14 +867,14 @@ void VolatileTexture::setTexParameters(CCTexture2D *t, ccTexParams *texParams)
         vt->m_texParams.wrapT = texParams->wrapT;
 }
 
-void VolatileTexture::removeTexture(CCTexture2D *t)
+void VolatileTexture::removeTexture(CCTexture2D *t) 
 {
 
     std::list<VolatileTexture *>::iterator i = textures.begin();
     while (i != textures.end())
     {
         VolatileTexture *vt = *i++;
-        if (vt->texture == t)
+        if (vt->texture == t) 
         {
             delete vt;
             break;
@@ -884,15 +903,20 @@ void VolatileTexture::reloadAllTextures()
                     lowerCase[i] = tolower(lowerCase[i]);
                 }
 
-                if (std::string::npos != lowerCase.find(".pvr"))
+#ifndef QUICK_MINI_TARGET
+
+                if (std::string::npos != lowerCase.find(".pvr")) 
                 {
                     CCTexture2DPixelFormat oldPixelFormat = CCTexture2D::defaultAlphaPixelFormat();
                     CCTexture2D::setDefaultAlphaPixelFormat(vt->m_PixelFormat);
 
                     vt->texture->initWithPVRFile(vt->m_strFileName.c_str());
                     CCTexture2D::setDefaultAlphaPixelFormat(oldPixelFormat);
-                }
-                else
+                } 
+                else 
+
+#endif
+
                 {
                     CCImage* pImage = new CCImage();
                     unsigned long nSize = 0;
@@ -913,10 +937,10 @@ void VolatileTexture::reloadAllTextures()
             break;
         case kImageData:
             {
-                vt->texture->initWithData(vt->m_pTextureData,
-                                          vt->m_PixelFormat,
-                                          vt->m_TextureSize.width,
-                                          vt->m_TextureSize.height,
+                vt->texture->initWithData(vt->m_pTextureData, 
+                                          vt->m_PixelFormat, 
+                                          vt->m_TextureSize.width, 
+                                          vt->m_TextureSize.height, 
                                           vt->m_TextureSize);
             }
             break;

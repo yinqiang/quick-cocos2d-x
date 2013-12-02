@@ -1,4 +1,23 @@
 
+ccp = CCPoint
+ccsize = CCSize
+ccrect = CCRect
+
+cc.p = CCPoint
+cc.size = CCSize
+cc.rect = CCRect
+
+cc.c3 = ccc3
+cc.c4 = ccc4
+cc.c4f = ccc4f
+
+cc.TOUCH_IGNORE               = 0
+cc.TOUCH_BEGAN                = 1
+cc.TOUCH_BEGAN_NO_SWALLOWS    = 2
+cc.TOUCH_MOVED                = 0
+cc.TOUCH_MOVED_SWALLOWS       = 1
+cc.TOUCH_MOVED_RELEASE_OTHERS = 2
+
 cc.size2t = function(size)
     return {width = size.width, height = size.height}
 end
