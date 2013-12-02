@@ -108,6 +108,7 @@ function transition.fadeIn(target, args)
     assert(not tolua.isnull(target), "transition.fadeIn() - target is not CCNode")
     local action = CCFadeIn:create(args.time)
     target:setOpacity(0)
+    target:setVisible(true)
     return transition.execute(target, action, args)
 end
 
@@ -115,6 +116,12 @@ function transition.fadeOut(target, args)
     assert(not tolua.isnull(target), "transition.fadeOut() - target is not CCNode")
     local action = CCFadeOut:create(args.time)
     target:setOpacity(255)
+    target:setVisible(true)
+    local onComplete = args.onComplete
+    args.onComplete = function( )
+        target:setVisible(false)
+        if onComplete then onComplete() end
+    end
     return transition.execute(target, action, args)
 end
 

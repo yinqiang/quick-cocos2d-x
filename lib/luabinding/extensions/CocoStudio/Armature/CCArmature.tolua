@@ -94,4 +94,7 @@ class  CCArmature : public CCNode
     CCTextureAtlas *getTextureAtlas();
 
     CCBone *getParentBone();
+
+    inline void setBlendFunc(ccBlendFunc blendFunc);
+    inline ccBlendFunc getBlendFunc(void);
 };

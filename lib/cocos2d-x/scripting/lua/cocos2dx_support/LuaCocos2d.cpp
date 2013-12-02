@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on 10/21/13 14:31:44.
+** Generated automatically by tolua++-1.0.92 on 11/19/13 15:57:26.
 */
 
 /****************************************************************************
@@ -2036,6 +2036,47 @@ static int tolua_Cocos2d_uintFromCCC300(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'uintFromCCC3'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function: cccBlendFunc */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_cccBlendFunc00
+static int tolua_Cocos2d_cccBlendFunc00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  unsigned int src = (( unsigned int)  tolua_tonumber(tolua_S,1,0));
+  unsigned int dst = (( unsigned int)  tolua_tonumber(tolua_S,2,0));
+  {
+   ccBlendFunc tolua_ret = (ccBlendFunc)  cccBlendFunc(src,dst);
+   {
+#ifdef __cplusplus
+    void* tolua_obj = Mtolua_new((ccBlendFunc)(tolua_ret));
+     tolua_pushusertype(tolua_S,tolua_obj,"ccBlendFunc");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#else
+    void* tolua_obj = tolua_copy(tolua_S,(void*)&tolua_ret,sizeof(ccBlendFunc));
+     tolua_pushusertype(tolua_S,tolua_obj,"ccBlendFunc");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#endif
+   }
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'cccBlendFunc'.",&tolua_err);
  return 0;
 #endif
 }
@@ -61278,6 +61319,81 @@ static int tolua_Cocos2d_CCArmature_getParentBone00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setBlendFunc of class  CCArmature */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCArmature_setBlendFunc00
+static int tolua_Cocos2d_CCArmature_setBlendFunc00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmature",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"ccBlendFunc",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmature* self = (CCArmature*)  tolua_tousertype(tolua_S,1,0);
+  ccBlendFunc blendFunc = *((ccBlendFunc*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setBlendFunc'", NULL);
+#endif
+  {
+   self->setBlendFunc(blendFunc);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setBlendFunc'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getBlendFunc of class  CCArmature */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCArmature_getBlendFunc00
+static int tolua_Cocos2d_CCArmature_getBlendFunc00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmature",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmature* self = (CCArmature*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getBlendFunc'", NULL);
+#endif
+  {
+   ccBlendFunc tolua_ret = (ccBlendFunc)  self->getBlendFunc();
+   {
+#ifdef __cplusplus
+    void* tolua_obj = Mtolua_new((ccBlendFunc)(tolua_ret));
+     tolua_pushusertype(tolua_S,tolua_obj,"ccBlendFunc");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#else
+    void* tolua_obj = tolua_copy(tolua_S,(void*)&tolua_ret,sizeof(ccBlendFunc));
+     tolua_pushusertype(tolua_S,tolua_obj,"ccBlendFunc");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#endif
+   }
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getBlendFunc'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: create of class  CCBone */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_CCBone_create00
 static int tolua_Cocos2d_CCBone_create00(lua_State* tolua_S)
@@ -61741,6 +61857,7 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
   tolua_function(tolua_S,"uintFromCCC4",tolua_Cocos2d_uintFromCCC400);
   tolua_function(tolua_S,"ccc3FromUInt",tolua_Cocos2d_ccc3FromUInt00);
   tolua_function(tolua_S,"uintFromCCC3",tolua_Cocos2d_uintFromCCC300);
+  tolua_function(tolua_S,"cccBlendFunc",tolua_Cocos2d_cccBlendFunc00);
   tolua_function(tolua_S,"kmGLFreeAll",tolua_Cocos2d_kmGLFreeAll00);
   tolua_function(tolua_S,"kmGLPushMatrix",tolua_Cocos2d_kmGLPushMatrix00);
   tolua_function(tolua_S,"kmGLPopMatrix",tolua_Cocos2d_kmGLPopMatrix00);
@@ -64639,6 +64756,8 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getName",tolua_Cocos2d_CCArmature_getName00);
    tolua_function(tolua_S,"getTextureAtlas",tolua_Cocos2d_CCArmature_getTextureAtlas00);
    tolua_function(tolua_S,"getParentBone",tolua_Cocos2d_CCArmature_getParentBone00);
+   tolua_function(tolua_S,"setBlendFunc",tolua_Cocos2d_CCArmature_setBlendFunc00);
+   tolua_function(tolua_S,"getBlendFunc",tolua_Cocos2d_CCArmature_getBlendFunc00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"CCBone","CCBone","CCNode",NULL);
   tolua_beginmodule(tolua_S,"CCBone");

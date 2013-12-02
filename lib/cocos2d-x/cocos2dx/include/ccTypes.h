@@ -472,6 +472,12 @@ static inline unsigned int uintFromCCC3(const ccColor3B ccColor)
 	return (ccColor.r << 16 | ccColor.g << 8 | ccColor.b);
 }
 
+static inline ccBlendFunc cccBlendFunc(GLenum src, GLenum dst)
+{
+	ccBlendFunc ret = {src, dst};
+	return ret;
+}
+
 NS_CC_END
 
 #endif //__CCTYPES_H__

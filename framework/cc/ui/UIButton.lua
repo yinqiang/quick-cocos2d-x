@@ -233,6 +233,7 @@ function UIButton:updateButtonImage_()
 
         self.sprite_:setAnchorPoint(self:getAnchorPoint())
         self.sprite_:setPosition(0, 0)
+        self.sprite_:setOpacity(self:getOpacity())
     else
         echoError("UIButton:updateButtonImage_() - not set image for state %s", state)
     end

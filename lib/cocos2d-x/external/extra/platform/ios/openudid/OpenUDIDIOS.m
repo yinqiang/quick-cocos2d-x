@@ -173,7 +173,11 @@ static int const kOpenUDIDRedundancySlots = 100;
     // We then hash this UUID with md5 to get 32 bytes, and then add 4 extra random bytes
     // Collision is possible of course, but unlikely and suitable for most industry needs (e.g. aggregate tracking)
     //
-    if (_openUDID==nil) {
+
+    //by zhaotingjian:next 2 lines job here is only temporary.
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    _openUDID = [prefs stringForKey:@"dragoncity_uuid"];
+    if (_openUDID == nil) {
         CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
         CFStringRef cfstring = CFUUIDCreateString(kCFAllocatorDefault, uuid);
         const char *cStr = CFStringGetCStringPtr(cfstring,CFStringGetFastestEncoding(cfstring));
@@ -189,6 +193,10 @@ static int const kOpenUDIDRedundancySlots = 100;
                      result[8], result[9], result[10], result[11],
                      result[12], result[13], result[14], result[15],
                      (NSUInteger)(arc4random() % NSUIntegerMax)];
+
+        //by zhaotingjian:next 2 lines job here is only temporary.
+        [prefs setObject:_openUDID forKey:@"dragoncity_uuid"];
+        [prefs synchronize];
     }
 
     // Call to other developers in the Open Source community:
