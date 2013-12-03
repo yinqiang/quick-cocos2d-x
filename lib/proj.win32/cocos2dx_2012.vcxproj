@@ -347,7 +347,6 @@
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\lsqlite3.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\sqlite3.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\lua_extensions.c" />
-    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\auxiliar.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\except.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\inet.c" />
@@ -752,7 +751,6 @@
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\lsqlite3.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lsqlite3\sqlite3.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\lua_extensions.h" />
-    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\protobuf\pb.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\auxiliar.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\except.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\socket\inet.h" />
