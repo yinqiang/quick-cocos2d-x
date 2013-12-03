@@ -34,12 +34,6 @@ extern "C"
     int cocos2dx_lua_loader(lua_State *L)
     {
         std::string filename(luaL_checkstring(L, 1));
-        lua_getglobal(L, kCCLuaDebuggerGlobalKey);
-        if (lua_toboolean(L, -1))
-        {
-            return luaL_loadfile(L, filename.c_str()) == 0 ? 1 : 0;
-        }
-        lua_pop(L, 1);
 
         const std::string SUFFIX_LUA = ".lua";
         size_t pos = filename.rfind(SUFFIX_LUA);
